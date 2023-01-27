@@ -1,7 +1,12 @@
 import { ThemeProvider } from 'styled-components'
+import { Button } from './components/Button'
 import { Text } from './components/Text'
 import { GlobalStyle } from './style/GlobalStyle'
 import { theme } from './style/theme'
+
+const foo = () => {
+  console.log('button clicked')
+}
 
 function App() {
   return (
@@ -12,6 +17,7 @@ function App() {
       <Text variant="h3">Testo H3</Text>
       <Text variant="h4">Testo H4</Text>
       <Text variant="h5">Testo H5</Text>
+      <Button onClick={foo}>My Text</Button>
     </ThemeProvider>
   )
 }
