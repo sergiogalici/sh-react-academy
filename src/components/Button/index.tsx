@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { theme, ThemeColors } from '../../style/theme'
-import { StyledButton } from './styled'
+import { Variants } from './buttonVariants'
+import { StyledButton, StyledButtonProps } from './styled'
 
 type Props = {
   children: ReactNode
@@ -12,6 +13,7 @@ type Props = {
   disabled?: boolean
   backgroundColor?: ThemeColors
   padding?: number
+  variant?: Variants
 }
 
 export const Button = ({
@@ -22,7 +24,8 @@ export const Button = ({
   borderWidth = 2,
   borderRadius = 2,
   backgroundColor = 'primary',
-  padding = 3
+  padding = 3,
+  variant = 'primary'
 }: Props) => {
   return (
     <StyledButton
@@ -33,6 +36,7 @@ export const Button = ({
       backgroundColor={backgroundColor}
       border={border}
       padding={padding}
+      variant={variant}
     >
       {children}
     </StyledButton>
