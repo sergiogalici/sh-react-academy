@@ -17,7 +17,7 @@ function App() {
       <Text variant="h3">Testo H3</Text>
       <Text variant="h4">Testo H4</Text>
       <Text variant="h5">Testo H5</Text>
-      <Button onClick={foo}>My Text</Button>
+      <Button border={false}>My Text</Button>
     </ThemeProvider>
   )
 }

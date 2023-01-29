@@ -1,4 +1,4 @@
-import styled, { StyledComponent } from 'styled-components'
+import styled, { StyledComponent, css } from 'styled-components'
 import { TextVariants, ThemeColors, ThemeFontSizes, theme } from '../../style/theme'
 
 export type StyledTextProps = {

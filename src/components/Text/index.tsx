@@ -2,7 +2,6 @@ import { ReactNode } from 'react'
 import { TextVariants, ThemeColors, ThemeFontSizes } from '../../style/theme'
 
 import { StyledText } from './styled'
-import { StyledTextProps } from './styled'
 
 type Props = {
   children: ReactNode
