@@ -15,7 +15,7 @@ export const BaseButton = styled.button<BaseBtnProps>`
   padding: ${({ theme, padding }) => theme.spacing[padding]}px;
   outline: ${({ outlined, theme }) =>
     outlined ? `1px solid ${theme.colors.textLight}` : 'none'};
-  color: ${({ color }) => color};
+  color: ${({ color, theme }) => theme.colors[color]};
   background-color: ${({ theme, backgroundColor }) =>
     backgroundColor ? theme.colors[backgroundColor] : theme.colors.primary};
   cursor: pointer;

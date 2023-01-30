@@ -3,6 +3,7 @@ export const theme = {
     primary: '#f9423a',
     // primaryLight: '#feeceb',
     primaryLight: '#fa7b75',
+    primaryLighter: '#FEECEB',
     secondary: '#f7f8fb',
     secondaryLight: '#2d3748',
     grayShadowed: 'rgba(247, 247, 247, 0.5)',

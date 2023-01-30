@@ -16,7 +16,7 @@ const variantsMap = {
     }
   `,
   secondary: css`
-    background-color: ${theme.colors.secondary};
+    background-color: ${theme.colors.primaryLighter};
     font-weight: 700;
     color: ${theme.colors.primary};
     &:hover {

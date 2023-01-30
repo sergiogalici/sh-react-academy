@@ -20,4 +20,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   &::placeholder {
     color: ${({ theme }) => theme.colors.lightGray};
   }
+  &:hover {
+    border: ${({ theme }) => `1px solid ${theme.colors.textDark}`};
+  }
 `

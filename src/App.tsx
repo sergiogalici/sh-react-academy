@@ -27,7 +27,7 @@ function App() {
       <Button variant="transparent">
         <Text variant="p">Testo p</Text>
       </Button>
-      <Button variant="primary" backgroundColor="secondary">
+      <Button backgroundColor="secondary">
         <Text variant="p">Testo p</Text>
       </Button>
       <Input placeText="My placeholder" />
