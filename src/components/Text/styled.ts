@@ -2,7 +2,7 @@ import styled, { StyledComponent, css } from 'styled-components'
 import { TextVariants, ThemeColors, ThemeFontSizes, theme } from '../../style/theme'
 
 export type StyledTextProps = {
-  as: TextVariants
+  variant: TextVariants
   color: ThemeColors
   size?: number
   bold: boolean
@@ -13,8 +13,8 @@ export type StyledTextProps = {
 // dal template literal si prende il valore dal return della funzione
 export const StyledText = styled.p<StyledTextProps>`
   color: ${({ theme, color }) => theme.colors[color]};
-  font-size: ${({ theme, as, size }) => {
-    const { fontSize } = theme.textVariants[as]
+  font-size: ${({ theme, variant, size }) => {
+    const { fontSize } = theme.textVariants[variant]
     return size ? size : theme.fontSizes[fontSize]
   }}rem;
   font-weight: ${({ bold }) => (bold ? 700 : 400)};
