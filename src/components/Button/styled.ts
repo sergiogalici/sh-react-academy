@@ -3,13 +3,6 @@ import { theme, ThemeColors } from '../../style/theme'
 import { Variants, variants } from './buttonVariants'
 
 export type StyledButtonProps = {
-  borderColor: ThemeColors
-  border: boolean
-  borderStyle: string
-  borderWidth: number
-  borderRadius: number
-  backgroundColor: ThemeColors
-  padding: number
   variant: Variants
 }
 
@@ -36,11 +29,4 @@ export const StyledButton = styled.button<StyledButtonProps>`
       `
     }
   }}
-  border: ${({ border, borderStyle, borderWidth, borderColor }) =>
-    border
-      ? borderWidth + 'px ' + borderStyle + ' ' + theme.colors[borderColor]
-      : 'none'};
-  border-radius: ${({ borderRadius }) => borderRadius}px;
-  background-color: ${({ backgroundColor }) => theme.colors[backgroundColor]};
-  padding: ${({ padding }) => padding}px;
 `

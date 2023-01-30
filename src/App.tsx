@@ -17,7 +17,10 @@ function App() {
       <Text variant="h3">Testo H3</Text>
       <Text variant="h4">Testo H4</Text>
       <Text variant="h5">Testo H5</Text>
-      <Button>My Text</Button>
+      <Button variant="noBorder">My Text</Button>
+      <Button variant="primary">My Text</Button>
+      <Button variant="secondary">My Text</Button>
+      <Button variant="tertiary">My Text</Button>
     </ThemeProvider>
   )
 }

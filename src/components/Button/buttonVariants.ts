@@ -1,6 +1,6 @@
 export const variants = {
   primary: {
-    borderWidth: 3,
+    borderWidth: 2,
     borderStyle: 'solid',
     borderColor: 'primary',
     borderRadius: 4,
@@ -10,9 +10,25 @@ export const variants = {
   secondary: {
     borderWidth: 2,
     borderStyle: 'solid',
-    borderColor: 'secondary',
+    borderColor: 'primary',
     borderRadius: 5,
-    backgroundColor: 'secondary',
+    backgroundColor: 'primaryLight',
+    padding: 3
+  },
+  tertiary: {
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: 'textLight',
+    borderRadius: 5,
+    backgroundColor: 'transparent',
+    padding: 3
+  },
+  noBorder: {
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: 'primaryLight',
+    borderRadius: 5,
+    backgroundColor: 'primaryLight',
     padding: 3
   }
 } as const
