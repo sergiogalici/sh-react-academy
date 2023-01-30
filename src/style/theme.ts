@@ -1,7 +1,8 @@
 export const theme = {
   colors: {
     primary: '#f9423a',
-    primaryLight: '#feeceb',
+    // primaryLight: '#feeceb',
+    primaryLight: '#fa7b75',
     secondary: '#f7f8fb',
     secondaryLight: '#2d3748',
     grayShadowed: 'rgba(247, 247, 247, 0.5)',
@@ -29,7 +30,13 @@ export const theme = {
     h6: { fontSize: 'md', lineHeight: 1.4 },
     p: { fontSize: 'base', lineHeight: 1.2 },
     span: { fontSize: 'base', lineHeight: 1.2 }
-  } as const
+  } as const,
+  spacing: {
+    sm: 8,
+    md: 16,
+    lg: 32
+  },
+  radii: [5, 10, 20, 50]
 }
 
 export type Theme = typeof theme
@@ -39,3 +46,7 @@ export type ThemeColors = keyof Theme['colors']
 export type ThemeFontSizes = keyof Theme['fontSizes']
 
 export type TextVariants = keyof Theme['textVariants']
+
+export type ThemeSpacings = keyof Theme['spacing']
+
+export type ThemeRadii = keyof Theme['radii']

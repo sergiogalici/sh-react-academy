@@ -1,17 +1,35 @@
 import { ReactNode } from 'react'
-import { theme, ThemeColors } from '../../style/theme'
-import { Variants } from './buttonVariants'
+import { theme } from '../../style/theme'
+import { BaseBtnProps } from './BaseButton'
 import { StyledButton, StyledButtonProps } from './styled'
 
-/* type Props = {
-  children: ReactNode
-  variant?: Variants
-}*/
+type Props = Partial<StyledButtonProps> &
+  Partial<BaseBtnProps> & {
+    children: ReactNode
+    onClick?: () => void
+  }
 
-type Props = Partial<StyledButtonProps> & {
-  children: ReactNode
-}
-
-export const Button = ({ children, variant = 'primary' }: Props) => {
-  return <StyledButton variant={variant}>{children}</StyledButton>
+export const Button = ({
+  variant,
+  children,
+  onClick,
+  padding = 'md',
+  outlined = false,
+  color = 'textLight',
+  backgroundColor = 'primary',
+  borderRadius = theme.radii[1]
+}: Props) => {
+  return (
+    <StyledButton
+      variant={variant}
+      padding={padding}
+      outlined={outlined}
+      color={color}
+      backgroundColor={backgroundColor}
+      borderRadius={borderRadius}
+      onClick={onClick}
+    >
+      {children}
+    </StyledButton>
+  )
 }
