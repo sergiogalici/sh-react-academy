@@ -3,14 +3,14 @@ import { ThemeSpacings, ThemeColors } from '../../style/theme'
 
 export type StyledInputProps = {
   padding: ThemeSpacings
-  color?: ThemeColors
+  color: ThemeColors
   borderRadius: number
   borderColor: ThemeColors
 }
 
 export const StyledInput = styled.input<StyledInputProps>`
   padding: ${({ padding, theme }) => theme.spacing[padding]}px;
-  color: ${({ color, theme }) => (color ? theme.colors[color] : 'inherit')};
+  color: ${({ color, theme }) => theme.colors[color]};
   border-radius: ${({ borderRadius }) => borderRadius}px;
   outline: none;
   border: ${({ borderColor, theme }) => `1px solid ${theme.colors[borderColor]}`};
