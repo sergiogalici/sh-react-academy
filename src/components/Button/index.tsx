@@ -1,14 +1,14 @@
 import { ReactNode } from 'react'
 import { Text } from '../Text'
 import { BaseBtnProps } from './BaseButton'
-import { StyledButton, StyledButtonProps } from './styled'
+import { StyledButton } from './styled'
 
-type Props = Partial<StyledButtonProps> &
-  Partial<BaseBtnProps> & {
-    children?: ReactNode
-    onClick?: () => void
-    icon?: string
-  }
+type Props = Partial<BaseBtnProps> & {
+  variant?: keyof typeof variants
+  children?: ReactNode
+  onClick?: () => void
+  icon?: string
+}
 
 const variants = {
   primary: {
@@ -18,6 +18,10 @@ const variants = {
   secondary: {
     backgroundColor: 'primaryLighter',
     color: 'primary'
+  },
+  tertiary: {
+    backgroundColor: 'backgroundLight',
+    color: 'textLight'
   }
 } as const
 
@@ -32,7 +36,7 @@ export const Button = ({
   borderRadius = 1,
   ...rest
 }: Props) => {
-  const v = variant ? variants[variant] : { backgroundColor, color }
+  const v = variant ? variants[variant] : { backgroundColor, color, outlined }
   const textColor = outlined ? v.backgroundColor : v.color
 
   return (

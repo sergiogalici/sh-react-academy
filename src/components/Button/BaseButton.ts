@@ -11,14 +11,13 @@ export type BaseBtnProps = {
 }
 
 export const BaseButton = styled.button<BaseBtnProps>`
-  border: none;
   display: flex;
   align-items: center;
   gap: 8px;
   border-radius: ${({ borderRadius, theme }) => theme.radii[borderRadius]}px;
   padding: ${({ theme, size }) =>
     `${theme.spacing[size] / 2}px ${theme.spacing[size]}px`};
-  outline: ${({ outlined, backgroundColor, theme }) =>
+  border: ${({ outlined, backgroundColor, theme }) =>
     outlined ? `1px solid ${theme.colors[backgroundColor]}` : 'none'};
   color: ${({ color, theme }) => theme.colors[color]};
   background-color: ${({ theme, backgroundColor, outlined }) =>

@@ -1,9 +1,6 @@
 import styled, { css } from 'styled-components'
 import { BaseButton, BaseBtnProps } from './BaseButton'
 
-export type StyledButtonProps = Partial<BaseBtnProps> & {
-  variant?: 'primary' | 'secondary'
-}
 /* 
 const variantsMap = {
   primary: css`

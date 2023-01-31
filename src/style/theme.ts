@@ -11,7 +11,8 @@ export const theme = {
     textDark: '#282828',
     textLight: '#ffffff',
     lightGray: '#cccccc',
-    transparent: 'transparent'
+    transparent: 'transparent',
+    backgroundLight: '#fafafa'
   },
   // Units in REM
   fontSizes: {

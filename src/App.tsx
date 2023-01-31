@@ -13,10 +13,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Button variant="secondary">AAAA</Button>
-      <Button variant="secondary" outlined>
-        Button 1
+      <Button variant="tertiary" outlined>
+        BBBBB
       </Button>
+      <Button variant="secondary">AAAA</Button>
+      <Button variant="secondary">Button 1</Button>
       <Button variant="primary" outlined>
         Button 3
       </Button>
