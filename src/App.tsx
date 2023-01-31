@@ -26,6 +26,7 @@ function App() {
       <Button size="lg">Button 3</Button>
       <Button icon="plus">Button 3</Button>
       <Button icon="plus" />
+      <Input placeText="my placeholder" />
       <Select fullWidth={true} />
     </ThemeProvider>
   )
