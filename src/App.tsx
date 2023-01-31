@@ -22,13 +22,12 @@ function App() {
         <Text variant="p">Testo p</Text>
       </Button>
       <Button onClick={foo} variant="secondary">
-        <Text variant="p">Testo p</Text>
+        Testo
       </Button>
-      <Button variant="transparent">
-        <Text variant="p">Testo p</Text>
-      </Button>
-      <Button backgroundColor="secondary">
-        <Text variant="p">Testo p</Text>
+      <Button variant="transparent">Testo</Button>
+      <Button backgroundColor="secondary">Testo</Button>
+      <Button outlined backgroundColor="primary">
+        Testo
       </Button>
       <Input placeText="My placeholder" />
     </ThemeProvider>

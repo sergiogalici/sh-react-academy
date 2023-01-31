@@ -1,35 +1,32 @@
 import { ReactNode } from 'react'
-import { theme } from '../../style/theme'
+import { Text } from '../Text'
 import { BaseBtnProps } from './BaseButton'
 import { StyledButton, StyledButtonProps } from './styled'
 
 type Props = Partial<StyledButtonProps> &
   Partial<BaseBtnProps> & {
-    children: ReactNode
+    children?: ReactNode
     onClick?: () => void
+    icon?: string
   }
 
 export const Button = ({
-  variant,
   children,
-  onClick,
-  padding = 'md',
-  outlined = false,
   color = 'textLight',
   backgroundColor = 'primary',
-  borderRadius = theme.radii[1]
+  padding = 'md',
+  borderRadius = 1,
+  ...rest
 }: Props) => {
   return (
     <StyledButton
-      variant={variant}
       padding={padding}
-      outlined={outlined}
       color={color}
       backgroundColor={backgroundColor}
       borderRadius={borderRadius}
-      onClick={onClick}
+      {...rest}
     >
-      {children}
+      {children && <Text color={color}>{children}</Text>}
     </StyledButton>
   )
 }

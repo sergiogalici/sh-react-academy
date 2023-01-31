@@ -37,7 +37,7 @@ export const theme = {
     md: 16,
     lg: 32
   },
-  radii: [5, 10, 20, 50]
+  radii: [4, 8, 12, 24]
 }
 
 export type Theme = typeof theme
@@ -49,5 +49,3 @@ export type ThemeFontSizes = keyof Theme['fontSizes']
 export type TextVariants = keyof Theme['textVariants']
 
 export type ThemeSpacings = keyof Theme['spacing']
-
-export type ThemeRadii = keyof Theme['radii']
