@@ -1,46 +1,33 @@
 import styled, { css } from 'styled-components'
-import { theme, ThemeColors } from '../../style/theme'
-import { Variants, variants } from './buttonVariants'
+import { BaseButton, BaseBtnProps } from './BaseButton'
 
-export type StyledButtonProps = {
-  borderColor: ThemeColors
-  border: boolean
-  borderStyle: string
-  borderWidth: number
-  borderRadius: number
-  backgroundColor: ThemeColors
-  padding: number
-  variant: Variants
+/* 
+const variantsMap = {
+  primary: css`
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.textLight};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.primaryLight};
+    }
+  `,
+  secondary: css`
+    background-color: ${({ theme }) => theme.colors.primaryLighter};
+    color: ${({ theme }) => theme.colors.primary};
+    &:hover {
+      border: ${({ theme }) => `1px solid ${theme.colors.primary}`};
+    }
+  `,
+  outline: css`
+    background-color: transparent;
+    border: ${`1px solid ${theme.colors.textLight}`};
+    color: ${theme.colors.textLight};
+    &:hover {
+      background-color: ${theme.colors.grayShadowed};
+    }
+  `
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
-  outline: none;
-  cursor: pointer;
-  ${({ variant }) => {
-    const currVar = variants[variant]
-    const {
-      borderWidth,
-      borderStyle,
-      borderColor,
-      borderRadius,
-      backgroundColor,
-      padding
-    } = currVar
-    if (variant) {
-      return css`
-        border: ${() =>
-          borderWidth + 'px ' + borderStyle + ' ' + theme.colors[borderColor]};
-        border-radius: ${() => borderRadius}px;
-        background-color: ${() => theme.colors[backgroundColor]};
-        padding: ${() => padding}px;
-      `
-    }
-  }}
-  border: ${({ border, borderStyle, borderWidth, borderColor }) =>
-    border
-      ? borderWidth + 'px ' + borderStyle + ' ' + theme.colors[borderColor]
-      : 'none'};
-  border-radius: ${({ borderRadius }) => borderRadius}px;
-  background-color: ${({ backgroundColor }) => theme.colors[backgroundColor]};
-  padding: ${({ padding }) => padding}px;
-`
+export type VariantsMap = keyof typeof variantsMap
+*/
+
+export const StyledButton = styled(BaseButton)``

@@ -1,26 +1,24 @@
 import { ReactNode } from 'react'
-import { TextVariants, ThemeColors, ThemeFontSizes } from '../../style/theme'
+import { TextVariants } from '../../style/theme'
 
 import { StyledText } from './styled'
+import { StyledTextProps } from './styled'
 
-type Props = {
+type Props = Partial<Omit<StyledTextProps, 'as'>> & {
   children: ReactNode
   variant?: TextVariants
-  color?: ThemeColors
-  bold?: boolean
-  lineHeight?: number
-  size?: number
-  upperCase?: boolean
+  className?: string
 }
 
 export const Text = ({
   children,
   variant = 'p',
-  color = 'primary',
+  color,
   bold = false,
   lineHeight = 1.2,
   size,
-  upperCase
+  upperCase,
+  className
 }: Props) => {
   return (
     <StyledText
@@ -30,6 +28,7 @@ export const Text = ({
       lineHeight={lineHeight}
       size={size}
       upperCase={upperCase}
+      className={className}
     >
       {children}
     </StyledText>
