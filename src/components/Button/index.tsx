@@ -10,23 +10,46 @@ type Props = Partial<StyledButtonProps> &
     icon?: string
   }
 
+const variants = {
+  primary: {
+    backgroundColor: 'primary',
+    color: 'textLight'
+  },
+  secondary: {
+    backgroundColor: 'primaryLighter',
+    color: 'primary'
+  }
+} as const
+
 export const Button = ({
+  variant,
   children,
+  icon,
+  outlined,
   color = 'textLight',
   backgroundColor = 'primary',
-  padding = 'md',
+  size = 'md',
   borderRadius = 1,
   ...rest
 }: Props) => {
+  const v = variant ? variants[variant] : { backgroundColor, color }
+  const textColor = outlined ? v.backgroundColor : v.color
+
   return (
     <StyledButton
-      padding={padding}
-      color={color}
-      backgroundColor={backgroundColor}
+      size={size}
+      outlined={outlined}
+      color={v.color}
+      backgroundColor={v.backgroundColor}
       borderRadius={borderRadius}
       {...rest}
     >
-      {children && <Text color={color}>{children}</Text>}
+      {icon && <span>X</span>}
+      {children && (
+        <Text size={size} color={textColor} bold>
+          {children}
+        </Text>
+      )}
     </StyledButton>
   )
 }
