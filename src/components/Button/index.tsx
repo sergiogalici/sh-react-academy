@@ -35,9 +35,9 @@ export const Button = ({
   outlined,
   color = 'textLight',
   backgroundColor = 'primary',
-  size = 'md',
+  size = 'lg',
   borderRadius = 1,
-  fontSize = 'md',
+  fontSize = theme.spacing[size] / 10,
   fullWidth,
   onClick
 }: Props) => {

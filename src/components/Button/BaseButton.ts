@@ -5,7 +5,7 @@ export type BaseBtnProps = {
   size: ThemeSpacings
   color: ThemeColors
   backgroundColor: ThemeColors
-  fontSize: ThemeFontSizes
+  fontSize: number
   borderRadius: number
   outlined?: boolean
   fullWidth?: boolean
@@ -30,5 +30,5 @@ export const BaseButton = styled.button<BaseBtnProps>`
     background-color: ${({ backgroundColor, theme }) => theme.colors[backgroundColor]};
     opacity: 0.8;
   }
-  font-size: ${({ fontSize, theme }) => `${theme.fontSizes[fontSize]}rem`};
+  font-size: ${({ fontSize, theme }) => `${fontSize}rem`};
 `

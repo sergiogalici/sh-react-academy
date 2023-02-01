@@ -16,7 +16,7 @@ export const Text = ({
   color,
   bold = false,
   lineHeight = 1.2,
-  size = 'md',
+  size = 1,
   upperCase,
   className
 }: Props) => {

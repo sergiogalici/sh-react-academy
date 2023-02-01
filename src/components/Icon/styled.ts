@@ -6,10 +6,9 @@ import { ThemeColors, ThemeFontSizes, ThemeSpacings } from '../../style/theme'
 export type StyledIconProps = {
   color?: ThemeColors
   size: SizeProp
-  fontSize?: ThemeFontSizes
+  fontSize?: number
 }
 
 export const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
-  font-size: ${({ fontSize, theme }) =>
-    fontSize ? `${theme.fontSizes[fontSize]}rem` : 'inherit'};
+  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}rem` : 'inherit')};
 `
