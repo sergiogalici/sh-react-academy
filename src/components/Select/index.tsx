@@ -3,31 +3,30 @@ import { theme } from '../../style/theme'
 import { StyledSelect, StyledSelectProps } from './styled'
 
 type Props = Partial<StyledSelectProps> & {
-  children?: ReactNode
-  name?: string
-  label?: string
+  options?: string[]
 }
 
 export const Select = ({
-  children,
-  padding = 'sm',
   color,
+  padding = 'sm',
   borderRadius = theme.radii[0],
-  label,
-  name,
-  fullWidth = false
+  fullWidth = false,
+  options = ['']
 }: Props) => {
   return (
-    <>
-      {label && <label htmlFor={name}>{label}</label>}
-      <StyledSelect
-        borderRadius={borderRadius}
-        color={color}
-        padding={padding}
-        fullWidth={fullWidth}
-      >
-        {children && <option>Todo: generate options</option>}
-      </StyledSelect>
-    </>
+    <StyledSelect
+      borderRadius={borderRadius}
+      color={color}
+      padding={padding}
+      fullWidth={fullWidth}
+    >
+      <optgroup>
+        {options.map((opt, index) => (
+          <option value={opt} key={opt + index}>
+            {opt}
+          </option>
+        ))}
+      </optgroup>
+    </StyledSelect>
   )
 }
