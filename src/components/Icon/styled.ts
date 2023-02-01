@@ -1,15 +1,11 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { SizeProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { css } from 'styled-components'
-import { ThemeColors, ThemeSpacings } from '../../style/theme'
+import { ThemeColors, ThemeFontSizes, ThemeSpacings } from '../../style/theme'
 
 export type StyledIconProps = {
   color?: ThemeColors
-  iconSize: ThemeSpacings
+  size: SizeProp
 }
 
-export const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
-  ${({ iconSize, theme }) => css`
-    width: ${theme.spacing[iconSize]}px;
-  `}
-`
+export const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>``

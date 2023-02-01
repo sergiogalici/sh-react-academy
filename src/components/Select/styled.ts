@@ -4,7 +4,7 @@ import { ThemeSpacings, ThemeColors } from '../../style/theme'
 export type StyledSelectProps = {
   padding: ThemeSpacings
   color?: ThemeColors
-  borderRadius: number
+  borderRadius?: number
   fullWidth: boolean
 }
 
@@ -12,6 +12,7 @@ export const StyledSelect = styled.select<StyledSelectProps>`
   ${({ fullWidth }) => fullWidth && 'width: 100%'};
   padding: ${({ padding, theme }) => theme.spacing[padding]}px;
   color: ${({ color, theme }) => (color ? theme.colors[color] : 'inherit')};
-  border-radius: ${({ borderRadius }) => borderRadius}px;
+  ${({ borderRadius, theme }) =>
+    borderRadius && `border-radius: ${theme.radii[borderRadius]}px`}
   outline: none;
 `

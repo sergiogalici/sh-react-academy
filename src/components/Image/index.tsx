@@ -1,7 +1,7 @@
 import { StyledImage, StyledImageProps } from './styled'
 
 type Props = StyledImageProps & {
-  className: string
+  className?: string
   src: string
   alt: string
 }

@@ -1,4 +1,7 @@
 import { ReactNode } from 'react'
+import { theme } from '../../style/theme'
+import { Icon } from '../Icon'
+import { IconProp } from '../Icon'
 import { Text } from '../Text'
 import { BaseBtnProps } from './BaseButton'
 import { StyledButton } from './styled'
@@ -7,7 +10,7 @@ type Props = Partial<BaseBtnProps> & {
   variant?: keyof typeof variants
   children?: ReactNode
   onClick?: () => void
-  icon?: string
+  icon?: IconProp
 }
 
 const variants = {
@@ -20,7 +23,7 @@ const variants = {
     color: 'primary'
   },
   tertiary: {
-    backgroundColor: 'backgroundLight',
+    backgroundColor: 'transparent',
     color: 'textLight'
   }
 } as const
@@ -41,6 +44,7 @@ export const Button = ({
 
   return (
     <StyledButton
+      fontSize={size}
       size={size}
       outlined={outlined}
       color={v.color}
@@ -48,7 +52,7 @@ export const Button = ({
       borderRadius={borderRadius}
       {...rest}
     >
-      {icon && <span>X</span>}
+      {icon && <Icon icon={icon} size="3x" />}
       {children && (
         <Text size={size} color={textColor} bold>
           {children}

@@ -4,29 +4,37 @@ import { StyledSelect, StyledSelectProps } from './styled'
 
 type Props = Partial<StyledSelectProps> & {
   options?: string[]
+  name?: string
+  label?: string
 }
 
 export const Select = ({
   color,
   padding = 'sm',
-  borderRadius = theme.radii[0],
+  borderRadius,
   fullWidth = false,
-  options = ['']
+  options = [''],
+  label,
+  name
 }: Props) => {
   return (
-    <StyledSelect
-      borderRadius={borderRadius}
-      color={color}
-      padding={padding}
-      fullWidth={fullWidth}
-    >
-      <optgroup>
-        {options.map((opt, index) => (
-          <option value={opt} key={opt + index}>
-            {opt}
-          </option>
-        ))}
-      </optgroup>
-    </StyledSelect>
+    <>
+      {label && name && <label htmlFor={name}>{label}</label>}
+      <StyledSelect
+        borderRadius={borderRadius}
+        color={color}
+        padding={padding}
+        fullWidth={fullWidth}
+        name={name}
+      >
+        <optgroup>
+          {options.map((opt, index) => (
+            <option value={opt} key={opt + index}>
+              {opt}
+            </option>
+          ))}
+        </optgroup>
+      </StyledSelect>
+    </>
   )
 }

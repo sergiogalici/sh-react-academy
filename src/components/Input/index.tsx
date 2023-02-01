@@ -13,7 +13,7 @@ type Props = {
 export const Input = ({
   padding = 'sm',
   color = 'textDark',
-  borderRadius = theme.radii[0],
+  borderRadius,
   placeText = '',
   borderColor = 'lightGray'
 }: Props) => {

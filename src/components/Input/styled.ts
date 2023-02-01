@@ -4,14 +4,15 @@ import { ThemeSpacings, ThemeColors } from '../../style/theme'
 export type StyledInputProps = {
   padding: ThemeSpacings
   color: ThemeColors
-  borderRadius: number
+  borderRadius?: number
   borderColor: ThemeColors
 }
 
 export const StyledInput = styled.input<StyledInputProps>`
   padding: ${({ padding, theme }) => theme.spacing[padding]}px;
   color: ${({ color, theme }) => theme.colors[color]};
-  border-radius: ${({ borderRadius }) => borderRadius}px;
+  ${({ borderRadius, theme }) =>
+    borderRadius && `border-radius: ${theme.radii[borderRadius]}px`}
   outline: none;
   border: ${({ borderColor, theme }) => `1px solid ${theme.colors[borderColor]}`};
   &:focus {

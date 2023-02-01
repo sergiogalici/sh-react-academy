@@ -1,12 +1,15 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { ThemeSpacings } from '../../style/theme'
+import { IconName, IconPrefix, SizeProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
 import { StyledIcon, StyledIconProps } from './styled'
 
+export type IconProp = [IconPrefix, IconName]
+
 type Props = Partial<StyledIconProps> & {
-  iconName: IconProp
-  size: ThemeSpacings
+  icon: IconProp
+  size: FontAwesomeIconProps['size']
 }
 
-export const Icon = ({ iconName = 'trash', size = 'md', color }: Props) => {
-  return <StyledIcon icon={iconName} iconSize={size} color={color} />
+export const Icon = ({ icon, size = '2x', color }: Props) => {
+  console.log('ICON ', icon, size)
+  return <StyledIcon icon={icon} size={size} color={color} />
 }

@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import { ThemeSpacings, ThemeColors } from '../../style/theme'
+import { ThemeSpacings, ThemeColors, ThemeFontSizes } from '../../style/theme'
 
 export type BaseBtnProps = {
   size: ThemeSpacings
   color: ThemeColors
   backgroundColor: ThemeColors
+  fontSize: ThemeFontSizes
   borderRadius: number
   outlined?: boolean
   fullWidth?: boolean
@@ -25,9 +26,9 @@ export const BaseButton = styled.button<BaseBtnProps>`
   ${({ fullWidth }) => fullWidth && 'width: 100%;'}
   cursor: pointer;
   transition: opacity 0.2s;
-
   &:hover {
-    // background-color: ${({ backgroundColor, theme }) => theme.colors[backgroundColor]};
+    background-color: ${({ backgroundColor, theme }) => theme.colors[backgroundColor]};
     opacity: 0.8;
   }
+  font-size: ${({ fontSize, theme }) => `${theme.fontSizes[fontSize]}px`};
 `
