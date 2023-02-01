@@ -37,7 +37,7 @@ export const Button = ({
   backgroundColor = 'primary',
   size = 'lg',
   borderRadius = 1,
-  fontSize = theme.spacing[size] / 10,
+  fontSize = theme.fontSizes[size],
   fullWidth,
   onClick
 }: Props) => {
