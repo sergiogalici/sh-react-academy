@@ -35,7 +35,7 @@ export const Button = ({
   outlined,
   color = 'textLight',
   backgroundColor = 'primary',
-  size = 'lg',
+  size = 'sm',
   borderRadius = 1,
   fontSize = theme.fontSizes[size],
   fullWidth,

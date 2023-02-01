@@ -13,6 +13,7 @@ export type BaseBtnProps = {
 
 export const BaseButton = styled.button<BaseBtnProps>`
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: ${({ borderRadius, theme }) => theme.radii[borderRadius]}px;

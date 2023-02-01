@@ -1,3 +1,4 @@
+import { ThemeSpacings } from '../../style/theme'
 import { StyledImage, StyledImageProps } from './styled'
 
 type Props = StyledImageProps & {

@@ -10,5 +10,7 @@ export const StyledImage = styled.img<StyledImageProps>`
     css`
       border-radius: ${theme.radii[borderRadius]};
     `};
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 `
