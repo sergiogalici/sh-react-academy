@@ -1,7 +1,7 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ReactNode } from 'react'
 import { theme } from '../../style/theme'
 import { Icon } from '../Icon'
-import { IconProp } from '../Icon'
 import { Text } from '../Text'
 import { BaseBtnProps } from './BaseButton'
 import { StyledButton } from './styled'
@@ -37,24 +37,28 @@ export const Button = ({
   backgroundColor = 'primary',
   size = 'md',
   borderRadius = 1,
-  ...rest
+  fontSize = 'md',
+  fullWidth,
+  onClick
 }: Props) => {
   const v = variant ? variants[variant] : { backgroundColor, color, outlined }
   const textColor = outlined ? v.backgroundColor : v.color
 
+  console.log(size, fontSize)
   return (
     <StyledButton
-      fontSize={size}
+      fontSize={fontSize}
       size={size}
       outlined={outlined}
       color={v.color}
       backgroundColor={v.backgroundColor}
       borderRadius={borderRadius}
-      {...rest}
+      fullWidth={fullWidth}
+      onClick={onClick}
     >
-      {icon && <Icon icon={icon} size="3x" />}
+      {icon && <Icon icon={icon} size="1x" fontSize={fontSize} />}
       {children && (
-        <Text size={size} color={textColor} bold>
+        <Text size={fontSize} color={textColor} bold>
           {children}
         </Text>
       )}

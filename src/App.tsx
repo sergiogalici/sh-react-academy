@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ThemeProvider } from 'styled-components'
 import { Button } from './components/Button'
 import { CategoryCard } from './components/CategoryCard'
@@ -25,14 +26,15 @@ function App() {
       </Button>
       <Button size="md">Button 2</Button>
       <Button size="lg">Button 3</Button>
-      <Button icon={['far', 'arrow-right']}>Button 3</Button>
-      <Button icon={['far', 'arrow-right']} />
-      <Icon icon={['far', 'arrow-right']} size="2x" />
+      <Button icon={['fas', 'search']}>Button 3</Button>
+      <Button icon="search" />
+      <Icon icon="search" size="2x" />
       <Input placeText="my placeholder" />
       <Select options={['opt1', 'opt2', 'opt3']} label="Ciao" name="ciao" />
       <Select options={['opt1', 'opt2', 'opt3']} fullWidth={true} />
-      <Button icon={['far', 'arrow-right']}>asdasd</Button>
-      <Icon icon={['far', 'arrow-right']} size="3x" />
+      <Button icon="search">asdasd</Button>
+      <Icon icon="search" size="3x" />
+      <FontAwesomeIcon icon={'search'} />
       <CategoryCard
         backgroundColor="primary"
         title="my title"

@@ -30,5 +30,5 @@ export const BaseButton = styled.button<BaseBtnProps>`
     background-color: ${({ backgroundColor, theme }) => theme.colors[backgroundColor]};
     opacity: 0.8;
   }
-  font-size: ${({ fontSize, theme }) => `${theme.fontSizes[fontSize]}px`};
+  font-size: ${({ fontSize, theme }) => `${theme.fontSizes[fontSize]}rem`};
 `

@@ -14,8 +14,7 @@ export type StyledTextProps = {
 export const StyledText = styled.p<StyledTextProps>`
   color: ${({ theme, color }) => (color ? theme.colors[color] : 'inherit')};
   font-size: ${({ theme, as, size }) => {
-    const fontSize = size ?? theme.textVariants[as].fontSize
-    return theme.fontSizes[fontSize]
+    return size ? theme.fontSizes[size] : theme.fontSizes[theme.textVariants[as].fontSize]
   }}rem;
   font-weight: ${({ bold }) => (bold ? 700 : 'inherit')};
   text-transform: ${({ upperCase }) => (upperCase ? 'uppercase' : 'none')};
