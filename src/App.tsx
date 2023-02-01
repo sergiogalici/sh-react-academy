@@ -27,6 +27,8 @@ function App() {
       <Button icon="plus">Button 3</Button>
       <Button icon="plus" />
       <Select label="Ciao" name="ciao" />
+      <Input placeText="my placeholder" />
+      <Select fullWidth={true} />
     </ThemeProvider>
   )
 }
