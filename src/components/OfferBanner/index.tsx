@@ -7,7 +7,7 @@ import { StyledOfferBanner, StyledOfferBannerProps } from './styled'
 
 type Props = Partial<StyledOfferBannerProps> & {
   imageSrc?: string
-  title?: string
+  title: string
   subTitle?: string
   buttonIcon?: IconProp
   buttonText?: string
@@ -24,11 +24,9 @@ export const OfferBanner = ({
   return (
     <StyledOfferBanner height={height} width={width} bgImage={imageSrc}>
       <div className="offer-banner-text">
-        {title && (
-          <Text variant="h2" bold>
-            {title}
-          </Text>
-        )}
+        <Text variant="h2" bold>
+          {title}
+        </Text>
         {subTitle && (
           <Text variant="p" color="lightGray">
             {subTitle}
