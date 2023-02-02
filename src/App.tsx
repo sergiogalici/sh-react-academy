@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ThemeProvider } from 'styled-components'
+import { BSInfoBox } from './components/BSInfoBox'
 import { Button } from './components/Button'
 import { BSCard } from './components/BuySellCard'
 import { CategoryCard } from './components/CategoryCard'
@@ -17,13 +18,16 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <Button color="primary" backgroundColor="transparent">
+        Base Button
+      </Button>
       <Button variant="tertiary" outlined>
         BBBBB
       </Button>
       <Button variant="secondary">AAAA</Button>
       <Button variant="secondary">Button 1</Button>
-      <Button size="md">Button 2</Button>
-      <Button size="sm" icon={['fas', 'search']}>
+      <Button size="sm">Button 2</Button>
+      <Button size="md" icon={['fas', 'search']}>
         Button 3
       </Button>
       <Button icon="search" />
@@ -45,9 +49,15 @@ function App() {
       />
       <BSCard
         width={500}
-        height={500}
+        height={'100%'}
         title="Ciao"
         imageSrc="https://images.pexels.com/photos/7500307/pexels-photo-7500307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      />
+      <BSInfoBox
+        title="My Title"
+        titleVariant="h2"
+        subTitle="My SubTitle"
+        buttonTitle="My Button"
       />
     </ThemeProvider>
   )
