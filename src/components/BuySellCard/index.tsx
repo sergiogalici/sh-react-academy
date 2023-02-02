@@ -6,8 +6,8 @@ import { StyledBSCard, StyledBSCardProps } from './styled'
 type Props = Partial<StyledBSCardProps> & {
   imageSrc: string
   title: string
-  width?: number
-  height?: number
+  width?: string | number
+  height?: string | number
   buttonSize?: ThemeSpacings
 }
 
