@@ -7,6 +7,7 @@ import { BaseBtnProps } from './BaseButton'
 import { StyledButton } from './styled'
 
 type Props = Partial<BaseBtnProps> & {
+  className?: string
   variant?: keyof typeof variants
   children?: ReactNode
   onClick?: () => void
@@ -39,6 +40,7 @@ export const Button = ({
   borderRadius = 1,
   fontSize = theme.fontSizes[size],
   fullWidth,
+  className,
   onClick
 }: Props) => {
   const v = variant ? variants[variant] : { backgroundColor, color, outlined }
@@ -47,6 +49,7 @@ export const Button = ({
   console.log(size, fontSize)
   return (
     <StyledButton
+      className={className}
       fontSize={fontSize}
       size={size}
       outlined={outlined}

@@ -2,13 +2,14 @@ import styled from 'styled-components'
 import { ThemeSpacings } from '../../style/theme'
 
 export type StyledBSCardProps = {
-  height?: number
-  width?: number
+  height?: string | number
+  width?: string | number
 }
 
 export const StyledBSCard = styled.div<StyledBSCardProps>`
-  ${({ theme, width }) => width && `width: ${width}px`};
-  ${({ theme, height }) => height && `height: ${height}px`};
+  ${({ width }) => width && `width: ${typeof width === 'string' ? width : `${width}px`}`};
+  ${({ height }) =>
+    height && `height: ${typeof height === 'string' ? height : `${height}px`}`};
   position: relative;
   display: flex;
   flex-direction: column;
