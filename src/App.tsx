@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ThemeProvider } from 'styled-components'
+import { BSBanner } from './components/BSBanner'
+import { BSCardBox } from './components/BSCardsBox'
 import { BSInfoBox } from './components/BSInfoBox'
 import { Button } from './components/Button'
 import { BSCard } from './components/BuySellCard'
@@ -53,11 +55,33 @@ function App() {
         title="Ciao"
         imageSrc="https://images.pexels.com/photos/7500307/pexels-photo-7500307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
+
       <BSInfoBox
-        title="My Title"
-        titleVariant="h2"
-        subTitle="My SubTitle"
+        title={['My Title', true]}
+        subTitles={[
+          ['my subtitle ', false, 'textDark'],
+          ['my other subtitle', true, 'textDark'],
+          ['my third subtitle', false, 'textDark'],
+          ['my fourth subtitle', true, 'textDark'],
+          ['my fifth subtitle', false, 'textDark']
+        ]}
+        width={680}
         buttonTitle="My Button"
+        padding="sm"
+      />
+      <BSBanner
+        width={800}
+        title={['My Title', true]}
+        subTitles={[
+          ['my subtitle with some words ', false, 'textDark'],
+          ['my other subtitle with some other words', true, 'textDark']
+        ]}
+        buttonTitle="My Button"
+        padding="sm"
+        cards={[
+          ['https://www.subito.it/ekhaya/pay.jpg?v=4', 'Compra', 250, 200],
+          ['https://www.subito.it/ekhaya/sell.jpg?v=4', 'Vendi', 250, 200]
+        ]}
       />
     </ThemeProvider>
   )

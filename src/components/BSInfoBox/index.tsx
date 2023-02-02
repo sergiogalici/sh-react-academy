@@ -1,40 +1,50 @@
 import { ThemeColors, TextVariants } from '../../style/theme'
 import { Button } from '../Button'
 import { Text } from '../Text'
-import { StyledBSInfoBox } from './styled'
+import { StyledBSInfoBox, StyledBSInfoBoxProps } from './styled'
 
-export type Props = {
-  title: string
-  subTitle: string
-  buttonTitle: string
+export type InfoBoxTypes = Partial<StyledBSInfoBoxProps> & {
+  title?: [string, boolean]
+  buttonTitle?: string
+  subTitles?: [string, boolean, ThemeColors][]
   titleColor?: ThemeColors
-  subTitleColor?: ThemeColors
   titleVariant?: TextVariants
-  subTitleVariant?: TextVariants
   buttonColor?: ThemeColors
   buttonBgColor?: ThemeColors
 }
 
 export const BSInfoBox = ({
-  title,
-  subTitle,
-  buttonTitle,
+  title = ['Basic Title', false],
+  buttonTitle = 'Basic Button',
+  subTitles = [['Basic Sub', false, 'textDark']],
+  width,
+  height,
+  padding = 'sm',
   titleColor = 'textDark',
-  subTitleColor = 'textDark',
-  titleVariant = 'h3',
-  subTitleVariant = 'p',
+  titleVariant = 'h5',
   buttonColor = 'primary',
   buttonBgColor = 'transparent'
-}: Props) => {
+}: InfoBoxTypes) => {
   return (
-    <StyledBSInfoBox>
-      <Text color={titleColor} variant={titleVariant}>
-        {title}
+    <StyledBSInfoBox padding={padding} width={width} height={height}>
+      <Text bold={title[1]} color={titleColor} variant={titleVariant}>
+        {title[0]}
       </Text>
-      <Text color={subTitleColor} variant={subTitleVariant}>
-        {subTitle}
-      </Text>
-      <Button color={buttonColor} backgroundColor={buttonBgColor} fullWidth={false}>
+      <div className="subtitles-wrapper">
+        {subTitles.map((sub) => {
+          return (
+            <Text color={sub[2]} bold={sub[1]}>
+              {sub[0]}
+            </Text>
+          )
+        })}
+      </div>
+      <Button
+        fontSize={1}
+        color={buttonColor}
+        backgroundColor={buttonBgColor}
+        fullWidth={false}
+      >
         {buttonTitle}
       </Button>
     </StyledBSInfoBox>
