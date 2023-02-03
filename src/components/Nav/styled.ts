@@ -5,5 +5,6 @@ export type StyledNavProps = {}
 export const StyledNav = styled.nav<StyledNavProps>`
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: stretch;
+  padding: ${({ theme }) => theme.spacing.sm}px 0;
 `
