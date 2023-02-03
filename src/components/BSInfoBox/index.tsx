@@ -40,7 +40,7 @@ export const BSInfoBox = ({
         {subTitles}
       </div>
       <Button
-        fontSize={1}
+        fontSize={'md'}
         color={buttonColor}
         backgroundColor={buttonBgColor}
         fullWidth={false}

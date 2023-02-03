@@ -6,7 +6,7 @@ import { StyledLink, StyledLinkProps } from './styled'
 type Props = Partial<StyledLinkProps> & {
   children?: ReactNode
   to?: string
-  fontSize?: number
+  fontSize?: ThemeFontSizes
   bold?: boolean
   color?: ThemeColors
 }
@@ -14,7 +14,7 @@ type Props = Partial<StyledLinkProps> & {
 export const Link = ({
   children,
   to = '#',
-  fontSize = 1,
+  fontSize = 'md',
   bold = false,
   color
 }: Props) => {

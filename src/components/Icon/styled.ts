@@ -6,9 +6,11 @@ import { ThemeColors, ThemeFontSizes, ThemeSpacings } from '../../style/theme'
 export type StyledIconProps = {
   color?: ThemeColors
   size: SizeProp
-  fontSize?: number
+  fontSize?: ThemeFontSizes
 }
 
-export const StyledIcon = styled(FontAwesomeIcon)<StyledIconProps>`
-  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}rem` : 'inherit')};
+// eslint-disable-next-line prettier/prettier
+export const StyledIcon = styled(FontAwesomeIcon) <StyledIconProps>`
+  font-size: ${({ fontSize, theme }) =>
+    fontSize ? `${theme.fontSizes[fontSize]}rem` : 'inherit'};
 `
