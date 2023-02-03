@@ -38,7 +38,7 @@ export const Button = ({
   backgroundColor = 'primary',
   size = 'sm',
   borderRadius = 1,
-  fontSize = theme.fontSizes[size],
+  fontSize = 'md',
   fullWidth,
   className,
   onClick
