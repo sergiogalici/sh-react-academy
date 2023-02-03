@@ -3,7 +3,7 @@ import { CategoryCard } from '../CategoryCard'
 import { CategoryCardProps } from '../CategoryCard/styled'
 import { StyledCatCardContainer } from './styled'
 
-type CardsType = {
+export type CardsType = {
   src: string
   buttonTitle: string
   backgroundColor: ThemeColors
