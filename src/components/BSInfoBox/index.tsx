@@ -1,43 +1,43 @@
-import { ThemeColors, TextVariants } from '../../style/theme'
+import { ReactNode } from 'react'
+import { ThemeColors, TextVariants, theme } from '../../style/theme'
 import { Button } from '../Button'
 import { Text } from '../Text'
 import { StyledBSInfoBox, StyledBSInfoBoxProps } from './styled'
 
 export type InfoBoxTypes = Partial<StyledBSInfoBoxProps> & {
-  title?: [string, boolean]
+  title?: string
   buttonTitle?: string
-  subTitles?: [string, boolean, ThemeColors][]
-  titleColor?: ThemeColors
+  subTitles?: ReactNode
   titleVariant?: TextVariants
   buttonColor?: ThemeColors
   buttonBgColor?: ThemeColors
 }
 
 export const BSInfoBox = ({
-  title = ['Basic Title', false],
+  title = 'Basic Title',
   buttonTitle = 'Basic Button',
-  subTitles = [['Basic Sub', false, 'textDark']],
+  subTitles = 'Basic subTitle',
   width,
   height,
   padding = 'sm',
-  titleColor = 'textDark',
   titleVariant = 'h5',
   buttonColor = 'primary',
   buttonBgColor = 'transparent'
 }: InfoBoxTypes) => {
   return (
     <StyledBSInfoBox padding={padding} width={width} height={height}>
-      <Text bold={title[1]} color={titleColor} variant={titleVariant}>
-        {title[0]}
+      <Text bold={true} color={'textDark'} variant={titleVariant}>
+        {title}
       </Text>
       <div className="subtitles-wrapper">
-        {subTitles.map((sub) => {
+        {/* {subTitles.map((sub) => {
           return (
-            <Text color={sub[2]} bold={sub[1]}>
-              {sub[0]}
+            <Text color={'textDark'} bold={false}>
+              {sub}
             </Text>
           )
-        })}
+        })} */}
+        {subTitles}
       </div>
       <Button
         fontSize={1}

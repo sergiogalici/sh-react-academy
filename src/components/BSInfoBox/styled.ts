@@ -12,7 +12,8 @@ export const StyledBSInfoBox = styled.div<StyledBSInfoBoxProps>`
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
-  padding: ${({ padding, theme }) => theme.spacing[padding]}px;
+  // TODO refactor padding parent component
+  padding: ${({ padding, theme }) => `${theme.spacing['sm']}px`};
   .subtitles-wrapper {
     display: flex;
     flex-direction: row;
