@@ -82,22 +82,7 @@ function App() {
       <Button icon="search">asdasd</Button>
       <Icon icon="search" size="3x" />
       <FontAwesomeIcon icon={'search'} /> */}
-
-      <BSInfoBox
-        title="my title"
-        subTitles={[
-          'my subtitle ',
-          'my other subtitle',
-          'my third subtitle',
-          'my fourth subtitle',
-          'my fifth subtitle'
-        ]}
-        width={680}
-        buttonTitle="My Button"
-        padding="sm"
-      />
       <AuthBanner buttonText="Inserisci Annuncio" />
-      <CatCardContainer cards={catCards} />
       <HeaderBanner
         title={
           <Text variant="p" color="textLight">
@@ -116,6 +101,7 @@ function App() {
         <Link>Preferiti</Link>
       </Nav>
       <br />
+      <CatCardContainer cards={catCards} />
       <BSBanner
         width="100%"
         title="Scegli TuttoSubito"
