@@ -8,7 +8,7 @@ export const StyledImage = styled.img<StyledImageProps>`
   ${({ borderRadius, theme }) =>
     borderRadius &&
     css`
-      border-radius: ${theme.radii[borderRadius]};
+      border-radius: ${theme.radii[borderRadius]}px;
     `};
   width: 100%;
   height: 100%;
