@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ThemeProvider } from 'styled-components'
+import { AuthBanner } from './components/AuthBanner'
 import { BSBanner } from './components/BSBanner'
 import { BSCardBox } from './components/BSCardsBox'
 import { BSInfoBox } from './components/BSInfoBox'
 import { Button } from './components/Button'
 import { BSCard } from './components/BuySellCard'
 import { CategoryCard } from './components/CategoryCard'
+import { CatCardContainer } from './components/CatergoryCardContainer'
 import { HeaderBanner } from './components/HeaderBanner'
 import { Icon } from './components/Icon'
 import { Image } from './components/Image'
@@ -48,6 +50,54 @@ function App() {
       <Icon icon="search" size="3x" />
       <FontAwesomeIcon icon={'search'} /> */}
 
+      <BSInfoBox
+        title="my title"
+        subTitles={[
+          'my subtitle ',
+          'my other subtitle',
+          'my third subtitle',
+          'my fourth subtitle',
+          'my fifth subtitle'
+        ]}
+        width={680}
+        buttonTitle="My Button"
+        padding="sm"
+      />
+      <AuthBanner buttonText="Inserisci Annuncio" />
+      <CatCardContainer
+        cards={[
+          {
+            src: 'https://www.subito.it/ekhaya/motori-desktop-white.svg',
+            buttonTitle: 'Cerca in Motori',
+            backgroundColor: 'catCardOne',
+            id: 1
+          },
+          {
+            src: 'https://www.subito.it/ekhaya/market-desktop-white.svg',
+            buttonTitle: 'Cerca in Market',
+            backgroundColor: 'catCardTwo',
+            id: 2
+          },
+          {
+            src: 'https://www.subito.it/ekhaya/immobili-desktop-white.svg',
+            buttonTitle: 'Cerca in Immobili',
+            backgroundColor: 'catCardThree',
+            id: 3
+          },
+          {
+            src: 'https://www.subito.it/ekhaya/lavoro-desktop-white.svg',
+            buttonTitle: 'Cerca in Lavoro',
+            backgroundColor: 'catCardFour',
+            id: 4
+          },
+          {
+            src: 'https://www.subito.it/ekhaya/immobili-desktop-white.svg',
+            buttonTitle: 'Cerca in Immobili Due',
+            backgroundColor: 'catCardThree',
+            id: 5
+          }
+        ]}
+      />
       <HeaderBanner
         title={
           <Text variant="p" color="textLight">

@@ -5,15 +5,14 @@ import { Text } from '../Text'
 import { CategoryCardProps, StyledCatCard } from './styled'
 
 type Props = Partial<CategoryCardProps> & {
-  title?: string
-  buttonTitle?: string
+  src: string
+  buttonTitle: string
   color?: ThemeColors
 }
 
 export const CategoryCard = ({
-  title,
+  src,
   buttonTitle,
-  color = 'textLight',
   backgroundColor,
   fontSize,
   padding,
@@ -33,12 +32,12 @@ export const CategoryCard = ({
         width={width}
         height={height}
       >
-        {title && (
-          <Text color={color} upperCase={true} bold={true}>
-            {title}
-          </Text>
+        {src && <Image src={src} alt={buttonTitle} width={126} height={30} />}
+        {buttonTitle && (
+          <Button fontSize={1} variant="tertiary">
+            {buttonTitle}
+          </Button>
         )}
-        {buttonTitle && <Button variant="tertiary">{buttonTitle}</Button>}
       </StyledCatCard>
     </>
   )

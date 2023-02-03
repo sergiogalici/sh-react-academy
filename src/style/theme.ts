@@ -12,7 +12,11 @@ export const theme = {
     textLight: '#ffffff',
     lightGray: '#cccccc',
     transparent: 'transparent',
-    backgroundLight: '#fafafa'
+    backgroundLight: '#fafafa',
+    catCardOne: '#2650ff',
+    catCardTwo: '#f2a700',
+    catCardThree: '#9924ff',
+    catCardFour: '#07bb9c'
   },
   // Units in REM
   fontSizes: {
