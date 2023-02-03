@@ -6,14 +6,12 @@ import { StyledBSCard, StyledBSCardProps } from './styled'
 type Props = Partial<StyledBSCardProps> & {
   imageSrc: string
   title: string
-  width?: string | number
-  height?: string | number
   buttonSize?: ThemeSpacings
 }
 
-export const BSCard = ({ imageSrc, title, height, width, buttonSize = 'md' }: Props) => {
+export const BSCard = ({ imageSrc, title, buttonSize = 'md' }: Props) => {
   return (
-    <StyledBSCard height={height} width={width}>
+    <StyledBSCard>
       <Image src={imageSrc} alt={title} />
       <Button variant="primary" size={buttonSize}>
         {title}

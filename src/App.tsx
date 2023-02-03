@@ -10,6 +10,7 @@ import { Icon } from './components/Icon'
 import { Input } from './components/Input'
 import { OfferBanner } from './components/OfferBanner'
 import { Select } from './components/Select'
+import { Text } from './components/Text'
 import { GlobalStyle } from './style/GlobalStyle'
 import { theme } from './style/theme'
 
@@ -51,38 +52,40 @@ function App() {
         shadow={true}
       />
       <BSCard
-        width={200}
-        height={200}
         title="Ciao"
         buttonSize="sm"
         imageSrc="https://images.pexels.com/photos/7500307/pexels-photo-7500307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
 
       <BSInfoBox
-        title={['My Title', true]}
+        title="my title"
         subTitles={[
-          ['my subtitle ', false, 'textDark'],
-          ['my other subtitle', true, 'textDark'],
-          ['my third subtitle', false, 'textDark'],
-          ['my fourth subtitle', true, 'textDark'],
-          ['my fifth subtitle', false, 'textDark']
+          'my subtitle ',
+          'my other subtitle',
+          'my third subtitle',
+          'my fourth subtitle',
+          'my fifth subtitle'
         ]}
         width={680}
         buttonTitle="My Button"
         padding="sm"
       />
       <BSBanner
-        width={800}
-        title={['My Title', true]}
-        subTitles={[
-          ['my subtitle with some words ', false, 'textDark'],
-          ['my other subtitle with some other words', true, 'textDark']
-        ]}
-        buttonTitle="My Button"
-        padding="sm"
+        width={850}
+        title="Scegli TuttoSubito"
+        subTitles={
+          <Text color={'secondaryLight'} bold={false}>
+            Il nostro servizio di <b>spedizione tracciata</b> e <b>pagamento sicuro</b>
+          </Text>
+        }
+        buttonTitle="Scopri di più"
         cards={[
-          ['https://www.subito.it/ekhaya/pay.jpg?v=4', 'Compra', 250, 200],
-          ['https://www.subito.it/ekhaya/sell.jpg?v=4', 'Vendi', 250, 200]
+          {
+            title: 'Compra',
+            imageSrc: 'https://www.subito.it/ekhaya/pay.jpg?v=4',
+            id: 1
+          },
+          { title: 'Vendi', imageSrc: 'https://www.subito.it/ekhaya/sell.jpg?v=4', id: 2 }
         ]}
       />
       <OfferBanner
@@ -91,7 +94,7 @@ function App() {
         subTitle="Dai al tuo usato una seconda occasione: vendi quello che non usi più, subito."
         buttonText="Inserisci annuncio"
         buttonIcon={'plus-square'}
-        width="100%"
+        width="1300px"
       />
     </ThemeProvider>
   )

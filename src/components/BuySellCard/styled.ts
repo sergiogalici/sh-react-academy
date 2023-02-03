@@ -1,15 +1,11 @@
 import styled from 'styled-components'
 import { ThemeSpacings } from '../../style/theme'
 
-export type StyledBSCardProps = {
-  height?: string | number
-  width?: string | number
-}
+export type StyledBSCardProps = {}
 
 export const StyledBSCard = styled.div<StyledBSCardProps>`
-  ${({ width }) => width && `width: ${typeof width === 'string' ? width : `${width}px`}`};
-  ${({ height }) =>
-    height && `height: ${typeof height === 'string' ? height : `${height}px`}`};
+  width: 250px;
+  height: 200px;
   position: relative;
   display: flex;
   flex-direction: column;
