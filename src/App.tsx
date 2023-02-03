@@ -136,6 +136,9 @@ function App() {
         imageSrc="https://www.subito.it/ekhaya/_next/static/media/cover_hp.83da4941.webp"
         width="100%"
       />
+      <Button fontSize={'lg'} icon={'search'}>
+        My Button
+      </Button>
     </ThemeProvider>
   )
 }
