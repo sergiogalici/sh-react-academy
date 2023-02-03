@@ -7,7 +7,9 @@ import { Button } from './components/Button'
 import { BSCard } from './components/BuySellCard'
 import { CategoryCard } from './components/CategoryCard'
 import { Icon } from './components/Icon'
+import { Image } from './components/Image'
 import { Input } from './components/Input'
+import { MagazineBanner } from './components/MagazineBanner'
 import { OfferBanner } from './components/OfferBanner'
 import { Select } from './components/Select'
 import { Text } from './components/Text'
@@ -22,7 +24,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Button color="primary" backgroundColor="transparent">
+      {/* <Button color="primary" backgroundColor="transparent">
         Base Button
       </Button>
       <Button variant="tertiary" outlined>
@@ -87,7 +89,8 @@ function App() {
           },
           { title: 'Vendi', imageSrc: 'https://www.subito.it/ekhaya/sell.jpg?v=4', id: 2 }
         ]}
-      />
+      /> */}
+      <br />
       <OfferBanner
         imageSrc="https://www.subito.it/ekhaya/001_DESKTOP_inserisciannuncio.jpg"
         title="Comincia a guadagnare"
@@ -95,6 +98,12 @@ function App() {
         buttonText="Inserisci annuncio"
         buttonIcon={'plus-square'}
         width="1300px"
+      />
+      <br />
+      <MagazineBanner
+        title="L'arte di donare nuova vita al tuo regalo"
+        subTitle="Con il regifting è sempre festa, anche per il pianeta."
+        imageSrc="https://www.subito.it/ekhaya/_next/static/media/cover_hp.83da4941.webp"
       />
     </ThemeProvider>
   )
