@@ -8,10 +8,13 @@ import { Button } from './components/Button'
 import { BSCard } from './components/BuySellCard'
 import { CategoryCard } from './components/CategoryCard'
 import { CatCardContainer } from './components/CatergoryCardContainer'
+import { HeaderBanner } from './components/HeaderBanner'
 import { Icon } from './components/Icon'
 import { Image } from './components/Image'
 import { Input } from './components/Input'
+import { Link } from './components/Link'
 import { MagazineBanner } from './components/MagazineBanner'
+import { Nav } from './components/Nav'
 import { OfferBanner } from './components/OfferBanner'
 import { Select } from './components/Select'
 import { Text } from './components/Text'
@@ -45,21 +48,7 @@ function App() {
       <Select options={['opt1', 'opt2', 'opt3']} fullWidth={true} />
       <Button icon="search">asdasd</Button>
       <Icon icon="search" size="3x" />
-      <FontAwesomeIcon icon={'search'} />
-      <CategoryCard
-        backgroundColor="primary"
-        title="Motori"
-        buttonTitle="Cerca in Motori"
-        width={150}
-        height={100}
-        borderRadius={1}
-        shadow={true}
-      />
-      <BSCard
-        title="Ciao"
-        buttonSize="sm"
-        imageSrc="https://images.pexels.com/photos/7500307/pexels-photo-7500307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      />
+      <FontAwesomeIcon icon={'search'} /> */}
 
       <BSInfoBox
         title="my title"
@@ -73,7 +62,7 @@ function App() {
         width={680}
         buttonTitle="My Button"
         padding="sm"
-      />*/}
+      />
       <AuthBanner buttonText="Inserisci Annuncio" />
       <CatCardContainer
         cards={[
@@ -109,8 +98,26 @@ function App() {
           }
         ]}
       />
+      <HeaderBanner
+        title={
+          <Text variant="p" color="textLight">
+            <b>TuttoSubito</b>: spedizione e pagamento online
+          </Text>
+        }
+      />
+      <br />
+      <Nav>
+        <Link bold>Magazine</Link>
+        <Link>Consigli per la vendita</Link>
+        <Link>Negozi e Aziende</Link>
+        <Link>Subito per le Aziende</Link>
+        <Link>Aiuto</Link>
+        <Link>Ricerche salvate</Link>
+        <Link>Preferiti</Link>
+      </Nav>
+      <br />
       <BSBanner
-        width={850}
+        width="100%"
         title="Scegli TuttoSubito"
         subTitles={
           <Text color={'secondaryLight'} bold={false}>
@@ -134,13 +141,14 @@ function App() {
         subTitle="Dai al tuo usato una seconda occasione: vendi quello che non usi più, subito."
         buttonText="Inserisci annuncio"
         buttonIcon={'plus-square'}
-        width="1300px"
+        width="100%"
       />
       <br />
       <MagazineBanner
         title="L'arte di donare nuova vita al tuo regalo"
         subTitle="Con il regifting è sempre festa, anche per il pianeta."
         imageSrc="https://www.subito.it/ekhaya/_next/static/media/cover_hp.83da4941.webp"
+        width="100%"
       />
     </ThemeProvider>
   )

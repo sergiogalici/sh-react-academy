@@ -7,6 +7,8 @@ export type StyledMagazineBannerProps = {
 
 export const StyledMagazineBanner = styled.div<StyledMagazineBannerProps>`
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   height: ${({ height }) =>
     height ? `${typeof height === 'string' ? height : `${height}px`}` : 'fit-content'};
