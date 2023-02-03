@@ -7,8 +7,15 @@ type Props = StyledImageProps & {
   alt: string
 }
 
-export const Image = ({ className, src, borderRadius, alt }: Props) => {
+export const Image = ({ className, src, borderRadius, alt, width, height }: Props) => {
   return (
-    <StyledImage className={className} src={src} borderRadius={borderRadius} alt={alt} />
+    <StyledImage
+      className={className}
+      src={src}
+      borderRadius={borderRadius}
+      alt={alt}
+      width={width}
+      height={height}
+    />
   )
 }
