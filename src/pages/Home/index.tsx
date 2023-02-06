@@ -5,6 +5,7 @@ import { MagazineBanner } from '../../components/MagazineBanner'
 import { OfferBanner } from '../../components/OfferBanner'
 import { SearchForm } from '../../components/SearchForm'
 import { Text } from '../../components/Text'
+import { StyledHome } from './styled'
 
 const searchItems = [
   { title: 'My title', placeText: 'My Placeholder', id: 1 },
@@ -41,8 +42,11 @@ const catCards: CardsType[] = [
 
 export const Home = () => {
   return (
-    <div>
+    <StyledHome>
       <SearchForm cards={searchItems} />
+      <Text variant="h2" bold color="lightGray">
+        Esplora le nostre sezioni
+      </Text>
       <CatCardContainer cards={catCards} />
       <BSBanner
         width="100%"
@@ -80,6 +84,6 @@ export const Home = () => {
         imageSrc="https://www.subito.it/ekhaya/_next/static/media/cover_hp.83da4941.webp"
         width="100%"
       />
-    </div>
+    </StyledHome>
   )
 }

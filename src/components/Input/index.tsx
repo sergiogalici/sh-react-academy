@@ -15,7 +15,7 @@ type Props = Partial<StyledInputProps> & {
 export const Input = ({
   padding = 'sm',
   color = 'textDark',
-  borderRadius,
+  borderRadius = 0,
   placeText = '',
   borderColor = 'lightGray',
   onChange

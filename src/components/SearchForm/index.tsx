@@ -21,12 +21,12 @@ export const SearchForm = ({ cards }: SearchFormProps) => {
         return (
           <div className="input-container">
             <Text bold={true}>{card.title}</Text>
-            <Input placeText={card.placeText} />
+            <Input borderRadius={1} fullWidth placeText={card.placeText} />
           </div>
         )
       })}
       <div className="button-container">
-        <Button icon={'search'} />
+        <Button icon={'search'} size="md" />
       </div>
     </StyledSearchForm>
   )
