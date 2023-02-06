@@ -34,7 +34,7 @@ export const CategoryCard = ({
       >
         {src && <Image src={src} alt={buttonTitle} width={126} height={30} />}
         {buttonTitle && (
-          <Button fontSize={'md'} variant="tertiary">
+          <Button size="md" outlined fontSize="md" variant="tertiary">
             {buttonTitle}
           </Button>
         )}

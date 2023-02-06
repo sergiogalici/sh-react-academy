@@ -44,7 +44,6 @@ export const Button = ({
   onClick
 }: Props) => {
   const v = variant ? variants[variant] : { backgroundColor, color, outlined }
-  const textColor = outlined ? v.backgroundColor : v.color
 
   console.log(size, fontSize)
   return (
@@ -61,7 +60,7 @@ export const Button = ({
     >
       {icon && <Icon icon={icon} size="1x" fontSize={fontSize} />}
       {children && (
-        <Text size={fontSize} color={textColor} bold>
+        <Text size={fontSize} color={v.color} bold>
           {children}
         </Text>
       )}

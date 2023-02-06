@@ -17,6 +17,7 @@ import { Link } from './components/Link'
 import { MagazineBanner } from './components/MagazineBanner'
 import { Nav } from './components/Nav'
 import { OfferBanner } from './components/OfferBanner'
+import { SearchForm } from './components/SearchForm'
 import { Select } from './components/Select'
 import { Text } from './components/Text'
 import { Wrapper } from './components/Wrapper'
@@ -83,6 +84,13 @@ function App() {
             <Link>Preferiti</Link>
           </Nav>
           <AuthBanner buttonText="Inserisci Annuncio" />
+          <SearchForm
+            cards={[
+              { title: 'My title', placeText: 'My Placeholder', id: 1 },
+              { title: 'My title', placeText: 'My Placeholder', id: 2 },
+              { title: 'My title', placeText: 'My Placeholder', id: 3 }
+            ]}
+          />
           <CatCardContainer
             cards={[
               {
@@ -111,9 +119,6 @@ function App() {
               }
             ]}
           />
-
-          <br />
-          <br />
           <BSBanner
             width="100%"
             title="Scegli TuttoSubito"
@@ -137,7 +142,6 @@ function App() {
               }
             ]}
           />
-          <br />
           <OfferBanner
             imageSrc="https://www.subito.it/ekhaya/001_DESKTOP_inserisciannuncio.jpg"
             title="Comincia a guadagnare"
@@ -146,7 +150,6 @@ function App() {
             buttonIcon={'plus-square'}
             width="100%"
           />
-          <br />
           <MagazineBanner
             title="L'arte di donare nuova vita al tuo regalo"
             subTitle="Con il regifting è sempre festa, anche per il pianeta."

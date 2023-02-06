@@ -12,6 +12,7 @@ export type BaseBtnProps = {
 }
 
 export const BaseButton = styled.button<BaseBtnProps>`
+  width: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,8 +20,8 @@ export const BaseButton = styled.button<BaseBtnProps>`
   border-radius: ${({ borderRadius, theme }) => theme.radii[borderRadius]}px;
   padding: ${({ theme, size }) =>
     `${theme.spacing[size] / 2}px ${theme.spacing[size]}px`};
-  border: ${({ outlined, backgroundColor, theme }) =>
-    outlined ? `1px solid ${theme.colors[backgroundColor]}` : 'none'};
+  border: ${({ outlined, theme, color }) =>
+    outlined ? `1px solid ${theme.colors[color]}` : 'none'};
   color: ${({ color, theme }) => theme.colors[color]};
   background-color: ${({ theme, backgroundColor, outlined }) =>
     outlined ? 'transparent' : theme.colors[backgroundColor]};

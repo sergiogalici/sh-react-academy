@@ -26,7 +26,7 @@ export const BSInfoBox = ({
 }: InfoBoxTypes) => {
   return (
     <StyledBSInfoBox padding={padding} width={width} height={height}>
-      <Text bold={true} color={'textDark'} variant={titleVariant}>
+      <Text bold={true} color="textDark" variant={titleVariant}>
         {title}
       </Text>
       <div className="subtitles-wrapper">
@@ -40,7 +40,7 @@ export const BSInfoBox = ({
         {subTitles}
       </div>
       <Button
-        fontSize={'md'}
+        fontSize="md"
         color={buttonColor}
         backgroundColor={buttonBgColor}
         fullWidth={false}

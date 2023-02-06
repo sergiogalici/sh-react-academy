@@ -8,4 +8,5 @@ export const StyledLayout = styled.div<StyledLayoutProps>`
   justify-content: center;
   align-items: center;
   max-width: 980px;
+  gap: ${({ theme }) => theme.spacing.md}px;
 `

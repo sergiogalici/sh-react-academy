@@ -26,10 +26,10 @@ export const CatCardContainer = ({ cards }: CatCardProps) => {
             buttonTitle={card.buttonTitle}
             backgroundColor={card.backgroundColor}
             key={card.id}
-            borderRadius={2}
+            borderRadius={1}
             width={220}
             height={156}
-            padding="lg"
+            padding="md"
           />
         )
       })}
