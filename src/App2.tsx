@@ -11,10 +11,10 @@ import { CardsType, CatCardContainer } from './components/CatergoryCardContainer
 import { HeaderBanner } from './components/HeaderBanner'
 import { Icon } from './components/Icon'
 import { Image } from './components/Image'
-import { MainContainer } from './components/MainContainer'
 import { Link } from './components/Link'
 import { MagazineBanner } from './components/MagazineBanner'
-import { Nav } from './components/Nav'
+import { MainContainer } from './components/MainContainer'
+import { Nav, NavLink } from './components/Nav'
 import { OfferBanner } from './components/OfferBanner'
 import { SearchForm } from './components/SearchForm'
 import { Select } from './components/Select'
@@ -22,6 +22,8 @@ import { Text } from './components/Text'
 import { Wrapper } from './components/Wrapper'
 import { GlobalStyle } from './style/GlobalStyle'
 import { theme } from './style/theme'
+
+const links: NavLink[] = [{ title: 'Magazine', to: '#' }]
 
 const foo = () => {
   console.log('button clicked')
@@ -73,15 +75,7 @@ function App() {
               </Text>
             }
           />
-          <Nav>
-            <Link>Magazine</Link>
-            <Link>Consigli per la vendita</Link>
-            <Link>Negozi e Aziende</Link>
-            <Link>Subito per le Aziende</Link>
-            <Link>Aiuto</Link>
-            <Link>Ricerche salvate</Link>
-            <Link>Preferiti</Link>
-          </Nav>
+          <Nav links={links} />
           <AuthBanner buttonText="Inserisci Annuncio" />
           <SearchForm cards={searchItems} />
           <CatCardContainer cards={catCards} />
