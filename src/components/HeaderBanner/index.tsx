@@ -8,5 +8,5 @@ type Props = Partial<StyledHeaderBannerProps> & {
 }
 
 export const HeaderBanner = ({ title }: Props) => {
-  return <StyledHeaderBanner>✨ {title} ✨</StyledHeaderBanner>
+  return <StyledHeaderBanner>{title}</StyledHeaderBanner>
 }

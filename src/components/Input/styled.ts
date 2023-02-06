@@ -6,6 +6,7 @@ export type StyledInputProps = {
   color: ThemeColors
   borderRadius?: number
   borderColor: ThemeColors
+  fullWidth?: boolean
 }
 
 export const StyledInput = styled.input<StyledInputProps>`
@@ -15,6 +16,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     borderRadius && `border-radius: ${theme.radii[borderRadius]}px`}
   outline: none;
   border: ${({ borderColor, theme }) => `1px solid ${theme.colors[borderColor]}`};
+  ${({ fullWidth }) => fullWidth && 'width: 100%;'}
   &:focus {
     border: ${({ theme }) => `1px solid ${theme.colors.textDark}`};
   }

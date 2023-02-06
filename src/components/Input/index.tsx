@@ -1,13 +1,15 @@
 import { ReactNode } from 'react'
 import { ThemeSpacings, ThemeColors, theme } from '../../style/theme'
-import { StyledInput } from './styled'
+import { StyledInput, StyledInputProps } from './styled'
 
-type Props = {
+type Props = Partial<StyledInputProps> & {
   padding?: ThemeSpacings
   color?: ThemeColors
   borderRadius?: number
   placeText?: string
   borderColor?: ThemeColors
+  value?: string
+  onChange?: (value: string) => void
 }
 
 export const Input = ({
@@ -15,10 +17,12 @@ export const Input = ({
   color = 'textDark',
   borderRadius,
   placeText = '',
-  borderColor = 'lightGray'
+  borderColor = 'lightGray',
+  onChange
 }: Props) => {
   return (
     <StyledInput
+      onChange={onChange ? (e) => onChange(e.target.value) : undefined}
       placeholder={placeText}
       borderRadius={borderRadius}
       color={color}

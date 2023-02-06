@@ -1,10 +1,20 @@
-import { ReactNode } from 'react'
-import { StyledLayout, StyledLayoutProps } from './styled'
+import React, { ReactNode } from 'react'
+import { Outlet } from 'react-router-dom'
+import { MainContainer } from '../MainContainer'
+import { Wrapper } from '../Wrapper'
 
-type Props = Partial<StyledLayoutProps> & {
-  children: ReactNode
-}
+type LayoutProps = {}
 
-export const Layout = ({ children }: Props) => {
-  return <StyledLayout>{children}</StyledLayout>
+export const Layout = (props: LayoutProps) => {
+  return (
+    <Wrapper>
+      <MainContainer>
+        <main>
+          <div>Header</div>
+          <Outlet />
+          <div>Footer</div>
+        </main>
+      </MainContainer>
+    </Wrapper>
+  )
 }

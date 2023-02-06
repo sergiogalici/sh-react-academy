@@ -31,6 +31,7 @@ export const AuthBanner = ({ buttonText }: Props) => {
           icon={'plus-square'}
           className="offer-banner-button"
         >
+          {/* TODO Hardcode Inserisci Annuncio -- add notify to toggle modal open closed */}
           {buttonText}
         </Button>
       </div>

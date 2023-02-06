@@ -7,6 +7,7 @@ export type CardsType = {
   src: string
   buttonTitle: string
   backgroundColor: ThemeColors
+  // refactor only string
   id: string | number
 }
 
