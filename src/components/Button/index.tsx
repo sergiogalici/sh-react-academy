@@ -45,7 +45,6 @@ export const Button = ({
 }: Props) => {
   const v = variant ? variants[variant] : { backgroundColor, color, outlined }
 
-  console.log(size, fontSize)
   return (
     <StyledButton
       className={className}
