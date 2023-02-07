@@ -15,8 +15,10 @@ export type NavProps = Partial<StyledNavProps> & {
 export const Nav = ({ links }: NavProps) => {
   return (
     <StyledNav>
-      {links.map((link) => (
-        <Link to={link.to}>{link.title}</Link>
+      {links.map((link, index) => (
+        <Link to={link.to} key={link.title + index}>
+          {link.title}
+        </Link>
       ))}
     </StyledNav>
   )
