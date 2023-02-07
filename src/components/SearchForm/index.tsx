@@ -17,9 +17,9 @@ type SearchFormProps = {
 export const SearchForm = ({ cards }: SearchFormProps) => {
   return (
     <StyledSearchForm>
-      {cards.map((card) => {
+      {cards.map((card, index) => {
         return (
-          <div className="input-container">
+          <div className="input-container" key={card.title + index}>
             <Text bold={true}>{card.title}</Text>
             <Input borderRadius={1} fullWidth placeText={card.placeText} />
           </div>
