@@ -19,7 +19,7 @@ export const Link = ({
   color
 }: Props) => {
   return (
-    <StyledLink href={to}>
+    <StyledLink to={to}>
       <Text variant="p" size={fontSize} bold={bold} color={color}>
         {children}
       </Text>

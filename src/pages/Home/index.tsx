@@ -40,6 +40,19 @@ const catCards: CardsType[] = [
   }
 ]
 
+const bsBannerCards = [
+  {
+    title: 'Compra',
+    imageSrc: 'https://www.subito.it/ekhaya/pay.jpg?v=4',
+    id: 1
+  },
+  {
+    title: 'Vendi',
+    imageSrc: 'https://www.subito.it/ekhaya/sell.jpg?v=4',
+    id: 2
+  }
+]
+
 export const Home = () => {
   return (
     <StyledHome>
@@ -57,18 +70,7 @@ export const Home = () => {
           </Text>
         }
         buttonTitle="Scopri di più"
-        cards={[
-          {
-            title: 'Compra',
-            imageSrc: 'https://www.subito.it/ekhaya/pay.jpg?v=4',
-            id: 1
-          },
-          {
-            title: 'Vendi',
-            imageSrc: 'https://www.subito.it/ekhaya/sell.jpg?v=4',
-            id: 2
-          }
-        ]}
+        cards={bsBannerCards}
       />
       <OfferBanner
         imageSrc="https://www.subito.it/ekhaya/001_DESKTOP_inserisciannuncio.jpg"

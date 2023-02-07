@@ -23,7 +23,7 @@ import { Wrapper } from './components/Wrapper'
 import { GlobalStyle } from './style/GlobalStyle'
 import { theme } from './style/theme'
 
-const links: NavLink[] = [{ title: 'Magazine', to: '#' }]
+const links: NavLink[] = [{ title: 'Magazine', to: '#', id: 1 }]
 
 const foo = () => {
   console.log('button clicked')

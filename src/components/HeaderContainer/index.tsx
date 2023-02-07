@@ -8,13 +8,13 @@ type Props = Partial<StyledHeaderContainerProps> & NavProps & {}
 
 export const HeaderContainer = () => {
   const links: NavLink[] = [
-    { title: 'Magazine', to: '#' },
-    { title: 'Consigli per la vendita', to: '' },
-    { title: 'Negozi e Aziende', to: '' },
-    { title: 'Subito per le Aziende', to: '' },
-    { title: 'Aiuto', to: '' },
-    { title: 'Ricerche salvate', to: '' },
-    { title: 'Preferiti', to: '' }
+    { title: 'Magazine', to: '#', id: 1 },
+    { title: 'Consigli per la vendita', to: '#', id: 2 },
+    { title: 'Negozi e Aziende', to: '#', id: 3 },
+    { title: 'Subito per le Aziende', to: '#', id: 4 },
+    { title: 'Aiuto', to: '#', id: 5 },
+    { title: 'Ricerche salvate', to: '#', id: 6 },
+    { title: 'Preferiti', to: '#', id: 7 }
   ]
 
   return (
