@@ -50,7 +50,6 @@
   "devDependencies": {
     "@stackhouseos/eslint-config-cra-ts": "^1.0.2",
     "@types/styled-components": "^5.1.26",
-    "dotenv": "^16.0.3",
     "prettier": "^2.8.3"
   }
 }

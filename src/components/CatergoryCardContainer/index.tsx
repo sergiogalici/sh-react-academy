@@ -4,7 +4,7 @@ import { CategoryCard } from '../CategoryCard'
 import { CategoryCardProps } from '../CategoryCard/styled'
 import { StyledCatCardContainer } from './styled'
 
-const REACT_APP_BASE_URL = 'http://stackhouse-academy-2023-be-json.onrender.com'
+const baseURI = process.env.REACT_APP_BASE_URL
 
 export type CardsType = {
   src: string
@@ -25,12 +25,10 @@ export const CatCardContainer = () => {
   const [categories, setCategories] = useState<Category[]>([])
 
   useEffect(() => {
-    fetch(REACT_APP_BASE_URL + '/categories')
+    fetch(`${baseURI}/categories`)
       .then((response) => response.json())
       .then((json) => setCategories(json))
       .catch((e) => console.log(e, ' Error loading cards'))
-
-    console.log('Categories: ', categories)
   }, [])
 
   return (
