@@ -29,7 +29,7 @@ const foo = () => {
   console.log('button clicked')
 }
 
-const catCards: CardsType[] = [
+/* const catCards: CardsType[] = [
   {
     src: 'https://www.subito.it/ekhaya/motori-desktop-white.svg',
     buttonTitle: 'Cerca in Motori',
@@ -54,7 +54,7 @@ const catCards: CardsType[] = [
     backgroundColor: 'catCardFour',
     id: 4
   }
-]
+] */
 
 const searchItems = [
   { title: 'My title', placeText: 'My Placeholder', id: 1 },
@@ -78,7 +78,7 @@ function App() {
           <Nav links={links} />
           <AuthBanner buttonText="Inserisci Annuncio" />
           <SearchForm cards={searchItems} />
-          <CatCardContainer cards={catCards} />
+          <CatCardContainer />
           <BSBanner
             width="100%"
             title="Scegli TuttoSubito"
