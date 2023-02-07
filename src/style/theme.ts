@@ -13,11 +13,11 @@ export const theme = {
     lightGray: '#cccccc',
     transparent: 'transparent',
     backgroundLight: '#fafafa',
-    catCardOne: '#2650ff',
-    catCardTwo: '#f2a700',
-    catCardThree: '#9924ff',
-    catCardFour: '#07bb9c'
-  },
+    motori: '#2650ff',
+    market: '#f2a700',
+    immobili: '#9924ff',
+    lavoro: '#07bb9c'
+  } as const,
   // Units in REM
   fontSizes: {
     // xs: 0.8,

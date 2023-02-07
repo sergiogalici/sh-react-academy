@@ -13,7 +13,7 @@ const searchItems = [
   { title: 'My title', placeText: 'My Placeholder', id: 3 }
 ]
 
-const catCards: CardsType[] = [
+/* const catCards: CardsType[] = [
   {
     src: 'https://www.subito.it/ekhaya/motori-desktop-white.svg',
     buttonTitle: 'Cerca in Motori',
@@ -38,7 +38,7 @@ const catCards: CardsType[] = [
     backgroundColor: 'catCardFour',
     id: 4
   }
-]
+] */
 
 export const Home = () => {
   return (
@@ -47,7 +47,7 @@ export const Home = () => {
       <Text variant="h2" bold color="lightGray">
         Esplora le nostre sezioni
       </Text>
-      <CatCardContainer cards={catCards} />
+      <CatCardContainer />
       <BSBanner
         width="100%"
         title="Scegli TuttoSubito"
