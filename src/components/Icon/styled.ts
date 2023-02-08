@@ -13,4 +13,5 @@ export type StyledIconProps = {
 export const StyledIcon = styled(FontAwesomeIcon) <StyledIconProps>`
   font-size: ${({ fontSize, theme }) =>
     fontSize ? `${theme.fontSizes[fontSize]}rem` : 'inherit'};
+  color: ${({ color, theme }) => (color ? theme.colors[color] : 'inherit')};
 `

@@ -4,6 +4,7 @@ export type StyledImageProps = {
   borderRadius?: number
   width?: number
   height?: number
+  cover?: boolean
 }
 
 export const StyledImage = styled.img<StyledImageProps>`
@@ -15,5 +16,5 @@ export const StyledImage = styled.img<StyledImageProps>`
   ${({ width }) => (width ? `width: ${width}px;` : 'width: 100%;')}
   ${({ height }) => (height ? `height: ${height}px;` : 'height: 100%;')}
 
-  object-fit: cover;
+  object-fit: ${({ cover }) => (cover ? 'cover' : 'contain')};
 `
