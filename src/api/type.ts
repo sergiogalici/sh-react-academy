@@ -20,6 +20,15 @@ export type CategoryDto = {
   updated_at: number
 }
 
+export type UserDto = {
+  username: string
+  email: string
+  rating: number
+  id: string
+  created_at: number
+  updated_at: number
+}
+
 type Price = {
   value: number
   currency: string
