@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAds } from '../../api'
+import { getAds, getCategories } from '../../api'
 import { AdDto } from '../../api/type'
 import { Icon } from '../Icon'
 import { Image } from '../Image'
@@ -11,17 +11,22 @@ type ProductCardProps = Partial<AdDto> & {
   // TODO REMOVE OPTIONAL
   imageSrc: string
   rating: number
+  categoryId: string
+  authorName: string
+  category: string
 }
 
 export const ProductCard = ({
   title,
   description = 'item is not present',
   authorId,
-  categoryIds,
+  categoryId,
   price = { value: 0, currency: '' },
   imageSrc,
   premium,
-  rating
+  rating,
+  authorName,
+  category
 }: ProductCardProps) => {
   return (
     <StyledProductCard>
@@ -32,7 +37,7 @@ export const ProductCard = ({
         <div className="right__left">
           <div className="right__left-top">
             <Text bold upperCase color="lightGray" variant="p">
-              Market
+              {category}
             </Text>
             <Text color="primary" variant="h4">
               {title}
@@ -40,7 +45,7 @@ export const ProductCard = ({
           </div>
           <div className="right__left-bottom">
             <Text variant="p" bold>
-              franco
+              {authorName}
             </Text>
             <Rating rating={rating} />
           </div>
