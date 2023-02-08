@@ -7,30 +7,26 @@ import { Rating } from '../Rating'
 import { Text } from '../Text'
 import { StyledProductCard } from './styled'
 
-type ProductCardProps = {
+type ProductCardProps = Partial<AdDto> & {
   // TODO REMOVE OPTIONAL
-  imageSrc?: string
-  adTitle?: string
+  imageSrc: string
   rating: number
 }
 
 export const ProductCard = ({
-  imageSrc = 'https://images.pexels.com/photos/15444167/pexels-photo-15444167.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-  adTitle = "Pellicano d'appartamento con microchip Pedigree Certificato",
+  title,
+  description = 'item is not present',
+  authorId,
+  categoryIds,
+  price = { value: 0, currency: '' },
+  imageSrc,
+  premium,
   rating
 }: ProductCardProps) => {
-  const [ads, setAds] = useState<AdDto[]>([])
-
-  useEffect(() => {
-    getAds()
-      .then((data) => setAds(data))
-      .catch((e) => console.log(e.message))
-  }, [])
-
   return (
     <StyledProductCard>
       <div className="left">
-        <Image width={200} height={300} src={imageSrc} alt={adTitle} cover={false} />
+        <Image width={200} height={300} src={imageSrc} alt={description} cover={false} />
       </div>
       <div className="right">
         <div className="right__left">
@@ -39,7 +35,7 @@ export const ProductCard = ({
               Market
             </Text>
             <Text color="primary" variant="h4">
-              {adTitle}
+              {title}
             </Text>
           </div>
           <div className="right__left-bottom">
@@ -50,7 +46,10 @@ export const ProductCard = ({
           </div>
         </div>
         <div className="right_right">
-          <Text variant="h1">€365.67</Text>
+          <Text variant="h1">
+            {price.currency === 'EUR' && '€'}
+            {price.value}
+          </Text>
         </div>
       </div>
       <Icon fontSize="lg" color="primary" size="1x" icon="heart" />
