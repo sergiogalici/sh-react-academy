@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getAds } from '../../api'
+import { AdDto } from '../../api/type'
 import { Icon } from '../Icon'
 import { Image } from '../Image'
 import { Rating } from '../Rating'
@@ -13,10 +15,18 @@ type ProductCardProps = {
 }
 
 export const ProductCard = ({
-  imageSrc = 'https://images.pexels.com/photos/9423300/pexels-photo-9423300.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  adTitle = 'Vendesi roccia lavica da colazione',
+  imageSrc = 'https://images.pexels.com/photos/15444167/pexels-photo-15444167.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+  adTitle = "Pellicano d'appartamento con microchip Pedigree Certificato",
   rating
 }: ProductCardProps) => {
+  const [ads, setAds] = useState<AdDto[]>([])
+
+  useEffect(() => {
+    getAds()
+      .then((data) => setAds(data))
+      .catch((e) => console.log(e.message))
+  }, [])
+
   return (
     <StyledProductCard>
       <div className="left">
@@ -25,8 +35,8 @@ export const ProductCard = ({
       <div className="right">
         <div className="right__left">
           <div className="right__left-top">
-            <Text color="lightGray" variant="h6">
-              Immobili
+            <Text bold upperCase color="lightGray" variant="p">
+              Market
             </Text>
             <Text color="primary" variant="h4">
               {adTitle}
@@ -34,7 +44,7 @@ export const ProductCard = ({
           </div>
           <div className="right__left-bottom">
             <Text variant="p" bold>
-              Franco
+              franco
             </Text>
             <Rating rating={rating} />
           </div>
