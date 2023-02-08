@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
+import { getCategories } from '../../api'
+import { CategoryDto } from '../../api/type'
 import { theme, ThemeColors } from '../../style/theme'
 import { CategoryCard } from '../CategoryCard'
 import { CategoryCardProps } from '../CategoryCard/styled'
 import { StyledCatCardContainer } from './styled'
-
-const baseURI = process.env.REACT_APP_BASE_URL
 
 export type CardsType = {
   src: string
@@ -14,21 +14,13 @@ export type CardsType = {
   id: string | number
 }
 
-type Category = {
-  title: string
-  id: string
-  created_at: number
-  updated_at: number
-}
-
 export const CatCardContainer = () => {
-  const [categories, setCategories] = useState<Category[]>([])
+  const [categories, setCategories] = useState<CategoryDto[]>([])
 
   useEffect(() => {
-    fetch(`${baseURI}/categories`)
-      .then((response) => response.json())
-      .then((json) => setCategories(json))
-      .catch((e) => console.log(e, ' Error loading cards'))
+    getCategories()
+      .then((data) => setCategories(data))
+      .catch((e) => console.log(e.message))
   }, [])
 
   return (

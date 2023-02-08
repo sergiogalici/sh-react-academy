@@ -1,28 +1,28 @@
-const createApiClient = ({
-  baseUrl
-}: {
+type ApiClientConfig = {
   baseUrl: string
-}): {
-  get: <T>(endpoint: string) => Promise<T>
-  post: <T>(endpoint: string, body: any) => Promise<T>
-} => {
+}
+
+const createApiClient = ({ baseUrl }: ApiClientConfig) => {
   return {
-    get: async <T>(endpoint: string): Promise<T> => {
-      const response = await fetch(`${baseUrl}/${endpoint}`)
+    get: async <Response>(resource: string): Promise<Response> => {
+      const response = await fetch(`${baseUrl}/${resource}`)
       const body = await response.json()
-      return body as T
+      return body as Response
     },
 
-    post: async <T>(endpoint: string, body: any): Promise<T> => {
-      const response = await fetch(`${baseUrl}/${endpoint}`, {
+    post: async <Response, RequestData>(
+      resource: string,
+      body: RequestData
+    ): Promise<Response> => {
+      const response = await fetch(`${baseUrl}/${resource}`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
       })
       const result = await response.json()
-      return result as T
+      return result as Response
     }
   }
 }
 
-export const apiClient = createApiClient({ baseUrl: '' + process.env.REACT_APP_BASE_URL })
+export const apiClient = createApiClient({ baseUrl: process.env.REACT_APP_BASE_URL! })
