@@ -28,14 +28,30 @@ export const ProductsContainer = () => {
   console.log('USERS = ', users)
   console.log('CATS = ', categories)
 
+  const baseCategory: CategoryDto = {
+    created_at: 0,
+    id: '',
+    updated_at: 0,
+    title: "couldn't load category"
+  }
+  const baseUser: UserDto = {
+    created_at: 0,
+    updated_at: 0,
+    id: '',
+    rating: 0,
+    email: '',
+    username: "couldn't load user"
+  }
+
   return (
     <StyledProdContainer>
       <Text color="lightGray" variant="h6">{`${ads.length} risultati`}</Text>
       <Text variant="h6">Annunci</Text>
       {ads.map((product) => {
-        const currentUser = users.filter((user) => user.id === product.authorId)[0] ?? ''
-        const currentCat =
-          categories.filter((cat) => cat.id === product.categoryIds[0])[0] ?? ''
+        const currentUser: UserDto =
+          users.filter((user) => user.id === product.authorId)[0] ?? baseUser
+        const currentCat: CategoryDto =
+          categories.filter((cat) => cat.id === product.categoryIds[0])[0] ?? baseCategory
         return (
           <ProductCard
             categoryId={product.categoryIds[0]}
@@ -44,7 +60,7 @@ export const ProductsContainer = () => {
             description={product.description}
             imageSrc={product.images[0]}
             key={product.id}
-            rating={users && currentUser.rating}
+            rating={currentUser.rating}
             authorName={currentUser.username}
             category={currentCat.title}
           />
