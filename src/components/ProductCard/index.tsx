@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import { getAds, getCategories } from '../../api'
 import { AdDto } from '../../api/type'
 import { Icon } from '../Icon'
 import { Image } from '../Image'

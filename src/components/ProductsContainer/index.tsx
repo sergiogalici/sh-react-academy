@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getAds, getCategories, getUsers } from '../../api'
 import { AdDto, CategoryDto, UserDto } from '../../api/type'
 import { ProductCard } from '../ProductCard'
+import { Text } from '../Text'
 import { StyledProdContainer } from './styled'
 
 export const ProductsContainer = () => {
@@ -24,12 +25,13 @@ export const ProductsContainer = () => {
 
   return (
     <StyledProdContainer>
+      <Text color="lightGray" variant="h6">{`${ads.length} risultati`}</Text>
+      <Text variant="h6">Annunci</Text>
       {ads.map((product) => {
         const currentUser = users.filter((user) => user.id === product.authorId)[0]
         const currentCat = categories.filter(
           (cat) => cat.id === product.categoryIds[0]
         )[0]
-        console.log('Category issssss ', currentCat)
         return (
           <ProductCard
             categoryId={product.categoryIds[0]}
