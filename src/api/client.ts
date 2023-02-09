@@ -26,3 +26,6 @@ const createApiClient = ({ baseUrl }: ApiClientConfig) => {
 }
 
 export const apiClient = createApiClient({ baseUrl: process.env.REACT_APP_BASE_URL! })
+export const currencyApiClient = createApiClient({
+  baseUrl: process.env.REACT_APP_CURRENCY_BASE_URL!
+})

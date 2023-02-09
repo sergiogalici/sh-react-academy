@@ -29,6 +29,13 @@ export type UserDto = {
   updated_at: number
 }
 
+export type CurrencyRatesDto = {
+  time_last_update_unix: number
+  time_next_update_unix: number
+  base_code: string
+  rates: Record<string, number>
+}
+
 type Price = {
   value: number
   currency: string
