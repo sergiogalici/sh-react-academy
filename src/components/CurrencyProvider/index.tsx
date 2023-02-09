@@ -15,7 +15,10 @@ export const CurrencyProvider = ({ children }: Props) => {
 
   useEffect(() => {
     getUSDRates()
-      .then((data) => setRates(data.rates))
+      .then((data) => {
+        console.log('DATA', data)
+        setRates(data.rates)
+      })
       .catch((e) => console.log(e.messages))
   }, [])
 

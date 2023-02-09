@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { getCategories } from '../../api'
 import { CategoryDto } from '../../api/type'
-import { theme, ThemeColors } from '../../style/theme'
+import { ThemeColors } from '../../style/theme'
 import { CategoryCard } from '../CategoryCard'
-import { CategoryCardProps } from '../CategoryCard/styled'
 import { StyledCatCardContainer } from './styled'
 
 export type CardsType = {
