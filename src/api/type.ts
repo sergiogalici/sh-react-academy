@@ -36,7 +36,7 @@ export type CurrencyRatesDto = {
   rates: Record<string, number>
 }
 
-type Price = {
+export type Price = {
   value: number
   currency: string
 }

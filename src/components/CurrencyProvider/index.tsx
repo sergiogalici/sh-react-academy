@@ -1,16 +1,37 @@
-import { ReactNode, useContext } from 'react'
-import { CurrencyContext } from '../../contexts/currency'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { getUSDRates } from '../../api'
+import { CurrencyRatesDto } from '../../api/type'
+import { CurrencyContext, RatesKeys } from '../../contexts/currency'
 
 type Props = {
   children: ReactNode
 }
 
+const Provider = CurrencyContext.Provider
+
 export const CurrencyProvider = ({ children }: Props) => {
-  const currencyContext = useContext(CurrencyContext)
+  const [activeCurrency, setActiveCurrency] = useState<RatesKeys>('EUR')
+  const [rates, setRates] = useState<CurrencyRatesDto['rates']>()
+
+  useEffect(() => {
+    getUSDRates()
+      .then((data) => setRates(data.rates))
+      .catch((e) => console.log(e.messages))
+  }, [])
+
+  const updateActiveCurrency = useCallback((currency: RatesKeys) => {
+    setActiveCurrency(currency)
+  }, [])
 
   return (
-    <CurrencyContext.Provider value={currencyContext}>
+    <Provider
+      value={{
+        activeCurrency,
+        setActiveCurrency: updateActiveCurrency,
+        rates
+      }}
+    >
       {children}
-    </CurrencyContext.Provider>
+    </Provider>
   )
 }
