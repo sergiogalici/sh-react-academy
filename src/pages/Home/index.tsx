@@ -16,33 +16,6 @@ const searchItems = [
   { title: 'My title', placeText: 'My Placeholder', id: 3 }
 ]
 
-/* const catCards: CardsType[] = [
-  {
-    src: 'https://www.subito.it/ekhaya/motori-desktop-white.svg',
-    buttonTitle: 'Cerca in Motori',
-    backgroundColor: 'catCardOne',
-    id: 1
-  },
-  {
-    src: 'https://www.subito.it/ekhaya/market-desktop-white.svg',
-    buttonTitle: 'Cerca in Market',
-    backgroundColor: 'catCardTwo',
-    id: 2
-  },
-  {
-    src: 'https://www.subito.it/ekhaya/immobili-desktop-white.svg',
-    buttonTitle: 'Cerca in Immobili',
-    backgroundColor: 'catCardThree',
-    id: 3
-  },
-  {
-    src: 'https://www.subito.it/ekhaya/lavoro-desktop-white.svg',
-    buttonTitle: 'Cerca in Lavoro',
-    backgroundColor: 'catCardFour',
-    id: 4
-  }
-] */
-
 const bsBannerCards = [
   {
     title: 'Compra',
