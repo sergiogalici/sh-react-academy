@@ -4,7 +4,7 @@ import { TextVariants } from '../../style/theme'
 import { StyledText } from './styled'
 import { StyledTextProps } from './styled'
 
-type Props = Partial<Omit<StyledTextProps, 'as'>> & {
+export type Props = Partial<Omit<StyledTextProps, 'as'>> & {
   children: ReactNode
   variant?: TextVariants
   className?: string

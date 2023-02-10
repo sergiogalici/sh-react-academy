@@ -5,6 +5,21 @@ import { ProductCard } from '../ProductCard'
 import { Text } from '../Text'
 import { StyledProdContainer } from './styled'
 
+const baseCategory: CategoryDto = {
+  created_at: 0,
+  id: '',
+  updated_at: 0,
+  title: "couldn't load category"
+}
+const baseUser: UserDto = {
+  created_at: 0,
+  updated_at: 0,
+  id: '',
+  rating: 0,
+  email: '',
+  username: "couldn't load user"
+}
+
 export const ProductsContainer = () => {
   const [ads, setAds] = useState<AdDto[]>([])
   const [users, setUsers] = useState<UserDto[]>([])
@@ -24,45 +39,35 @@ export const ProductsContainer = () => {
       .catch((e) => console.log(e.message))
   }, [])
 
-  console.log('ADS = ', ads)
-  console.log('USERS = ', users)
-  console.log('CATS = ', categories)
-
-  const baseCategory: CategoryDto = {
-    created_at: 0,
-    id: '',
-    updated_at: 0,
-    title: "couldn't load category"
-  }
-  const baseUser: UserDto = {
-    created_at: 0,
-    updated_at: 0,
-    id: '',
-    rating: 0,
-    email: '',
-    username: "couldn't load user"
-  }
+  const categoriesById = categories.reduce<Record<string, CategoryDto>>((acc, cat) => {
+    return { ...acc, [cat.id]: cat }
+  }, {})
+  const usersById = users.reduce<Record<string, UserDto>>((acc, user) => {
+    return { ...acc, [user.id]: user }
+  }, {})
+  const mappedAds = ads.map(({ authorId, categoryIds, ...ad }) => {
+    return {
+      ...ad,
+      category: categoriesById[categoryIds[0]],
+      author: usersById[authorId]
+    }
+  })
 
   return (
     <StyledProdContainer>
       <Text color="lightGray" variant="h6">{`${ads.length} risultati`}</Text>
       <Text variant="h6">Annunci</Text>
-      {ads.map((product) => {
-        const currentUser: UserDto =
-          users.filter((user) => user.id === product.authorId)[0] ?? baseUser
-        const currentCat: CategoryDto =
-          categories.filter((cat) => cat.id === product.categoryIds[0])[0] ?? baseCategory
+      {mappedAds.map((ad) => {
         return (
           <ProductCard
-            categoryId={product.categoryIds[0]}
-            price={product.price}
-            title={product.title}
-            description={product.description}
-            imageSrc={product.images[0]}
-            key={product.id}
-            rating={currentUser.rating}
-            authorName={currentUser.username}
-            category={currentCat.title}
+            authorName={ad.author.username}
+            category={ad.category.title}
+            rating={ad.author.rating}
+            title={ad.title}
+            price={ad.price}
+            description={ad.description}
+            imageSrc={ad.images[0]}
+            key={ad.id}
           />
         )
       })}

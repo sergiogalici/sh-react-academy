@@ -6,12 +6,14 @@ type RatingProps = {
   rating?: number
 }
 
+const starArray = Array.from({ length: 5 })
+
 export const Rating = ({ rating = 4 }: RatingProps) => {
   return (
     <div>
-      {'starr'.split('').map((_, index: number) => {
+      {starArray.map((_, index: number) => {
         const currStar = index + 1
-        const icon: IconProp =
+        let icon: IconProp =
           currStar < rating || (currStar - rating < 0.5)
             ? ['fas', 'star']
             : currStar > rating && (currStar - rating >= 0.5 && currStar - rating < 1)

@@ -2,15 +2,8 @@ import React, { useContext } from 'react'
 import { Price } from '../api/type'
 import { CurrencyContext } from '../contexts/currency'
 
-/* const currencies = {
-  EUR: '€',
-  GBP: '£',
-  USD: '$',
-  JPY: '¥'
-} */
-
 function formatValue({ value, currency }: Price) {
-  return new Intl.NumberFormat('in-IT', {
+  return new Intl.NumberFormat('it-IT', {
     style: 'currency',
     currency: currency,
     currencyDisplay: 'narrowSymbol',
@@ -29,10 +22,10 @@ export const useCurrency = () => {
       return formatValue({ value, currency })
     }
     const valueToDollar = value / rates[currency]
-    const dollarToActive = valueToDollar * rates[activeCurrency]
     if (activeCurrency === 'USD') {
       return formatValue({ value: valueToDollar, currency: activeCurrency })
     }
+    const dollarToActive = valueToDollar * rates[activeCurrency]
     return formatValue({ value: dollarToActive, currency: activeCurrency })
   }
 

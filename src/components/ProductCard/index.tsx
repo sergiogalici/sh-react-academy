@@ -1,7 +1,5 @@
-import { useContext } from 'react'
 import { AdDto } from '../../api/type'
-import { CurrencyContext } from '../../contexts/currency'
-import { useCurrency } from '../../hooks/useCurrency'
+import { FormattedPrice } from '../FormattedPrice'
 import { Icon } from '../Icon'
 import { Image } from '../Image'
 import { Rating } from '../Rating'
@@ -12,7 +10,6 @@ type ProductCardProps = Partial<AdDto> & {
   // TODO REMOVE OPTIONAL
   imageSrc: string
   rating: number
-  categoryId: string
   authorName: string
   category: string
 }
@@ -21,7 +18,6 @@ export const ProductCard = ({
   title,
   description = 'item is not present',
   authorId,
-  categoryId,
   price = { value: 0, currency: 'EUR' },
   imageSrc,
   premium,
@@ -29,8 +25,6 @@ export const ProductCard = ({
   authorName,
   category
 }: ProductCardProps) => {
-  const { format } = useCurrency()
-
   return (
     <StyledProductCard>
       <div className="left">
@@ -54,7 +48,7 @@ export const ProductCard = ({
           </div>
         </div>
         <div className="right_right">
-          <Text variant="h1">{format(price)}</Text>
+          <FormattedPrice price={price} variant="p" size="xl" />
         </div>
       </div>
       <Icon fontSize="lg" color="primary" size="1x" icon="heart" />
