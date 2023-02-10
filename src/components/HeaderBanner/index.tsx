@@ -1,5 +1,6 @@
 import { ReactNode, useContext } from 'react'
-import { CurrencyContext, RatesKeys } from '../../contexts/currency'
+import { RatesKeys } from '../../api/type'
+import { CurrencyContext } from '../../contexts/currency'
 import { Icon } from '../Icon'
 import { Select } from '../Select'
 import { Text } from '../Text'

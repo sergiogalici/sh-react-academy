@@ -1,5 +1,3 @@
-import { RatesKeys } from '../contexts/currency'
-
 export type AdDto = {
   id: string
   title: string
@@ -42,3 +40,5 @@ export type Price = {
   value: number
   currency: RatesKeys
 }
+
+export type RatesKeys = 'EUR' | 'GBP' | 'USD' | 'JPY'

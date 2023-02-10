@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { getUSDRates } from '../../api'
-import { CurrencyRatesDto } from '../../api/type'
-import { CurrencyContext, RatesKeys } from '../../contexts/currency'
+import { CurrencyRatesDto, RatesKeys } from '../../api/type'
+import { CurrencyContext } from '../../contexts/currency'
 
 type Props = {
   children: ReactNode
