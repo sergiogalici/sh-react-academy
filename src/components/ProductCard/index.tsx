@@ -1,4 +1,7 @@
+import { useContext } from 'react'
 import { AdDto } from '../../api/type'
+import { CurrencyContext } from '../../contexts/currency'
+import { useCurrency } from '../../hooks/useCurrency'
 import { Icon } from '../Icon'
 import { Image } from '../Image'
 import { Rating } from '../Rating'
@@ -19,13 +22,15 @@ export const ProductCard = ({
   description = 'item is not present',
   authorId,
   categoryId,
-  price = { value: 0, currency: '' },
+  price = { value: 0, currency: 'EUR' },
   imageSrc,
   premium,
   rating,
   authorName,
   category
 }: ProductCardProps) => {
+  const { format } = useCurrency()
+
   return (
     <StyledProductCard>
       <div className="left">
@@ -49,10 +54,7 @@ export const ProductCard = ({
           </div>
         </div>
         <div className="right_right">
-          <Text variant="h1">
-            {price.currency === 'EUR' && '€'}
-            {price.value}
-          </Text>
+          <Text variant="h1">{format(price)}</Text>
         </div>
       </div>
       <Icon fontSize="lg" color="primary" size="1x" icon="heart" />

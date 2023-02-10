@@ -6,6 +6,8 @@ type Props = Partial<StyledSelectProps> & {
   options?: string[]
   name?: string
   label?: string
+  onChange?: (value: string) => void
+  value: string
 }
 
 export const Select = ({
@@ -15,7 +17,9 @@ export const Select = ({
   fullWidth = false,
   options = [''],
   label,
-  name
+  name,
+  onChange,
+  value
 }: Props) => {
   return (
     <>
@@ -26,6 +30,8 @@ export const Select = ({
         padding={padding}
         fullWidth={fullWidth}
         name={name}
+        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
+        value={value}
       >
         <optgroup>
           {options.map((opt, index) => (

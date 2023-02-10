@@ -7,4 +7,4 @@ export const getCategories = () => apiClient.get<CategoryDto[]>('categories')
 
 export const getUsers = () => apiClient.get<UserDto[]>('users')
 
-export const getUSDRates = () => currencyApiClient.get<CurrencyRatesDto>('USD')
+export const getUSDRates = () => currencyApiClient.get<CurrencyRatesDto>('latest')

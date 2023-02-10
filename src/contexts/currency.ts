@@ -1,7 +1,5 @@
 import { createContext } from 'react'
-import { CurrencyRatesDto } from '../api/type'
-
-export type RatesKeys = 'EUR' | 'GBP' | 'USD' | 'JPY'
+import { CurrencyRatesDto, RatesKeys } from '../api/type'
 
 export type CurrencyContextProps = {
   activeCurrency: RatesKeys
