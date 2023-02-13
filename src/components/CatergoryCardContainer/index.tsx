@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { getCategories } from '../../api'
 import { CategoryDto } from '../../api/type'
+import { categoriesActions } from '../../feature/categories/reducer'
+import { selectAllCategories } from '../../feature/categories/selectors'
 import { ThemeColors } from '../../style/theme'
 import { CategoryCard } from '../CategoryCard'
 import { StyledCatCardContainer } from './styled'
@@ -14,13 +17,17 @@ export type CardsType = {
 }
 
 export const CatCardContainer = () => {
-  const [categories, setCategories] = useState<CategoryDto[]>([])
+  const dispatch = useDispatch()
+  const categories = useSelector(selectAllCategories)
 
   useEffect(() => {
-    getCategories()
+    /* getCategories()
       .then((data) => setCategories(data))
+      .catch((e) => console.log(e.message)) */
+    getCategories()
+      .then((data) => dispatch(categoriesActions.fetchCategoriesSuccess(data)))
       .catch((e) => console.log(e.message))
-  }, [])
+  }, [dispatch])
 
   return (
     <StyledCatCardContainer>
