@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { CurrencyProvider } from './components/CurrencyProvider'
 import { Layout } from './components/Layout'
 import { store } from './feature/store'
+import { AdDetail } from './pages/AdDetail'
 import { Ads } from './pages/Ads'
 import { Home } from './pages/Home'
 import { GlobalStyle } from './style/GlobalStyle'
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="ads" element={<Ads />} />
+                <Route path="productId" element={<AdDetail />} />
               </Route>
             </Routes>
           </BrowserRouter>
