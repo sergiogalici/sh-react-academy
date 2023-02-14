@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCategories } from '../../api'
-import { CategoryDto } from '../../api/type'
 import { categoriesActions } from '../../feature/categories/reducer'
 import { selectAllCategories } from '../../feature/categories/selectors'
 import { ThemeColors } from '../../style/theme'

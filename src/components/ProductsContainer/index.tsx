@@ -1,50 +1,37 @@
 import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { getAds, getCategories, getUsers } from '../../api'
 import { AdDto, CategoryDto, UserDto } from '../../api/type'
+import { adsActions } from '../../feature/ads/reducer'
+import { selectAllAds } from '../../feature/ads/selector'
+import { categoriesActions } from '../../feature/categories/reducer'
+import { getCategoryById, selectAllCategories } from '../../feature/categories/selectors'
+import { usersActions } from '../../feature/users/reducer'
+import { getUsersById, selectAllUsers } from '../../feature/users/selector'
 import { ProductCard } from '../ProductCard'
 import { Text } from '../Text'
 import { StyledProdContainer } from './styled'
 
-const baseCategory: CategoryDto = {
-  created_at: 0,
-  id: '',
-  updated_at: 0,
-  title: "couldn't load category"
-}
-const baseUser: UserDto = {
-  created_at: 0,
-  updated_at: 0,
-  id: '',
-  rating: 0,
-  email: '',
-  username: "couldn't load user"
-}
-
 export const ProductsContainer = () => {
-  const [ads, setAds] = useState<AdDto[]>([])
-  const [users, setUsers] = useState<UserDto[]>([])
-  const [categories, setCategories] = useState<CategoryDto[]>([])
+  const dispatch = useDispatch()
+  const categoriesById = useSelector(getCategoryById)
+  const usersById = useSelector(getUsersById)
+  const ads = useSelector(selectAllAds)
 
   useEffect(() => {
     getAds()
-      .then((data) => setAds(data))
+      .then((data) => dispatch(adsActions.fetchAdsSuccess(data)))
       .catch((e) => console.log(e.message))
 
     getUsers()
-      .then((data) => setUsers(data))
+      .then((data) => dispatch(usersActions.fetchUsersSuccess(data)))
       .catch((e) => console.log(e.message))
 
     getCategories()
-      .then((data) => setCategories(data))
+      .then((data) => dispatch(categoriesActions.fetchCategoriesSuccess(data)))
       .catch((e) => console.log(e.message))
-  }, [])
+  }, [dispatch])
 
-  const categoriesById = categories.reduce<Record<string, CategoryDto>>((acc, cat) => {
-    return { ...acc, [cat.id]: cat }
-  }, {})
-  const usersById = users.reduce<Record<string, UserDto>>((acc, user) => {
-    return { ...acc, [user.id]: user }
-  }, {})
   const mappedAds = ads.map(({ authorId, categoryIds, ...ad }) => {
     return {
       ...ad,
