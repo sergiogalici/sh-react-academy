@@ -21,7 +21,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="ads" element={<Ads />} />
-                <Route path="productId" element={<AdDetail />} />
+                <Route path="ads/:id" element={<AdDetail />} />
               </Route>
             </Routes>
           </BrowserRouter>
