@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { adsReducer } from './ads/reducer'
 import { categoriesReducer } from './categories/reducer'
+import { usersReducer } from './users/reducer'
 
 const rootReducer = {
-  categories: categoriesReducer
+  categories: categoriesReducer,
+  users: usersReducer,
+  ads: adsReducer
 }
 
 export const store = configureStore({
