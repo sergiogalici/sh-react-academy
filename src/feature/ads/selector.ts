@@ -13,8 +13,8 @@ export const selectMappedAds = createSelector(
     return allAds.map(({ authorId, categoryIds, ...ad }) => {
       return {
         ...ad,
-        category: categoriesMap[categoryIds[0]],
-        author: usersMap[authorId]
+        category: categoriesMap[categoryIds[0]] ?? {},
+        author: usersMap[authorId] ?? {}
       }
     })
   }

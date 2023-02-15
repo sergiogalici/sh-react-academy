@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAds, getCategories, getUsers } from '../../api'
+import { useParams } from 'react-router'
+import { getAdDetail, getCategories, getCountries, getUsers } from '../../api'
 import { DetailCard } from '../../components/DetailCard'
-import { StyledDetailCard } from '../../components/DetailCard/styled'
-import { Text } from '../../components/Text'
-import { adsActions } from '../../feature/ads/reducer'
-import { selectAllAds } from '../../feature/ads/selector'
+import { MappedAd } from '../../feature/adDetail/model'
+import { adActions } from '../../feature/adDetail/reducers'
+import { selectMappedAd } from '../../feature/adDetail/selector'
 import { categoriesActions } from '../../feature/categories/reducer'
-import { getCategoryById } from '../../feature/categories/selectors'
+import { countriesActions } from '../../feature/countries/reducer'
 import { usersActions } from '../../feature/users/reducer'
-import { getUsersById } from '../../feature/users/selector'
 
 export const AdDetail = () => {
   const dispatch = useDispatch()
-  const categoriesById = useSelector(getCategoryById)
-  const usersById = useSelector(getUsersById)
-  const ads = useSelector(selectAllAds)
+  const { id } = useParams()
+  const mappedAd: MappedAd = useSelector(selectMappedAd)
 
   useEffect(() => {
-    getAds()
-      .then((data) => dispatch(adsActions.fetchAdsSuccess(data)))
+    getAdDetail(id ?? '')
+      .then((data) => dispatch(adActions.fetchAdSuccess(data)))
       .catch((e) => console.log(e.message))
 
     getUsers()
@@ -29,7 +27,9 @@ export const AdDetail = () => {
     getCategories()
       .then((data) => dispatch(categoriesActions.fetchCategoriesSuccess(data)))
       .catch((e) => console.log(e.message))
-  }, [dispatch])
 
-  return <DetailCard ad={ads[0]} />
+    getCountries().then((data) => dispatch(countriesActions.fetchCountriesSuccess(data)))
+  }, [dispatch, id])
+
+  return <DetailCard ad={mappedAd} />
 }

@@ -1,39 +1,44 @@
-import { AdDto } from '../../api/type'
+import { MappedAd } from '../../feature/adDetail/model'
+import { useCurrency } from '../../hooks/useCurrency'
 import { Icon } from '../Icon'
+import { Image } from '../Image'
 import { Rating } from '../Rating'
 import { Text } from '../Text'
 import { StyledDetailCard, StyledDetailCardProps } from './styled'
 
 type Props = {
-  ad: AdDto
+  ad: MappedAd
 } & Partial<StyledDetailCardProps>
 
 export const DetailCard = ({ ad }: Props) => {
+  const { format } = useCurrency()
   return (
     <StyledDetailCard>
-      <div className="slideshow-container">Slideshow</div>
+      <div className="slideshow-container">
+        <Image alt={ad.title} src={ad.images[0]} />
+      </div>
       <div className="details-container">
         <div className="top-details">
           <Text className="category-indicator" variant="p">
-            {ad?.categoryIds[0]}
+            {ad.category.title}
           </Text>
           <div className="divisor" />
-          <Text size="lg" bold>
-            Canna da pesca
+          <Text size="lg" bold className="ad-title">
+            {ad.title}
           </Text>
           <Text bold>
             <Icon icon={['fas', 'location-dot']} size="1x" color="lightGray" />
-            {} Germany
+            {ad.country.name}
           </Text>
           <Text size="xl" color="primary">
-            €1.00
+            {format(ad.price)}
           </Text>
         </div>
         <div className="bottom-details">
           <div className="user-avatar">A</div>
           <div>
-            <Text>Anthony</Text>
-            <Rating rating={3} />
+            <Text>{ad.author.username}</Text>
+            <Rating rating={ad.author.rating} />
           </div>
         </div>
       </div>

@@ -39,3 +39,6 @@ export const apiClient = createApiClient({ baseUrl: process.env.REACT_APP_BASE_U
 export const currencyApiClient = createApiClient({
   baseUrl: process.env.REACT_APP_CURRENCY_BASE_URL!
 })
+export const adDetailApiClient = createApiClient({
+  baseUrl: process.env.REACT_APP_AD_DETAIL_URL!
+})

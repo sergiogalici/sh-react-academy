@@ -13,6 +13,13 @@ export type AdDto = {
   updated_at: string
 }
 
+export type CountryDto = {
+  name: string
+  id: string
+  created_at: number
+  updated_at: number
+}
+
 export type CategoryDto = {
   title: string
   id: string
