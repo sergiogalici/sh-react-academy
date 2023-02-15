@@ -4,8 +4,19 @@ export type StyledDetailCardProps = {}
 
 export const StyledDetailCard = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.lg}px;
+
+  .top-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: stretch;
+    gap: ${({ theme }) => theme.spacing.lg}px;
+  }
 
   .slideshow-container {
     display: flex;
@@ -45,6 +56,13 @@ export const StyledDetailCard = styled.div`
     border-radius: ${({ theme }) => theme.radii[1]}px;
   }
 
+  .country-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: ${({ theme }) => theme.spacing.sm}px;
+  }
+
   .bottom-details {
     display: flex;
     align-items: center;
@@ -63,5 +81,13 @@ export const StyledDetailCard = styled.div`
     padding: ${({ theme }) => theme.spacing.md}px;
     background-color: ${({ theme }) => theme.colors.lightGray};
     border-radius: ${({ theme }) => theme.radii[3]}px;
+  }
+
+  .description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: ${({ theme }) => theme.spacing.md}px;
   }
 `
