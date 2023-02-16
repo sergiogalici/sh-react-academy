@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ThemeColors, TextVariants } from '../../style/theme'
 import { BSCardBox, BSCardProps } from '../BSCardsBox'
-import { BSInfoBox, InfoBoxTypes } from '../BSInfoBox'
-import { StyledBSCardProps } from '../BuySellCard/styled'
+import { BSInfoBox } from '../BSInfoBox'
 import { StyledBSWProps, StyledBSWrapper } from './styled'
 
 type Props = Partial<BSCardProps> &

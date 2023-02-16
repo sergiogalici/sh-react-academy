@@ -12,7 +12,12 @@ export const StyledBSCard = styled.div<StyledBSCardProps>`
   align-items: center;
   justify-content: center;
   ${({ theme }) => `padding: 0 ${theme.spacing.md}px;`}
-  button {
+  .button-link {
+    all: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 5%;
     width: 85%;

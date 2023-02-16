@@ -20,12 +20,14 @@ const bsBannerCards = [
   {
     title: 'Compra',
     imageSrc: 'https://www.subito.it/ekhaya/pay.jpg?v=4',
-    id: 1
+    id: 1,
+    to: '/ads'
   },
   {
     title: 'Vendi',
     imageSrc: 'https://www.subito.it/ekhaya/sell.jpg?v=4',
-    id: 2
+    id: 2,
+    to: ''
   }
 ]
 
