@@ -16,17 +16,7 @@ export type CardsType = {
 }
 
 export const CatCardContainer = () => {
-  const dispatch = useDispatch()
   const categories = useSelector(selectAllCategories)
-
-  useEffect(() => {
-    /* getCategories()
-      .then((data) => setCategories(data))
-      .catch((e) => console.log(e.message)) */
-    getCategories()
-      .then((data) => dispatch(categoriesActions.fetchCategoriesSuccess(data)))
-      .catch((e) => console.log(e.message))
-  }, [dispatch])
 
   return (
     <StyledCatCardContainer>

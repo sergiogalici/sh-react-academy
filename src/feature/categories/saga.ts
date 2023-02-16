@@ -1,6 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { getCategories } from '../../api'
-import { apiClient } from '../../api/client'
 import { CategoryDto } from '../../api/type'
 import { categoriesActions as ca } from './reducer'
 
