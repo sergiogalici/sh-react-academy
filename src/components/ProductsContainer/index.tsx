@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getAds, getCategories, getUsers } from '../../api'
+import { getAds } from '../../api'
 import { adsActions } from '../../feature/ads/reducer'
-import { selectAllAds, selectMappedAds } from '../../feature/ads/selector'
-import { categoriesActions } from '../../feature/categories/reducer'
-import { usersActions } from '../../feature/users/reducer'
+import { selectMappedAds } from '../../feature/ads/selector'
 import { ProductCard } from '../ProductCard'
 import { Text } from '../Text'
 import { StyledProdContainer } from './styled'
@@ -18,14 +16,6 @@ export const ProductsContainer = () => {
     getAds()
       .then((data) => dispatch(adsActions.fetchAdsSuccess(data)))
       .catch((e) => console.log(e.message))
-
-    getUsers()
-      .then((data) => dispatch(usersActions.fetchUsersSuccess(data)))
-      .catch((e) => console.log(e.message))
-
-    getCategories()
-      .then((data) => dispatch(categoriesActions.fetchCategoriesSuccess(data)))
-      .catch((e) => console.log(e.message))
   }, [dispatch])
 
   return (
@@ -34,7 +24,7 @@ export const ProductsContainer = () => {
       <Text variant="h6">Annunci</Text>
       {ads.map((ad) => {
         return (
-          <Link style={{ all: 'unset', cursor: 'pointer' }} to={ad.id}>
+          <Link key={ad.id} style={{ all: 'unset', cursor: 'pointer' }} to={ad.id}>
             <ProductCard
               authorName={ad.author.username}
               category={ad.category.title}
@@ -43,7 +33,6 @@ export const ProductsContainer = () => {
               price={ad.price}
               description={ad.description}
               imageSrc={ad.images[0]}
-              key={ad.id}
             />
           </Link>
         )

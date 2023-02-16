@@ -20,7 +20,7 @@ export const DetailCard = ({ ad }: Props) => {
     <StyledDetailCard>
       <div className="top-section">
         <div className="slideshow-container">
-          {ad.images.map((image, index) => {
+          {/* {ad.images.map((image, index) => {
             return (
               <div
                 className={
@@ -32,7 +32,8 @@ export const DetailCard = ({ ad }: Props) => {
                 <Image alt={ad.title + index} src={image} key={image + index} />
               </div>
             )
-          })}
+          })} */}
+          <Image alt={ad.title} src={ad.images[selectedImage]} />
           <div className="button-container">
             <Button
               size="md"

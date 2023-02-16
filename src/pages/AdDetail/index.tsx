@@ -16,17 +16,11 @@ export const AdDetail = () => {
   const mappedAd: MappedAd = useSelector(selectMappedAd)
 
   useEffect(() => {
-    getAdDetail(id ?? '')
-      .then((data) => dispatch(adActions.fetchAdSuccess(data)))
-      .catch((e) => console.log(e.message))
-
-    getUsers()
-      .then((data) => dispatch(usersActions.fetchUsersSuccess(data)))
-      .catch((e) => console.log(e.message))
-
-    getCategories()
-      .then((data) => dispatch(categoriesActions.fetchCategoriesSuccess(data)))
-      .catch((e) => console.log(e.message))
+    if (id) {
+      getAdDetail(id)
+        .then((data) => dispatch(adActions.fetchAdSuccess(data)))
+        .catch((e) => console.log(e.message))
+    }
 
     getCountries().then((data) => dispatch(countriesActions.fetchCountriesSuccess(data)))
   }, [dispatch, id])
