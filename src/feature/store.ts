@@ -7,6 +7,7 @@ import { categoriesReducer } from './categories/reducer'
 import { categoriesSaga } from './categories/saga'
 import { countriesReducer } from './countries/reducer'
 import { usersReducer } from './users/reducer'
+import { usersSaga } from './users/saga'
 
 const rootReducer = {
   categories: categoriesReducer,
@@ -19,7 +20,7 @@ const rootReducer = {
 // TODO make saga of getUsers and getCategories
 
 function* rootSaga() {
-  yield all([categoriesSaga()])
+  yield all([categoriesSaga(), usersSaga()])
 }
 
 const sagaMiddleware = createSagaMiddleware()
