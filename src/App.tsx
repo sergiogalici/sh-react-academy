@@ -16,7 +16,7 @@ import { theme } from './style/theme'
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    // TODO add get users
+    dispatch(usersActions.fetchUsersRequested())
     dispatch(categoriesActions.fetchCategoriesRequested())
   }, [dispatch])
   return (

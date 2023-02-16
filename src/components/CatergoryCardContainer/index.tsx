@@ -16,7 +16,6 @@ export type CardsType = {
 }
 
 export const CatCardContainer = () => {
-  const dispatch = useDispatch()
   const categories = useSelector(selectAllCategories)
 
   return (

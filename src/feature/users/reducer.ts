@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { UserDto } from '../../api/type'
 import { UsersState } from './model'
 
@@ -10,9 +10,15 @@ const usersSlice = createSlice({
   reducers: {
     fetchUsersSuccess: (state, { payload }: PayloadAction<UserDto[]>) => {
       state.allUsers = payload
+    },
+    fetchUsersFailed: (state, { payload }: PayloadAction<string>) => {
+      state.error = payload
     }
   }
 })
 
-export const usersActions = usersSlice.actions
+export const usersActions = {
+  ...usersSlice.actions,
+  fetchUsersRequested: createAction('USERS_FETCH_REQUESTED')
+}
 export const usersReducer = usersSlice.reducer
