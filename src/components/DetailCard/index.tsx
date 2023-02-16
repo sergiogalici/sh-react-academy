@@ -36,7 +36,9 @@ export const DetailCard = ({ ad }: Props) => {
             </Text>
           </div>
           <div className="bottom-details">
-            <div className="user-avatar">{ad.author.username[0].toUpperCase()}</div>
+            <div className="user-avatar">
+              <Text>{ad.author?.username?.charAt(0).toUpperCase()}</Text>
+            </div>
             <div>
               <Text>{ad.author.username}</Text>
               <Rating rating={ad.author.rating} />
