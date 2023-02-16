@@ -19,11 +19,36 @@ export const StyledDetailCard = styled.div`
   }
 
   .slideshow-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 3;
     height: 500px;
+    overflow: hidden;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .selected-image {
+    position: absolute;
+  }
+
+  .button-container {
+    width: 100%;
+    padding: ${({ theme }) => theme.spacing.md}px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+
+    & button {
+      border: 1px solid white;
+    }
   }
 
   .details-container {
@@ -88,6 +113,7 @@ export const StyledDetailCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
     gap: ${({ theme }) => theme.spacing.md}px;
   }
 `

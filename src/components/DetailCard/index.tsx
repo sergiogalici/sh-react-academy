@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { MappedAd } from '../../feature/adDetail/model'
 import { useCurrency } from '../../hooks/useCurrency'
+import { Button } from '../Button'
 import { Icon } from '../Icon'
 import { Image } from '../Image'
 import { Rating } from '../Rating'
@@ -11,12 +13,48 @@ type Props = {
 } & Partial<StyledDetailCardProps>
 
 export const DetailCard = ({ ad }: Props) => {
+  const [selectedImage, setSelectedImage] = useState(0)
   const { format } = useCurrency()
+
   return (
     <StyledDetailCard>
       <div className="top-section">
         <div className="slideshow-container">
-          <Image alt={ad.title} src={ad.images[0]} />
+          {ad.images.map((image, index) => {
+            return (
+              <div
+                className={
+                  index === selectedImage
+                    ? 'selected-image image-container'
+                    : 'image-container'
+                }
+              >
+                <Image alt={ad.title + index} src={image} key={image + index} />
+              </div>
+            )
+          })}
+          <div className="button-container">
+            <Button
+              size="md"
+              icon={['fas', 'arrow-left']}
+              variant="tertiary"
+              onClick={() =>
+                setSelectedImage(
+                  selectedImage === 0 ? ad.images.length - 1 : selectedImage - 1
+                )
+              }
+            />
+            <Button
+              size="md"
+              icon={['fas', 'arrow-right']}
+              variant="tertiary"
+              onClick={() =>
+                setSelectedImage(
+                  selectedImage === ad.images.length - 1 ? 0 : selectedImage + 1
+                )
+              }
+            />
+          </div>
         </div>
         <div className="details-container">
           <div className="top-details">
