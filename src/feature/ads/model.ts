@@ -1,5 +1,10 @@
-import { AdDto } from '../../api/type'
+import { AdDto, CategoryDto, UserDto } from '../../api/type'
 
 export type AdsState = {
   allAds: AdDto[]
+}
+
+export type MappedAdsType = Omit<AdDto, 'authorId' | 'categoryIds'> & {
+  author: UserDto
+  category: CategoryDto
 }

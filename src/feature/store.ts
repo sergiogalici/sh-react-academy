@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { all } from 'redux-saga/effects'
 import { adReducer } from './adDetail/reducers'
 import { adsReducer } from './ads/reducer'
+import { filteredAdsReducer } from './adsByCategory/reducer'
 import { categoriesReducer } from './categories/reducer'
 import { categoriesSaga } from './categories/saga'
 import { countriesReducer } from './countries/reducer'
@@ -14,6 +15,7 @@ const rootReducer = {
   users: usersReducer,
   countries: countriesReducer,
   ads: adsReducer,
+  filteredAds: filteredAdsReducer,
   ad: adReducer
 }
 
