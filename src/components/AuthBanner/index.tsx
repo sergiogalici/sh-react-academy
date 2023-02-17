@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { ThemeColors, TextVariants } from '../../style/theme'
 import { Button } from '../Button'
 import { Image } from '../Image'
-import { Link } from '../Link'
+import { Text } from '../Text'
 import { StyledAuthBanner, StyledAuthBProps } from './styled'
 
 type Props = Partial<StyledAuthBProps> & {
@@ -12,18 +13,20 @@ type Props = Partial<StyledAuthBProps> & {
 export const AuthBanner = ({ buttonText }: Props) => {
   return (
     <StyledAuthBanner>
-      <Image
-        src="https://assets.subito.it/static/logos/corporate.svg"
-        alt="Logo Subito"
-        width={230}
-        height={36}
-      />
+      <Link to="/">
+        <Image
+          src="https://assets.subito.it/static/logos/corporate.svg"
+          alt="Logo Subito"
+          width={230}
+          height={36}
+        />
+      </Link>
       <div className="sign-in">
-        <Link color="textDark" bold={true}>
-          Accedi
+        <Link color="textDark" to="/">
+          <Text bold>Accedi</Text>
         </Link>
-        <Link color="textDark" bold={false}>
-          Registrati
+        <Link color="textDark" to="/">
+          <Text>Registrati</Text>
         </Link>
         <Button
           variant="secondary"

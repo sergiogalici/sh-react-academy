@@ -12,10 +12,12 @@ export const StyledAuthBanner = styled.div<StyledAuthBProps>`
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing.md}px;
   width: 100%;
+
   .sign-in {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    gap: ${({ theme }) => theme.spacing.md}px;
   }
 `
