@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { all } from 'redux-saga/effects'
 import { adReducer } from './adDetail/reducers'
 import { adsReducer } from './ads/reducer'
+import { adsSaga } from './ads/saga'
 import { categoriesReducer } from './categories/reducer'
 import { categoriesSaga } from './categories/saga'
 import { countriesReducer } from './countries/reducer'
@@ -20,7 +21,7 @@ const rootReducer = {
 // TODO make saga of getUsers and getCategories
 
 function* rootSaga() {
-  yield all([categoriesSaga(), usersSaga()])
+  yield all([categoriesSaga(), usersSaga(), adsSaga()])
 }
 
 const sagaMiddleware = createSagaMiddleware()
