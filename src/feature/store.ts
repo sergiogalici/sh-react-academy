@@ -2,6 +2,7 @@ import createSagaMiddleware from '@redux-saga/core'
 import { configureStore } from '@reduxjs/toolkit'
 import { all } from 'redux-saga/effects'
 import { adReducer } from './adDetail/reducers'
+import { adModalReducer } from './adModal/reducers'
 import { adsReducer } from './ads/reducer'
 import { adsSaga } from './ads/saga'
 import { categoriesReducer } from './categories/reducer'
@@ -15,10 +16,9 @@ const rootReducer = {
   users: usersReducer,
   countries: countriesReducer,
   ads: adsReducer,
-  ad: adReducer
+  ad: adReducer,
+  showModal: adModalReducer
 }
-
-// TODO make saga of getUsers and getCategories
 
 function* rootSaga() {
   yield all([categoriesSaga(), usersSaga(), adsSaga()])

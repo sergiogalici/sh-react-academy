@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { ThemeColors, TextVariants } from '../../style/theme'
+import { adModalActions } from '../../feature/adModal/reducers'
 import { Button } from '../Button'
 import { Image } from '../Image'
 import { Text } from '../Text'
@@ -11,6 +12,8 @@ type Props = Partial<StyledAuthBProps> & {
 }
 
 export const AuthBanner = ({ buttonText }: Props) => {
+  const dispatch = useDispatch()
+
   return (
     <StyledAuthBanner>
       <Link to="/">
@@ -33,6 +36,7 @@ export const AuthBanner = ({ buttonText }: Props) => {
           size="md"
           icon={'plus-square'}
           className="offer-banner-button"
+          onClick={() => dispatch(adModalActions.showModel(true))}
         >
           {/* TODO Hardcode Inserisci Annuncio -- add notify to toggle modal open closed */}
           {buttonText}
