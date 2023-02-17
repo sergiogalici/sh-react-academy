@@ -8,6 +8,10 @@ export const StyledNav = styled.nav<StyledNavProps>`
   align-items: stretch;
   padding: ${({ theme }) => theme.spacing.sm}px 0;
 
+  & a {
+    width: max-content;
+  }
+
   & :not(:last-child) {
     border-inline-end-width: 2px;
     border-inline-end-style: solid;

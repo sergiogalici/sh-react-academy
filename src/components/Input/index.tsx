@@ -13,6 +13,7 @@ type Props = Partial<StyledInputProps> & {
 }
 
 export const Input = ({
+  fullWidth,
   padding = 'sm',
   color = 'textDark',
   borderRadius = 0,
@@ -28,6 +29,7 @@ export const Input = ({
       color={color}
       padding={padding}
       borderColor={borderColor}
+      fullWidth={fullWidth}
     />
   )
 }
