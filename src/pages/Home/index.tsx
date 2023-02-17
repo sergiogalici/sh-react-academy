@@ -1,19 +1,16 @@
 import React from 'react'
 import { BSBanner } from '../../components/BSBanner'
-import { CardsType, CatCardContainer } from '../../components/CatergoryCardContainer'
-import { Icon } from '../../components/Icon'
+import { CatCardContainer } from '../../components/CatergoryCardContainer'
 import { MagazineBanner } from '../../components/MagazineBanner'
 import { OfferBanner } from '../../components/OfferBanner'
-import { ProductCard } from '../../components/ProductCard'
-import { Rating } from '../../components/Rating'
 import { SearchForm } from '../../components/SearchForm'
 import { Text } from '../../components/Text'
 import { StyledHome } from './styled'
 
 const searchItems = [
-  { title: 'My title', placeText: 'My Placeholder', id: 1 },
-  { title: 'My title', placeText: 'My Placeholder', id: 2 },
-  { title: 'My title', placeText: 'My Placeholder', id: 3 }
+  { title: 'Cosa cerchi?', placeText: 'My Placeholder', id: 1 },
+  { title: 'In quale categoria?', placeText: 'My Placeholder', id: 2 },
+  { title: 'Dove?', placeText: 'My Placeholder', id: 3 }
 ]
 
 const bsBannerCards = [
@@ -43,7 +40,7 @@ export const Home = () => {
         width="100%"
         title="Scegli TuttoSubito"
         subTitles={
-          <Text color={'secondaryLight'} bold={false}>
+          <Text color={'secondaryLight'}>
             Il nostro servizio di <b>spedizione tracciata</b> e <b>pagamento sicuro</b>
           </Text>
         }
