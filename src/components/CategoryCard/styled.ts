@@ -12,6 +12,9 @@ export type CategoryCardProps = {
 }
 
 export const StyledCatCard = styled.div<CategoryCardProps>`
+  .button-link {
+    all: unset;
+  }
   ${({ borderRadius, theme }) =>
     borderRadius && `border-radius: ${theme.radii[borderRadius]}px;`}
   ${({ backgroundColor, theme }) =>

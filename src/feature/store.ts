@@ -5,6 +5,7 @@ import { adReducer } from './adDetail/reducers'
 import { adModalReducer } from './adModal/reducers'
 import { adsReducer } from './ads/reducer'
 import { adsSaga } from './ads/saga'
+import { filteredAdsReducer } from './adsByCategory/reducer'
 import { categoriesReducer } from './categories/reducer'
 import { categoriesSaga } from './categories/saga'
 import { countriesReducer } from './countries/reducer'
@@ -16,6 +17,7 @@ const rootReducer = {
   users: usersReducer,
   countries: countriesReducer,
   ads: adsReducer,
+  filteredAds: filteredAdsReducer,
   ad: adReducer,
   showModal: adModalReducer
 }

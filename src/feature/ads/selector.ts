@@ -1,7 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { selectCategoryById } from '../categories/selectors'
+import { AdDto } from '../../api/type'
+import { selectAllCategories, selectCategoryById } from '../categories/selectors'
 import { RootState } from '../store'
 import { selectUsersById } from '../users/selector'
+import { MappedAdsType } from './model'
 
 const selectAds = (state: RootState) => state.ads
 
@@ -17,5 +19,18 @@ export const selectMappedAds = createSelector(
         author: usersMap[authorId] ?? {}
       }
     })
+  }
+)
+
+export const adsByCategory = createSelector(
+  selectAllCategories,
+  selectMappedAds,
+  (allCats, mappedAds) => {
+    return allCats.reduce<Record<string, MappedAdsType[]>>((acc, cat) => {
+      return {
+        ...acc,
+        [cat.title]: mappedAds.filter((ad) => ad.category.title === cat.title)
+      }
+    }, {})
   }
 )

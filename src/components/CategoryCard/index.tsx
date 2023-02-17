@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { theme, ThemeColors } from '../../style/theme'
 import { Button } from '../Button'
 import { Image } from '../Image'
@@ -8,9 +9,11 @@ type Props = Partial<CategoryCardProps> & {
   src: string
   buttonTitle: string
   color?: ThemeColors
+  to: string
 }
 
 export const CategoryCard = ({
+  to,
   src,
   buttonTitle,
   backgroundColor,
@@ -33,9 +36,11 @@ export const CategoryCard = ({
     >
       {src && <Image src={src} alt={buttonTitle} width={126} height={30} />}
       {buttonTitle && (
-        <Button size="md" outlined fontSize="md" variant="tertiary">
-          {buttonTitle}
-        </Button>
+        <Link className="button-link" to={to}>
+          <Button size="md" outlined fontSize="md" variant="tertiary">
+            {buttonTitle}
+          </Button>
+        </Link>
       )}
     </StyledCatCard>
   )
