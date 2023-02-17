@@ -31,7 +31,7 @@ export const ProductsContainer = ({ category }: Props) => {
   return (
     <StyledProdContainer>
       <Text color="lightGray" variant="h6">{`${ads.length} risultati`}</Text>
-      <Text variant="h6">Annunci</Text>
+      <Text variant="h6">{category ? category : 'Annunci'}</Text>
       {adsToMap.map((ad) => {
         return (
           <Link key={ad.id} style={{ all: 'unset', cursor: 'pointer' }} to={`${ad.id}`}>
