@@ -36,7 +36,7 @@ export const AuthBanner = ({ buttonText }: Props) => {
           size="md"
           icon={'plus-square'}
           className="offer-banner-button"
-          onClick={() => dispatch(adModalActions.showModel(true))}
+          onClick={() => dispatch(adModalActions.showModal(true))}
         >
           {/* TODO Hardcode Inserisci Annuncio -- add notify to toggle modal open closed */}
           {buttonText}

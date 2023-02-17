@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { getAdDetail, getCategories, getCountries, getUsers } from '../../api'
+import { getAdDetail, getCountries } from '../../api'
 import { DetailCard } from '../../components/DetailCard'
 import { MappedAd } from '../../feature/adDetail/model'
 import { adActions } from '../../feature/adDetail/reducers'
 import { selectMappedAd } from '../../feature/adDetail/selector'
-import { categoriesActions } from '../../feature/categories/reducer'
 import { countriesActions } from '../../feature/countries/reducer'
-import { usersActions } from '../../feature/users/reducer'
 
 export const AdDetail = () => {
   const dispatch = useDispatch()

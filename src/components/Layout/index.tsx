@@ -14,23 +14,23 @@ import { Wrapper } from '../Wrapper'
 type LayoutProps = {}
 
 export const Layout = (props: LayoutProps) => {
-  const { showModel } = useSelector(selectAdModal)
+  const { showModal } = useSelector(selectAdModal)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(adModalActions.showModel(false))
+    dispatch(adModalActions.showModal(false))
   }, [dispatch])
 
   return (
     <>
-      {showModel && (
+      {showModal && (
         <Modal>
           <div className="card-panel">
             <Button
               size="md"
               variant="secondary"
               icon={['fas', 'xmark']}
-              onClick={() => dispatch(adModalActions.showModel(false))}
+              onClick={() => dispatch(adModalActions.showModal(false))}
             />
             <Text size="lg">Inserisci un nuovo annuncio</Text>
             <form className="input-list">
@@ -47,7 +47,7 @@ export const Layout = (props: LayoutProps) => {
               size="md"
               fontSize="lg"
               variant="primary"
-              onClick={() => dispatch(adModalActions.showModel(false))}
+              onClick={() => dispatch(adModalActions.showModal(false))}
             >
               Conferma
             </Button>

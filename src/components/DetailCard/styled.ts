@@ -47,6 +47,7 @@ export const StyledDetailCard = styled.div`
     z-index: 1;
 
     & button {
+      backdrop-filter: blur(2px);
       border: 1px solid white;
     }
   }
