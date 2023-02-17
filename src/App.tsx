@@ -19,12 +19,10 @@ import { theme } from './style/theme'
 
 function App() {
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(usersActions.fetchUsersRequested())
     dispatch(categoriesActions.fetchCategoriesRequested())
-    getAds()
-      .then((data) => dispatch(adsActions.fetchAdsSuccess(data)))
-      .catch((e) => console.log(e.message))
   }, [dispatch])
 
   return (
@@ -36,8 +34,8 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="ads" element={<Ads />} />
-              <Route path="ads&category/:category" element={<AdsByCategory />} />
-              <Route path="ads/:id" element={<AdDetail />} />
+              <Route path="/:category" element={<Ads />} />
+              <Route path="/:category/:id" element={<AdDetail />} />
             </Route>
           </Routes>
         </BrowserRouter>
