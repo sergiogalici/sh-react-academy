@@ -31,7 +31,7 @@ export const CatCardContainer = () => {
             width={220}
             height={156}
             padding="md"
-            to={`/${category.title}`}
+            to={`/${category.title.toLowerCase()}`}
           />
         )
       })}

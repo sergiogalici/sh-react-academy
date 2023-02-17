@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAds } from '../../api'
+import { MappedAdsType } from '../../feature/ads/model'
 import { adsActions } from '../../feature/ads/reducer'
 import { adsByCategory, selectMappedAds } from '../../feature/ads/selector'
 import { ProductCard } from '../ProductCard'
@@ -26,7 +27,14 @@ export const ProductsContainer = ({ category }: Props) => {
   console.log(' MAPP ADSS ', ads)
   console.log(' FILTT ADSS ', filteredAds[category ?? 'immobili'])
 
-  const adsToMap = category ? filteredAds[category ?? 'immobili'] : ads
+  console.log('first', category?.charAt(0).toUpperCase())
+
+  const adsToMap = category
+    ? filteredAds[
+        ((category.charAt(0).toUpperCase() + category.slice(1)) as keyof MappedAdsType) ??
+          'immobili'
+      ]
+    : ads
 
   return (
     <StyledProdContainer>

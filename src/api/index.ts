@@ -12,3 +12,5 @@ export const getCountries = () => apiClient.get<CountryDto[]>('countries')
 export const getUSDRates = () => currencyApiClient.get<CurrencyRatesDto>('latest')
 
 export const getAdDetail = (id: string) => adDetailApiClient.get<AdDto>(id)
+
+export const postAd = (body: {}) => apiClient.post('ads', body)
