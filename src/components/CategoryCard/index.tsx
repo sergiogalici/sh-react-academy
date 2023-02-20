@@ -36,7 +36,7 @@ export const CategoryCard = ({
     >
       {src && <Image src={src} alt={buttonTitle} width={126} height={30} />}
       {buttonTitle && (
-        <Link className="button-link" to={to}>
+        <Link className="button-link" to={`ads${to}`}>
           <Button size="md" outlined fontSize="md" variant="tertiary">
             {buttonTitle}
           </Button>

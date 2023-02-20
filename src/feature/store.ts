@@ -18,8 +18,11 @@ const rootReducer = {
   users: usersReducer,
   countries: countriesReducer,
   ads: adsReducer,
+  // TODO remove, deprecated
   filteredAds: filteredAdsReducer,
+  // TODO handle directly in ads
   ad: adReducer,
+  // TODO move to local state
   showModal: adModalReducer
 }
 

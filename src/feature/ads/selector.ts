@@ -34,3 +34,10 @@ export const adsByCategory = createSelector(
     }, {})
   }
 )
+
+export const makeSelectAds = (category?: string) =>
+  createSelector(selectMappedAds, (ads) => {
+    return category
+      ? ads.filter((ad) => ad.category.title?.toLowerCase() === category.toLowerCase())
+      : ads
+  })

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { CurrencyProvider } from './components/CurrencyProvider'
 import { Layout } from './components/Layout'
+import { adsActions } from './feature/ads/reducer'
 import { categoriesActions } from './feature/categories/reducer'
 import { countriesActions } from './feature/countries/reducer'
 import { usersActions } from './feature/users/reducer'
@@ -31,8 +32,8 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="ads" element={<Ads />} />
-              <Route path="/:category" element={<Ads />} />
-              <Route path="/:category/:id" element={<AdDetail />} />
+              <Route path="ads/:category" element={<Ads />} />
+              <Route path="ads/:category/:id" element={<AdDetail />} />
             </Route>
           </Routes>
         </BrowserRouter>
