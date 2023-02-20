@@ -9,6 +9,7 @@ import { filteredAdsReducer } from './adsByCategory/reducer'
 import { categoriesReducer } from './categories/reducer'
 import { categoriesSaga } from './categories/saga'
 import { countriesReducer } from './countries/reducer'
+import { countriesSaga } from './countries/saga'
 import { usersReducer } from './users/reducer'
 import { usersSaga } from './users/saga'
 
@@ -23,7 +24,7 @@ const rootReducer = {
 }
 
 function* rootSaga() {
-  yield all([categoriesSaga(), usersSaga(), adsSaga()])
+  yield all([categoriesSaga(), usersSaga(), adsSaga(), countriesSaga()])
 }
 
 const sagaMiddleware = createSagaMiddleware()

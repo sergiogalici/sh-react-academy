@@ -1,18 +1,14 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { getAds } from './api'
 import { CurrencyProvider } from './components/CurrencyProvider'
 import { Layout } from './components/Layout'
-import { adsActions } from './feature/ads/reducer'
-import { selectMappedAds } from './feature/ads/selector'
 import { categoriesActions } from './feature/categories/reducer'
-import { fetchCategories } from './feature/categories/saga'
+import { countriesActions } from './feature/countries/reducer'
 import { usersActions } from './feature/users/reducer'
 import { AdDetail } from './pages/AdDetail'
 import { Ads } from './pages/Ads'
-import { AdsByCategory } from './pages/AdsByCategory'
 import { Home } from './pages/Home'
 import { GlobalStyle } from './style/GlobalStyle'
 import { theme } from './style/theme'
@@ -23,6 +19,7 @@ function App() {
   useEffect(() => {
     dispatch(usersActions.fetchUsersRequested())
     dispatch(categoriesActions.fetchCategoriesRequested())
+    dispatch(countriesActions.fetchCountriesRequested())
   }, [dispatch])
 
   return (

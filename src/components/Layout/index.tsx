@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 import { adModalActions } from '../../feature/adModal/reducers'
 import { selectAdModal } from '../../feature/adModal/selector'
+import { selectAllCategories } from '../../feature/categories/selectors'
+import { selectAllCountries } from '../../feature/countries/selector'
 import { Button } from '../Button'
 import { HeaderContainer } from '../HeaderContainer'
 import { Input } from '../Input'
 import { MainContainer } from '../MainContainer'
 import { Modal } from '../Modal'
+import { Select } from '../Select'
 import { Text } from '../Text'
 import { Wrapper } from '../Wrapper'
 
@@ -15,6 +18,12 @@ type LayoutProps = {}
 
 export const Layout = (props: LayoutProps) => {
   const { showModal } = useSelector(selectAdModal)
+  const categories = useSelector(selectAllCategories)
+  const countries = useSelector(selectAllCountries)
+  const optCountries = countries.map((country) => country.name)
+  const optCategories = categories.map((cat) => cat.title)
+  const [selCountry, setSelCountry] = useState(optCountries[0])
+  const [selCategory, setSelCategory] = useState(optCategories[0])
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -37,10 +46,25 @@ export const Layout = (props: LayoutProps) => {
               <Input fullWidth borderRadius={1} placeText="Inserisci un titolo" />
               <Input fullWidth borderRadius={1} placeText="Inserisci una descrizione" />
               <Input fullWidth borderRadius={1} placeText="Inserisci il tuo nome" />
-              <Input fullWidth borderRadius={1} placeText="Seleziona la nazione" />
+              <Select
+                fullWidth
+                padding="sm"
+                borderRadius={1}
+                value={selCountry}
+                options={optCountries}
+                onChange={(value) => setSelCountry(value)}
+              />
               <Input fullWidth borderRadius={1} placeText="Inserisci un URL" />
               <Input fullWidth borderRadius={1} placeText="Inserisci il prezzo" />
               <Input fullWidth borderRadius={1} placeText="Seleziona la categoria" />
+              <Select
+                fullWidth
+                padding="sm"
+                borderRadius={1}
+                value={selCategory}
+                options={optCategories}
+                onChange={(value) => setSelCategory(value)}
+              />
             </form>
             <Button
               fullWidth
