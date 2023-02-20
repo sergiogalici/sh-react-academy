@@ -13,6 +13,6 @@ export const StyledSelect = styled.select<StyledSelectProps>`
   padding: ${({ padding, theme }) => theme.spacing[padding]}px;
   color: ${({ color, theme }) => (color ? theme.colors[color] : 'inherit')};
   ${({ borderRadius, theme }) =>
-    borderRadius && `border-radius: ${theme.radii[borderRadius]}px`}
+    borderRadius && `border-radius: ${theme.radii[borderRadius]}px;`}
   outline: none;
 `
