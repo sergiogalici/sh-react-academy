@@ -3,13 +3,14 @@ import styled from 'styled-components'
 export const StyledProductCard = styled.div`
   background-color: white;
   display: flex;
-  gap: 20px;
-  padding: 15px;
+  justify-content: center;
+  align-items: stretch;
+  gap: ${({ theme }) => theme.spacing.md}px;
+  padding: ${({ theme }) => theme.spacing.md}px;
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
   border-radius: ${({ theme }) => theme.radii[1]}px;
-  width: 100%;
 
-  .left {
+  .image-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,26 +19,25 @@ export const StyledProductCard = styled.div`
     width: 200px;
   }
 
-  .right {
-    display: flex;
-    flex-direction: row;
-    flex: 3;
-  }
-
-  .right__left {
+  .category-title-author {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  .right__left-bottom {
+  .title-container {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .author-rating {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12px;
+    gap: ${({ theme }) => theme.spacing.sm}px;
   }
 
-  .right_right {
+  .price-container {
     margin: auto;
   }
 `
