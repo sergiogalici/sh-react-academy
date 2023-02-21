@@ -31,34 +31,32 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <StyledProductCard>
-      <div className="left">
+      <div className="image-container">
         <Image width={200} height={300} src={imageSrc} alt={description} cover={false} />
       </div>
-      <div className="right">
-        <div className="right__left">
-          <div className="right__left-top">
-            <Text bold upperCase color="lightGray" variant="p">
-              {category}
+      <div className="category-title-author">
+        <div className="category-title">
+          <Text bold upperCase color="lightGray" variant="p">
+            {category}
+          </Text>
+          <div>
+            <Text color="primary" variant="h4" className="title-container">
+              {title}
             </Text>
-            <div>
-              <Text color="primary" variant="h4">
-                {title}
-              </Text>
-              <Text>{`Annuncio pubblicato il ${new Date(created_at).toLocaleString(
-                'it-IT'
-              )}`}</Text>
-            </div>
-          </div>
-          <div className="right__left-bottom">
-            <Text variant="p" bold>
-              {authorName}
-            </Text>
-            <Rating rating={rating} />
+            <Text>{`Annuncio pubblicato il ${new Date(created_at).toLocaleString(
+              'it-IT'
+            )}`}</Text>
           </div>
         </div>
-        <div className="right_right">
-          <FormattedPrice price={price} variant="p" size="xl" />
+        <div className="author-rating">
+          <Text variant="p" bold>
+            {authorName}
+          </Text>
+          <Rating rating={rating} />
         </div>
+      </div>
+      <div className="price-container">
+        <FormattedPrice price={price} variant="p" size="xl" />
       </div>
       <Icon fontSize="lg" color="primary" size="1x" icon="heart" />
     </StyledProductCard>

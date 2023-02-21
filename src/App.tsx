@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { CurrencyProvider } from './components/CurrencyProvider'
+import InsertAdModal from './components/InsertAdModal'
 import { Layout } from './components/Layout'
-import { adsActions } from './feature/ads/reducer'
 import { categoriesActions } from './feature/categories/reducer'
 import { countriesActions } from './feature/countries/reducer'
 import { usersActions } from './feature/users/reducer'
@@ -27,6 +27,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <CurrencyProvider>
+        <InsertAdModal />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>

@@ -1,9 +1,7 @@
 import { ReactNode, useContext } from 'react'
 import { RatesKeys } from '../../api/type'
 import { CurrencyContext } from '../../contexts/currency'
-import { Icon } from '../Icon'
 import { Select } from '../Select'
-import { Text } from '../Text'
 import { StyledHeaderBanner, StyledHeaderBannerProps } from './styled'
 
 type Props = Partial<StyledHeaderBannerProps> & {
@@ -23,6 +21,7 @@ export const HeaderBanner = ({ title }: Props) => {
     <StyledHeaderBanner>
       {title}
       <Select
+        borderRadius={1}
         options={currencyOptions}
         onChange={(value) => updateActiveCurrency(value)}
         value={activeCurrency}
