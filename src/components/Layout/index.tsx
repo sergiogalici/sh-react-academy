@@ -17,13 +17,6 @@ import { Wrapper } from '../Wrapper'
 type LayoutProps = {}
 
 export const Layout = (props: LayoutProps) => {
-  const { showModal } = useSelector(selectAdModal)
-  const categories = useSelector(selectAllCategories)
-  const countries = useSelector(selectAllCountries)
-  const optCountries = countries.map((country) => country.name)
-  const optCategories = categories.map((cat) => cat.title)
-  const [selCountry, setSelCountry] = useState(optCountries[0])
-  const [selCategory, setSelCategory] = useState(optCategories[0])
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,62 +24,14 @@ export const Layout = (props: LayoutProps) => {
   }, [dispatch])
 
   return (
-    <>
-      {showModal && (
-        <Modal>
-          <div className="card-panel">
-            <Button
-              size="md"
-              variant="secondary"
-              icon={['fas', 'xmark']}
-              onClick={() => dispatch(adModalActions.showModal(false))}
-            />
-            <Text size="lg">Inserisci un nuovo annuncio</Text>
-            <form className="input-list">
-              <Input fullWidth borderRadius={1} placeText="Inserisci un titolo" />
-              <Input fullWidth borderRadius={1} placeText="Inserisci una descrizione" />
-              <Input fullWidth borderRadius={1} placeText="Inserisci il tuo nome" />
-              <Select
-                fullWidth
-                padding="sm"
-                borderRadius={1}
-                value={selCountry}
-                options={optCountries}
-                onChange={(value) => setSelCountry(value)}
-              />
-              <Input fullWidth borderRadius={1} placeText="Inserisci un URL" />
-              <Input fullWidth borderRadius={1} placeText="Inserisci il prezzo" />
-              <Input fullWidth borderRadius={1} placeText="Seleziona la categoria" />
-              <Select
-                fullWidth
-                padding="sm"
-                borderRadius={1}
-                value={selCategory}
-                options={optCategories}
-                onChange={(value) => setSelCategory(value)}
-              />
-            </form>
-            <Button
-              fullWidth
-              size="md"
-              fontSize="lg"
-              variant="primary"
-              onClick={() => dispatch(adModalActions.showModal(false))}
-            >
-              Conferma
-            </Button>
-          </div>
-        </Modal>
-      )}
-      <Wrapper>
-        <MainContainer>
-          <main>
-            <HeaderContainer />
-            <Outlet />
-            <div>Footer</div>
-          </main>
-        </MainContainer>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <MainContainer>
+        <main>
+          <HeaderContainer />
+          <Outlet />
+          <div>Footer</div>
+        </main>
+      </MainContainer>
+    </Wrapper>
   )
 }
