@@ -9,8 +9,8 @@ export type AdDto = {
   premium: boolean
   hidden: boolean
   countryId: string
-  created_at: string
-  updated_at: string
+  created_at: number
+  updated_at: number
 }
 
 export type CountryDto = {

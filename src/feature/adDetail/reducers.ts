@@ -7,14 +7,14 @@ const initialState: AdState = {
     authorId: '',
     categoryIds: [],
     countryId: '',
-    created_at: '',
+    created_at: 0,
     description: '',
     id: '',
     images: [],
     premium: true,
     price: { currency: 'EUR', value: 0 },
     title: '',
-    updated_at: '',
+    updated_at: 0,
     hidden: false
   }
 }
