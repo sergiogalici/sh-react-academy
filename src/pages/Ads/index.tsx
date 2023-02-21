@@ -8,7 +8,7 @@ import { makeSelectAds } from '../../feature/ads/selector'
 export const Ads = () => {
   const { category } = useParams()
   const dispatch = useDispatch()
-  const ads = useSelector(makeSelectAds({ category: category }))
+  const ads = useSelector(makeSelectAds(category))
 
   useEffect(() => {
     dispatch(adsActions.fetchAdsRequested())

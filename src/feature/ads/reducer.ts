@@ -1,8 +1,11 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AdDto } from '../../api/type'
-import { AdsState } from './model'
+import { AdsState, FilterDataType } from './model'
 
-const initialState: AdsState = { allAds: [] }
+const initialState: AdsState = {
+  allAds: [],
+  filterData: { filter: 'created_at', order: 'ASC' }
+}
 
 const adsSlice = createSlice({
   name: 'ads',
@@ -13,6 +16,9 @@ const adsSlice = createSlice({
     },
     fetchAdsFailed: (state, { payload }: PayloadAction<string>) => {
       state.error = payload
+    },
+    filterDataAction: (state, { payload }: PayloadAction<FilterDataType>) => {
+      state.filterData = payload
     }
   }
 })
