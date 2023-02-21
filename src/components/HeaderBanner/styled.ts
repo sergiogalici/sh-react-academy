@@ -5,7 +5,7 @@ export type StyledHeaderBannerProps = {
 }
 
 export const StyledHeaderBanner = styled.div<StyledHeaderBannerProps>`
-  padding: ${({ theme }) => theme.spacing.sm}px;
+  padding: ${({ theme }) => theme.spacing.md}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,4 +13,10 @@ export const StyledHeaderBanner = styled.div<StyledHeaderBannerProps>`
     height ? `${typeof height === 'string' ? height : `${height}px`}` : 'fit-content'};
   width: 100%;
   background-color: ${({ theme }) => theme.colors.primary};
+  position: relative;
+
+  select {
+    position: absolute;
+    right: ${({ theme }) => theme.spacing.sm}px;
+  }
 `
