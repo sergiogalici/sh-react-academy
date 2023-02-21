@@ -6,7 +6,10 @@ import { Rating } from '../Rating'
 import { Text } from '../Text'
 import { StyledProductCard } from './styled'
 
-type ProductCardProps = Partial<AdDto> & {
+type ProductCardProps = Omit<
+  AdDto,
+  'authorId' | 'categoryIds' | 'id' | 'updated_at' | 'images' | 'countryId'
+> & {
   // TODO REMOVE OPTIONAL
   imageSrc: string
   rating: number
@@ -17,13 +20,14 @@ type ProductCardProps = Partial<AdDto> & {
 export const ProductCard = ({
   title,
   description = 'item is not present',
-  authorId,
   price = { value: 0, currency: 'EUR' },
   imageSrc,
   premium,
+  hidden,
   rating,
   authorName,
-  category
+  category,
+  created_at
 }: ProductCardProps) => {
   return (
     <StyledProductCard>
@@ -36,9 +40,14 @@ export const ProductCard = ({
             <Text bold upperCase color="lightGray" variant="p">
               {category}
             </Text>
-            <Text color="primary" variant="h4">
-              {title}
-            </Text>
+            <div>
+              <Text color="primary" variant="h4">
+                {title}
+              </Text>
+              <Text>{`Annuncio pubblicato il ${new Date(created_at).toLocaleString(
+                'it-IT'
+              )}`}</Text>
+            </div>
           </div>
           <div className="right__left-bottom">
             <Text variant="p" bold>

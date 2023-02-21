@@ -27,8 +27,11 @@ export const ProductsContainer = ({ products, category }: Props) => {
               rating={ad.author.rating}
               title={ad.title}
               price={ad.price}
+              created_at={ad.created_at}
               description={ad.description}
               imageSrc={ad.images[0]}
+              premium={ad.premium}
+              hidden={ad.hidden}
             />
           </Link>
         )

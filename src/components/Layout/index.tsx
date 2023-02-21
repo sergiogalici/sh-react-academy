@@ -31,6 +31,8 @@ export const Layout = (props: LayoutProps) => {
   }, [dispatch])
 
   return (
+    // TODO extract modal to its own component
+    // TODO abstract state from Redux to React useState
     <>
       {showModal && (
         <Modal>
