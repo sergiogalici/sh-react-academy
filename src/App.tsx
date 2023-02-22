@@ -10,6 +10,7 @@ import { countriesActions } from './feature/countries/reducer'
 import { usersActions } from './feature/users/reducer'
 import { AdDetail } from './pages/AdDetail'
 import { Ads } from './pages/Ads'
+import { Favourites } from './pages/Favourites'
 import { Home } from './pages/Home'
 import { GlobalStyle } from './style/GlobalStyle'
 import { theme } from './style/theme'
@@ -35,6 +36,7 @@ function App() {
               <Route path="ads" element={<Ads />} />
               <Route path="ads/:category" element={<Ads />} />
               <Route path="ads/:category/:id" element={<AdDetail />} />
+              <Route path="favourites" element={<Favourites />} />
             </Route>
           </Routes>
         </BrowserRouter>

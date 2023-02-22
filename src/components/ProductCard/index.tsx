@@ -70,6 +70,7 @@ export const ProductCard = ({
           color="primary"
           backgroundColor="textLight"
           icon={['far', 'heart']}
+          onClick={() => console.log('button clicked')}
         />
       </div>
     </StyledProductCard>

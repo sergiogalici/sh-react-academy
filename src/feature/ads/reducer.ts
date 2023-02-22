@@ -22,6 +22,7 @@ const adsSlice = createSlice({
       state.filterData = payload
     },
     favouritesAction: (state, { payload }: PayloadAction<AdDto[]>) => {
+      // TODO HANDLE 2 CASES: added to favs and removed from favs
       state.favourites = payload
     }
   }

@@ -17,7 +17,7 @@ export const Nav = ({ links }: NavProps) => {
   return (
     <StyledNav>
       {links.map((link) => (
-        <Link to={link.to}>
+        <Link to={link.to} key={link.id}>
           {link.title}
           {link.value && (
             <Button variant="primary" borderRadius={3}>

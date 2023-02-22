@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { ProductsContainer } from '../../components/ProductsContainer'
 import { adsActions } from '../../feature/ads/reducer'
-import { makeSelectAds, selectFavourites } from '../../feature/ads/selector'
+import { selectMappedFavourites } from '../../feature/ads/selector'
 
-export const Ads = () => {
+export const Favourites = () => {
   const { category } = useParams()
   const dispatch = useDispatch()
-  const ads = useSelector(makeSelectAds(category))
+  const favourites = useSelector(selectMappedFavourites)
 
   useEffect(() => {
     dispatch(adsActions.fetchAdsRequested())
   }, [dispatch])
 
-  return <ProductsContainer products={ads} category={category} />
+  return <ProductsContainer products={favourites} category={category} />
 }
