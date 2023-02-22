@@ -9,6 +9,7 @@ export const StyledProductCard = styled.div`
   padding: ${({ theme }) => theme.spacing.md}px;
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
   border-radius: ${({ theme }) => theme.radii[1]}px;
+  position: relative;
 
   .link-container {
     width: 100%;
@@ -47,5 +48,7 @@ export const StyledProductCard = styled.div`
 
   .button-container > svg {
     pointer-events: none;
+    z-index: 4;
+    position: absolute;
   }
 `

@@ -18,7 +18,7 @@ export const HeaderContainer = () => {
     { title: 'Subito per le Aziende', to: '#', id: 4 },
     { title: 'Aiuto', to: '#', id: 5 },
     { title: 'Ricerche salvate', to: '#', id: 6 },
-    { title: 'Preferiti', to: '#', id: 7, value: favourites.length.toString() }
+    { title: 'Preferiti', to: '/favourites', id: 7, value: favourites.length.toString() }
   ]
 
   return (
