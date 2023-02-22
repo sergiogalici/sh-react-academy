@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { SyntheticEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
 import { adsActions } from '../../feature/ads/reducer'
@@ -40,8 +40,9 @@ export const ProductCard = ({
   const dispatch = useDispatch()
   const ads = useSelector(selectAllAds)
 
-  const handleFavButton = (adId: string) => {
-    const selectedAd = ads.find((ad) => ad.id === adId)
+  const handleFavButton = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    const selectedAd = ads.find((ad) => ad.id === id)
     dispatch(adsActions.favouritesAction(selectedAd!))
   }
   return (
@@ -84,10 +85,7 @@ export const ProductCard = ({
           color="primary"
           backgroundColor="textLight"
           icon={fullHeart ? ['fas', 'heart'] : ['far', 'heart']}
-          onClick={() => {
-            console.log('button clicked')
-            handleFavButton(id)
-          }}
+          onClick={handleFavButton}
         />
       </div>
     </StyledProductCard>
