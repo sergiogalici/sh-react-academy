@@ -15,4 +15,5 @@ export type FilterDataType = {
 export type MappedAdsType = Omit<AdDto, 'authorId' | 'categoryIds'> & {
   author: UserDto
   category: CategoryDto
+  favourite?: boolean
 }

@@ -32,6 +32,8 @@ export const ProductsContainer = ({ products, category }: Props) => {
               imageSrc={ad.images[0]}
               premium={ad.premium}
               hidden={ad.hidden}
+              id={ad.id}
+              fullHeart={ad.favourite ? ad.favourite : false}
             />
           </Link>
         )

@@ -1,4 +1,8 @@
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
+import { adsActions } from '../../feature/ads/reducer'
+import { makeSelectAds, selectAllAds, selectMappedAds } from '../../feature/ads/selector'
 import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
 import { Icon } from '../Icon'
@@ -9,13 +13,14 @@ import { StyledProductCard } from './styled'
 
 type ProductCardProps = Omit<
   AdDto,
-  'authorId' | 'categoryIds' | 'id' | 'updated_at' | 'images' | 'countryId'
+  'authorId' | 'categoryIds' | 'updated_at' | 'images' | 'countryId'
 > & {
   // TODO REMOVE OPTIONAL
   imageSrc: string
   rating: number
   authorName: string
   category: string
+  fullHeart: boolean
 }
 
 export const ProductCard = ({
@@ -28,8 +33,17 @@ export const ProductCard = ({
   rating,
   authorName,
   category,
-  created_at
+  created_at,
+  id,
+  fullHeart
 }: ProductCardProps) => {
+  const dispatch = useDispatch()
+  const ads = useSelector(selectAllAds)
+
+  const handleFavButton = (adId: string) => {
+    const selectedAd = ads.find((ad) => ad.id === adId)
+    dispatch(adsActions.favouritesAction(selectedAd!))
+  }
   return (
     <StyledProductCard>
       <div className="image-container">
@@ -69,8 +83,11 @@ export const ProductCard = ({
           fontSize="lg"
           color="primary"
           backgroundColor="textLight"
-          icon={['far', 'heart']}
-          onClick={() => console.log('button clicked')}
+          icon={fullHeart ? ['fas', 'heart'] : ['far', 'heart']}
+          onClick={() => {
+            console.log('button clicked')
+            handleFavButton(id)
+          }}
         />
       </div>
     </StyledProductCard>
