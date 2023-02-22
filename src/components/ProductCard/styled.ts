@@ -10,6 +10,10 @@ export const StyledProductCard = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
   border-radius: ${({ theme }) => theme.radii[1]}px;
 
+  .link-container {
+    width: 100%;
+  }
+
   .image-container {
     display: flex;
     justify-content: center;
@@ -39,5 +43,9 @@ export const StyledProductCard = styled.div`
 
   .price-container {
     margin: auto;
+  }
+
+  .button-container > svg {
+    pointer-events: none;
   }
 `

@@ -48,12 +48,16 @@ export const makeSelectAds = (category?: string) =>
   createSelector(makeSelectFilteredAds(category), selectFilterData, (ads, { filter, order }) => {
     if (filter === 'value') {
       return [...ads].sort((a, b) => {
+        if (a.premium && !b.premium) return -1
+        if (!a.premium && b.premium) return 1
         return order === 'ASC' ? a.price.value - b.price.value : b.price.value - a.price.value
       })
     }
 
     if (filter === 'created_at') {
       return [...ads].sort((a, b) => {
+        if (a.premium && !b.premium) return -1
+        if (!a.premium && b.premium) return 1
         return order === 'ASC' ? a.created_at - b.created_at : b.created_at - a.created_at
       })
     }

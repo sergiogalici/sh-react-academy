@@ -1,4 +1,5 @@
 import { AdDto } from '../../api/type'
+import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
 import { Icon } from '../Icon'
 import { Image } from '../Image'
@@ -58,7 +59,19 @@ export const ProductCard = ({
       <div className="price-container">
         <FormattedPrice price={price} variant="p" size="xl" />
       </div>
-      <Icon fontSize="lg" color="primary" size="1x" icon="heart" />
+      {premium && (
+        <Text color="primary" bold>
+          Featured
+        </Text>
+      )}
+      <div className="button-container">
+        <Button
+          fontSize="lg"
+          color="primary"
+          backgroundColor="textLight"
+          icon={['far', 'heart']}
+        />
+      </div>
     </StyledProductCard>
   )
 }
