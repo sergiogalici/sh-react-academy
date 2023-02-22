@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom'
 import { Button } from '../Button'
-import { Link } from '../Link'
 import { StyledNav, StyledNavProps } from './styled'
 
 export type NavLink = {
@@ -19,7 +19,11 @@ export const Nav = ({ links }: NavProps) => {
       {links.map((link) => (
         <Link to={link.to}>
           {link.title}
-          {link.value && <Button variant="primary">{link.value}</Button>}
+          {link.value && (
+            <Button variant="primary" borderRadius={3}>
+              {link.value}
+            </Button>
+          )}
         </Link>
       ))}
     </StyledNav>

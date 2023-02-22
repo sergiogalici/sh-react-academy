@@ -10,6 +10,12 @@ export const StyledNav = styled.nav<StyledNavProps>`
 
   & a {
     width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 ${({ theme }) => theme.spacing.md}px;
+    gap: ${({ theme }) => theme.spacing.sm}px;
+    color: ${({ theme }) => theme.colors.lightGray};
   }
 
   & :not(:last-child) {
