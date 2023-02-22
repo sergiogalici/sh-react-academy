@@ -16,7 +16,8 @@ export const BaseButton = styled.button<BaseBtnProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  text-align: center;
+  gap: ${({ theme }) => theme.spacing.sm}px;
   border-radius: ${({ borderRadius, theme }) => theme.radii[borderRadius]}px;
   padding: ${({ theme, size }) =>
     `${theme.spacing[size] / 2}px ${theme.spacing[size]}px`};
