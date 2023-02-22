@@ -10,6 +10,8 @@ const selectAds = (state: RootState) => state.ads
 
 export const selectAllAds = createSelector(selectAds, ({ allAds }) => allAds)
 
+export const selectFavourites = createSelector(selectAds, ({ favourites }) => favourites)
+
 export const selectMappedAds = createSelector(
   [selectAds, selectCategoryById, selectUsersById],
   ({ allAds }, categoriesMap, usersMap) => {

@@ -4,7 +4,8 @@ import { AdsState, FilterDataType } from './model'
 
 const initialState: AdsState = {
   allAds: [],
-  filterData: { filter: 'created_at', order: 'ASC' }
+  filterData: { filter: 'created_at', order: 'ASC' },
+  favourites: []
 }
 
 const adsSlice = createSlice({
@@ -19,6 +20,9 @@ const adsSlice = createSlice({
     },
     filterDataAction: (state, { payload }: PayloadAction<FilterDataType>) => {
       state.filterData = payload
+    },
+    favouritesAction: (state, { payload }: PayloadAction<AdDto[]>) => {
+      state.favourites = payload
     }
   }
 })
