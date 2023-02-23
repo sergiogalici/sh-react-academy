@@ -1,11 +1,9 @@
-import { SyntheticEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
 import { adsActions } from '../../feature/ads/reducer'
-import { makeSelectAds, selectAllAds, selectMappedAds } from '../../feature/ads/selector'
+import { selectAllAds } from '../../feature/ads/selector'
 import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
-import { Icon } from '../Icon'
 import { Image } from '../Image'
 import { Rating } from '../Rating'
 import { Text } from '../Text'
@@ -15,7 +13,6 @@ type ProductCardProps = Omit<
   AdDto,
   'authorId' | 'categoryIds' | 'updated_at' | 'images' | 'countryId'
 > & {
-  // TODO REMOVE OPTIONAL
   imageSrc: string
   rating: number
   authorName: string
