@@ -10,6 +10,7 @@ import { HeaderContainer } from '../HeaderContainer'
 import { Input } from '../Input'
 import { MainContainer } from '../MainContainer'
 import { Modal } from '../Modal'
+import { NotificationManager } from '../NotificationManager'
 import { Select } from '../Select'
 import { Text } from '../Text'
 import { Wrapper } from '../Wrapper'
@@ -28,6 +29,8 @@ export const Layout = (props: LayoutProps) => {
       <MainContainer>
         <main>
           <HeaderContainer />
+          <NotificationManager />
+
           <Outlet />
           <div>Footer</div>
         </main>

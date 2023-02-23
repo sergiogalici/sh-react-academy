@@ -4,6 +4,7 @@ import { selectFavourites } from '../../feature/ads/selector'
 import { AuthBanner } from '../AuthBanner'
 import { HeaderBanner } from '../HeaderBanner'
 import { Nav, NavLink, NavProps } from '../Nav'
+import { NotificationManager } from '../NotificationManager'
 import { Text } from '../Text'
 import { StyledHeaderContainerProps } from './styled'
 
