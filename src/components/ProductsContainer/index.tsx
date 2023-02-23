@@ -16,11 +16,7 @@ export const ProductsContainer = ({ products, category }: Props) => {
       <Text color="lightGray" variant="h6">{`${products.length} risultati`}</Text>
       <Text variant="h6">{category ? category : 'Annunci'}</Text>
       <div className="products-section">
-        <ProductsFilter className="products-filter">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non voluptate eaque
-          aliquam, dolore vero nobis fugit unde nulla voluptatem quam expedita.
-          Accusantium a eligendi nesciunt ullam mollitia officiis quas amet.
-        </ProductsFilter>
+        <ProductsFilter className="products-filter" />
         <div className="products-list">
           {products.map((ad) => {
             return (
