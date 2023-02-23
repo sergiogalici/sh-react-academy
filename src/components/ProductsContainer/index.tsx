@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { MappedAdsType } from '../../feature/ads/model'
+import { makeSelectFilteredAds } from '../../feature/ads/selector'
 import { ProductCard } from '../ProductCard'
 import { Text } from '../Text'
 import { StyledProdContainer } from './styled'
@@ -33,7 +35,6 @@ export const ProductsContainer = ({ products, category }: Props) => {
               premium={ad.premium}
               hidden={ad.hidden}
               id={ad.id}
-              fullHeart={ad.favourite ? ad.favourite : false}
             />
           </Link>
         )

@@ -21,8 +21,7 @@ export const selectMappedAds = createSelector(
       return {
         ...ad,
         category: categoriesMap[categoryIds[0]] ?? {},
-        author: usersMap[authorId] ?? {},
-        favourite: favourites.some((fav) => fav.id === ad.id)
+        author: usersMap[authorId] ?? {}
       }
     })
   }
@@ -35,8 +34,7 @@ export const selectMappedFavourites = createSelector(
       return {
         ...ad,
         category: categoriesMap[categoryIds[0]] ?? {},
-        author: usersMap[authorId] ?? {},
-        favourite: true
+        author: usersMap[authorId] ?? {}
       }
     })
   }
@@ -55,11 +53,11 @@ export const adsByCategory = createSelector(
   }
 )
 
-const makeSelectAdsInFavourites = (id: keyof MappedAdsType) => createSelector(selectMappedFavourites, (favourites) => {
+export const makeSelectAdsInFavourites = (id: keyof MappedAdsType) => createSelector(selectMappedFavourites, (favourites) => {
   return favourites.some((fav) => fav.id === id)
 })
 
-const makeSelectFilteredAds = (category?: string) => createSelector(selectMappedAds, (ads) => {
+export const makeSelectFilteredAds = (category?: string) => createSelector(selectMappedAds, (ads) => {
   return category
     ? ads.filter((ad) => ad.category.title?.toLocaleLowerCase() === category.toLowerCase())
     : ads
@@ -85,3 +83,7 @@ export const makeSelectAds = (category?: string) =>
 
     return ads
   })
+
+export const makeSelectAd = (id: keyof MappedAdsType) => createSelector(selectAllAds, (ads) => {
+  return ads.find((ad) => ad.id === id)
+})

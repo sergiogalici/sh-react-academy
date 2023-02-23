@@ -1,7 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
+import { MappedAdsType } from '../../feature/ads/model'
 import { adsActions } from '../../feature/ads/reducer'
-import { selectAllAds } from '../../feature/ads/selector'
+import {
+  makeSelectAd,
+  makeSelectAdsInFavourites,
+  makeSelectFilteredAds,
+  selectAllAds
+} from '../../feature/ads/selector'
 import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
 import { Image } from '../Image'
@@ -17,7 +23,6 @@ type ProductCardProps = Omit<
   rating: number
   authorName: string
   category: string
-  fullHeart: boolean
 }
 
 export const ProductCard = ({
@@ -31,15 +36,14 @@ export const ProductCard = ({
   authorName,
   category,
   created_at,
-  id,
-  fullHeart
+  id
 }: ProductCardProps) => {
   const dispatch = useDispatch()
-  const ads = useSelector(selectAllAds)
+  const selectedAd = useSelector(makeSelectAd(id as keyof MappedAdsType))
+  const adInFav = useSelector(makeSelectAdsInFavourites(id as keyof MappedAdsType))
 
   const handleFavButton = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    const selectedAd = ads.find((ad) => ad.id === id)
     dispatch(adsActions.favouritesAction(selectedAd!))
   }
   return (
@@ -81,7 +85,7 @@ export const ProductCard = ({
           fontSize="lg"
           color="primary"
           backgroundColor="textLight"
-          icon={fullHeart ? ['fas', 'heart'] : ['far', 'heart']}
+          icon={adInFav ? ['fas', 'heart'] : ['far', 'heart']}
           onClick={handleFavButton}
         />
       </div>
