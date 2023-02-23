@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import { CurrencyProvider } from './components/CurrencyProvider'
 import InsertAdModal from './components/InsertAdModal'
 import { Layout } from './components/Layout'
+import { NotificationCard } from './components/NotificationCard'
 import { adsActions } from './feature/ads/reducer'
 import { categoriesActions } from './feature/categories/reducer'
 import { countriesActions } from './feature/countries/reducer'
@@ -30,6 +31,7 @@ function App() {
       <GlobalStyle />
       <CurrencyProvider>
         <InsertAdModal />
+        <NotificationCard text="L'annuncio è stato inserito tra i Preferiti!" />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
