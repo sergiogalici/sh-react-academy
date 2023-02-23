@@ -36,6 +36,11 @@ export const ProductCard = ({
         <Image width={200} height={300} src={imageSrc} alt={description} cover={false} />
       </div>
       <div className="category-title-author">
+        {premium && (
+          <Text color="primary" bold>
+            Featured
+          </Text>
+        )}
         <div className="category-title">
           <Text bold upperCase color="lightGray" variant="p">
             {category}
@@ -59,18 +64,12 @@ export const ProductCard = ({
       <div className="price-container">
         <FormattedPrice price={price} variant="p" size="xl" />
       </div>
-      {premium && (
-        <Text color="primary" bold>
-          Featured
-        </Text>
-      )}
       <div className="button-container">
         <Button
           fontSize="lg"
           color="primary"
           backgroundColor="textLight"
           icon={['far', 'heart']}
-          onClick={() => console.log('button clicked')}
         />
       </div>
     </StyledProductCard>
