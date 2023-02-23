@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FilterDataType } from '../../feature/ads/model'
 import { adsActions } from '../../feature/ads/reducer'
@@ -10,9 +11,12 @@ export type Props = {
 
 export const ProductsFilter = ({ className }: Props) => {
   const { filter, order } = useSelector(selectFilterData)
+  const [selectedFilter, setSelectedFilter] = useState<FilterDataType>({ filter, order })
   const dispatch = useDispatch()
 
-  console.log({ filter })
+  useEffect(() => {
+    dispatch(adsActions.filterDataAction(selectedFilter))
+  }, [dispatch, selectedFilter])
 
   return (
     <StyledProductsFilter className={className}>
@@ -23,11 +27,10 @@ export const ProductsFilter = ({ className }: Props) => {
             value={'created_at'}
             checked={filter !== 'value'}
             onChange={(e) =>
-              dispatch(
-                adsActions.filterDataAction({
-                  filter: e.target.value as keyof FilterDataType['filter']
-                })
-              )
+              setSelectedFilter({
+                ...selectedFilter,
+                filter: e.target.value as keyof FilterDataType['filter']
+              })
             }
           />
           Created at
@@ -38,11 +41,10 @@ export const ProductsFilter = ({ className }: Props) => {
             value={'value'}
             checked={filter !== 'created_at'}
             onChange={(e) =>
-              dispatch(
-                adsActions.filterDataAction({
-                  filter: e.target.value as keyof FilterDataType['filter']
-                })
-              )
+              setSelectedFilter({
+                ...selectedFilter,
+                filter: e.target.value as keyof FilterDataType['filter']
+              })
             }
           />
           Value
@@ -55,11 +57,10 @@ export const ProductsFilter = ({ className }: Props) => {
             value={'ASC'}
             checked={order !== 'DESC'}
             onChange={(e) =>
-              dispatch(
-                adsActions.filterDataAction({
-                  order: e.target.value as keyof FilterDataType['order']
-                })
-              )
+              setSelectedFilter({
+                ...selectedFilter,
+                order: e.target.value as keyof FilterDataType['order']
+              })
             }
           />
           Ascending
@@ -70,11 +71,10 @@ export const ProductsFilter = ({ className }: Props) => {
             value={'DESC'}
             checked={order !== 'ASC'}
             onChange={(e) =>
-              dispatch(
-                adsActions.filterDataAction({
-                  order: e.target.value as keyof FilterDataType['order']
-                })
-              )
+              setSelectedFilter({
+                ...selectedFilter,
+                order: e.target.value as keyof FilterDataType['order']
+              })
             }
           />
           Descending
