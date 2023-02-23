@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { ReactNode } from 'react'
+import { ReactNode, SyntheticEvent } from 'react'
 import { theme } from '../../style/theme'
 import { Icon } from '../Icon'
 import { Text } from '../Text'
@@ -10,7 +10,7 @@ type Props = Partial<BaseBtnProps> & {
   className?: string
   variant?: keyof typeof variants
   children?: ReactNode
-  onClick?: () => void
+  onClick?: (event: SyntheticEvent) => void
   icon?: IconProp
 }
 

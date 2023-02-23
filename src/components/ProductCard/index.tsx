@@ -1,7 +1,15 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
+import { MappedAdsType } from '../../feature/ads/model'
+import { adsActions } from '../../feature/ads/reducer'
+import {
+  makeSelectAd,
+  makeSelectAdsInFavourites,
+  makeSelectFilteredAds,
+  selectAllAds
+} from '../../feature/ads/selector'
 import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
-import { Icon } from '../Icon'
 import { Image } from '../Image'
 import { Rating } from '../Rating'
 import { Text } from '../Text'
@@ -9,9 +17,8 @@ import { StyledProductCard } from './styled'
 
 type ProductCardProps = Omit<
   AdDto,
-  'authorId' | 'categoryIds' | 'id' | 'updated_at' | 'images' | 'countryId'
+  'authorId' | 'categoryIds' | 'updated_at' | 'images' | 'countryId'
 > & {
-  // TODO REMOVE OPTIONAL
   imageSrc: string
   rating: number
   authorName: string
@@ -28,8 +35,17 @@ export const ProductCard = ({
   rating,
   authorName,
   category,
-  created_at
+  created_at,
+  id
 }: ProductCardProps) => {
+  const dispatch = useDispatch()
+  const selectedAd = useSelector(makeSelectAd(id as keyof MappedAdsType))
+  const adInFav = useSelector(makeSelectAdsInFavourites(id as keyof MappedAdsType))
+
+  const handleFavButton = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    dispatch(adsActions.favouritesAction(selectedAd!))
+  }
   return (
     <StyledProductCard>
       <div className="image-container">
@@ -69,7 +85,8 @@ export const ProductCard = ({
           fontSize="lg"
           color="primary"
           backgroundColor="textLight"
-          icon={['far', 'heart']}
+          icon={adInFav ? ['fas', 'heart'] : ['far', 'heart']}
+          onClick={handleFavButton}
         />
       </div>
     </StyledProductCard>

@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { createSelector } from '@reduxjs/toolkit'
+import { selectFilteredAds } from '../adsByCategory/selector'
 import { selectAllCategories, selectCategoryById } from '../categories/selectors'
 import { RootState } from '../store'
 import { selectUsersById } from '../users/selector'
@@ -15,7 +16,7 @@ export const selectFilterData = createSelector(selectAds, ({ filterData }) => fi
 
 export const selectMappedAds = createSelector(
   [selectAds, selectCategoryById, selectUsersById],
-  ({ allAds }, categoriesMap, usersMap) => {
+  ({ allAds, favourites }, categoriesMap, usersMap) => {
     return allAds.map(({ authorId, categoryIds, ...ad }) => {
       return {
         ...ad,
@@ -52,7 +53,11 @@ export const adsByCategory = createSelector(
   }
 )
 
-const makeSelectFilteredAds = (category?: string) => createSelector(selectMappedAds, (ads) => {
+export const makeSelectAdsInFavourites = (id: keyof MappedAdsType) => createSelector(selectMappedFavourites, (favourites) => {
+  return favourites.some((fav) => fav.id === id)
+})
+
+export const makeSelectFilteredAds = (category?: string) => createSelector(selectMappedAds, (ads) => {
   return category
     ? ads.filter((ad) => ad.category.title?.toLocaleLowerCase() === category.toLowerCase())
     : ads
@@ -78,3 +83,7 @@ export const makeSelectAds = (category?: string) =>
 
     return ads
   })
+
+export const makeSelectAd = (id: keyof MappedAdsType) => createSelector(selectAllAds, (ads) => {
+  return ads.find((ad) => ad.id === id)
+})
