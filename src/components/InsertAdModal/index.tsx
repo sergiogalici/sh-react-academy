@@ -33,6 +33,27 @@ function InsertAdModal() {
   const showModal = useSelector(selectAdModal)
   const dispatch = useDispatch()
 
+  const handleSubmit = () => {
+    dispatch(adModalActions.showModal(false))
+    setBody({
+      ...body,
+      // correctly post a user instead of hardcoding a random ID
+      authorId: 'c7fe52f8-1802-471f-a3ce-bf2aa214eb76',
+      countryId: currentCountryId,
+      categoryIds: [currentCategoryId]
+    })
+    console.log('body at submit ', body)
+    if (Object.values(body).length === 4) {
+      setSubmit(true)
+    } else {
+      console.log(
+        'Complete all fields before submitting ',
+        Object.values(body).length,
+        body
+      )
+    }
+  }
+
   useEffect(() => {
     if (submit) {
       postAd(body)
@@ -111,25 +132,7 @@ function InsertAdModal() {
               size="md"
               fontSize="lg"
               variant="primary"
-              onClick={() => {
-                dispatch(adModalActions.showModal(false))
-                setBody({
-                  ...body,
-                  authorId: 'c7fe52f8-1802-471f-a3ce-bf2aa214eb76',
-                  countryId: currentCountryId,
-                  categoryIds: [currentCategoryId]
-                })
-                console.log('body at submit ', body)
-                if (Object.values(body).length === 4) {
-                  setSubmit(true)
-                } else {
-                  console.log(
-                    'Complete all fields before submitting ',
-                    Object.values(body).length,
-                    body
-                  )
-                }
-              }}
+              onClick={handleSubmit}
             >
               Conferma
             </Button>
