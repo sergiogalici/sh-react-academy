@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AdModalState } from './model'
 
 const initialState: AdModalState = {
-  showModal: false
+  showModal: false,
+  showNotification: false
 }
 
 const adModalSlice = createSlice({
@@ -11,6 +12,9 @@ const adModalSlice = createSlice({
   reducers: {
     showModal: (state, { payload }: PayloadAction<boolean>) => {
       state.showModal = payload
+    },
+    showNotification: (state, { payload }: PayloadAction<boolean>) => {
+      state.showNotification = payload
     }
   }
 })

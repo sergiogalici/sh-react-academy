@@ -18,7 +18,7 @@ function InsertAdModal() {
   const [selCountry, setSelCountry] = useState(optCountries[0])
   const [selCategory, setSelCategory] = useState(optCategories[0])
 
-  const { showModal } = useSelector(selectAdModal)
+  const showModal = useSelector(selectAdModal)
   const dispatch = useDispatch()
 
   return (
