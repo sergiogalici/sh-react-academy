@@ -1,13 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
+import { adModalActions } from '../../feature/adModal/reducers'
 import { MappedAdsType } from '../../feature/ads/model'
 import { adsActions } from '../../feature/ads/reducer'
-import {
-  makeSelectAd,
-  makeSelectAdsInFavourites,
-  makeSelectFilteredAds,
-  selectAllAds
-} from '../../feature/ads/selector'
+import { makeSelectAd, makeSelectAdsInFavourites } from '../../feature/ads/selector'
 import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
 import { Image } from '../Image'
@@ -41,11 +37,23 @@ export const ProductCard = ({
   const dispatch = useDispatch()
   const selectedAd = useSelector(makeSelectAd(id as keyof MappedAdsType))
   const adInFav = useSelector(makeSelectAdsInFavourites(id as keyof MappedAdsType))
+  const notificationTimeout = () => dispatch(adModalActions.showNotification(false))
+
+  const startNotificationTimer = () => {}
 
   const handleFavButton = (e: React.SyntheticEvent) => {
     e.preventDefault()
     dispatch(adsActions.favouritesAction(selectedAd!))
+    if (!adInFav) {
+      dispatch(adModalActions.showNotification(true))
+      startNotificationTimer()
+    }
+    const notificationTimer = setTimeout(notificationTimeout, 1000)
+    if (adInFav) {
+      clearTimeout(notificationTimer)
+    }
   }
+
   return (
     <StyledProductCard>
       <div className="image-container">
