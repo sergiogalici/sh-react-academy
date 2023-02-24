@@ -13,6 +13,13 @@ export const selectCategoriesTitles = createSelector(
   }
 )
 
+export const makeSelectCategoryIdByTitle = (title: string) =>
+  createSelector(selectAllCategories, (allCategories) => {
+    return allCategories
+      .filter((category) => category.title === title)
+      .map((category) => category.id)[0]
+  })
+
 export const selectCategoryById = createSelector(
   [selectCategories],
   ({ allCategories }) =>
