@@ -1,7 +1,5 @@
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { MappedAdsType } from '../../feature/ads/model'
-import { makeSelectFilteredAds } from '../../feature/ads/selector'
 import { ProductCard } from '../ProductCard'
 import { ProductsFilter } from '../ProductsFilter'
 import { Text } from '../Text'
@@ -18,7 +16,7 @@ export const ProductsContainer = ({ products, category }: Props) => {
       <Text color="lightGray" variant="h6">{`${products.length} risultati`}</Text>
       <Text variant="h6">{category ? category : 'Annunci'}</Text>
       <div className="products-section">
-        <ProductsFilter className="products-filter" />
+        {products.length ? <ProductsFilter className="products-filter" /> : <></>}
         <div className="products-list">
           {products.map((ad) => {
             return (

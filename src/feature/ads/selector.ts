@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import { createSelector } from '@reduxjs/toolkit'
-import { selectFilteredAds } from '../adsByCategory/selector'
 import { selectAllCategories, selectCategoryById } from '../categories/selectors'
 import { RootState } from '../store'
 import { selectUsersById } from '../users/selector'

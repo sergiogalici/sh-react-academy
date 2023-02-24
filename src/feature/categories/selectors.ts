@@ -6,6 +6,13 @@ const selectCategories = (state: RootState) => state.categories
 
 export const selectAllCategories = (state: RootState) => state.categories.allCategories
 
+export const selectCategoriesTitles = createSelector(
+  selectCategories,
+  ({ allCategories }) => {
+    return allCategories.map((cat) => cat.title)
+  }
+)
+
 export const selectCategoryById = createSelector(
   [selectCategories],
   ({ allCategories }) =>
