@@ -33,7 +33,7 @@ function InsertAdModal() {
     }
   }, [categoriesTitles, countriesNames])
 
-  // Refactor useless states
+  // Refactor the states, some of them could be avoided (with selectors?)
   const [selCountry, setSelCountry] = useState('')
   const [selCategory, setSelCategory] = useState('')
   const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
@@ -49,13 +49,14 @@ function InsertAdModal() {
       countryId: currentCountryId,
       categoryIds: [currentCategoryId]
     }
-    console.log('AD DATA = ', adData)
     postAd(adData)
       .then(() => {
+        // add a notification for the user
         console.log('POST DONE!')
         setBody({})
       })
       .catch((error) => {
+        // add a notification for the user
         console.log('POST ERROR!', error)
       })
     dispatch(adModalActions.showModal(false))
@@ -81,6 +82,7 @@ function InsertAdModal() {
   }
 
   return (
+    // Component not easy to read, make it more readable
     <>
       {showModal && (
         <Modal>

@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { getAds } from '../../api'
+import { getAds, postAd } from '../../api'
 import { AdDto } from '../../api/type'
 import { adsActions } from './reducer'
 
