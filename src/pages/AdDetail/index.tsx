@@ -8,6 +8,10 @@ import { makeSelectMappedAd } from '../../feature/ads/selector'
 export const AdDetail = () => {
   const { id } = useParams()
   const mappedAd = useSelector(makeSelectMappedAd(id as keyof MappedAdsType))
+
+  // An alternative to this object would be adding a "getAd" request...
+  // ... inside the Ads - Saga
+  // that would handle any errors with fetching the missing Ad
   const adNotFound: MappedAdsType = {
     id: '',
     title: 'There was an error loading the requested ad',
