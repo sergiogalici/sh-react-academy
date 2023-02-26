@@ -19,6 +19,7 @@ import { Select } from '../Select'
 import { Text } from '../Text'
 
 function InsertAdModal() {
+  // Completely refactor the entire Component to make it just show its view
   const categoriesTitles = useSelector(selectCategoriesTitles)
   const countriesNames = useSelector(selectCountriesNames)
   const [body, setBody] = useState<Partial<AdDto>>({})
@@ -32,11 +33,13 @@ function InsertAdModal() {
     }
   }, [categoriesTitles, countriesNames])
 
+  // Refactor useless states
   const [selCountry, setSelCountry] = useState('')
   const [selCategory, setSelCategory] = useState('')
   const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
   const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
 
+  // Move the post request outside the component (in a Saga?)
   const handleSubmit = () => {
     dispatch(adModalActions.showModal(false))
     const adData: Partial<AdDto> = {
@@ -58,6 +61,7 @@ function InsertAdModal() {
     dispatch(adModalActions.showModal(false))
   }
 
+  // Move the business logic outside the component
   const checkBeforePost = () => {
     if (
       body.title &&
