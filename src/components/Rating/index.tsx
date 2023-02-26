@@ -16,9 +16,9 @@ export const Rating = ({ rating = 4, fontSize = 'md' }: RatingProps) => {
       {starArray.map((_, index: number) => {
         const currStar = index + 1
         let icon: IconProp =
-          currStar < rating || currStar - rating < 0.5
+          currStar - rating < 0.5
             ? ['fas', 'star']
-            : currStar > rating && currStar - rating >= 0.5 && currStar - rating < 1
+            : currStar - rating >= 0.5 && currStar - rating < 1
             ? ['fas', 'star-half-alt']
             : ['far', 'star']
         return (

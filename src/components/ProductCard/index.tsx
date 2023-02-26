@@ -38,7 +38,6 @@ export const ProductCard = ({
   const dispatch = useDispatch()
   const selectedAd = useSelector(makeSelectAd(id as keyof MappedAdsType))
   const adInFav = useSelector(makeSelectAdsInFavourites(id as keyof MappedAdsType))
-  const notificationTimeout = () => dispatch(adModalActions.showNotification(false))
   const [lastNotificationTime, setLastNotificationTime] = useState<number>(0)
 
   const handleFavButton = (e: React.SyntheticEvent) => {

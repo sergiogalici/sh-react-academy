@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postAd } from '../../api'
-import { apiClient } from '../../api/client'
 import { AdDto } from '../../api/type'
 import { adModalActions } from '../../feature/adModal/reducers'
 import { selectAdModal } from '../../feature/adModal/selector'
 import {
   makeSelectCategoryIdByTitle,
-  selectAllCategories
+  selectCategoriesTitles
 } from '../../feature/categories/selectors'
 import {
   makeSelectCountryIdByName,
-  selectAllCountries
+  selectCountriesNames
 } from '../../feature/countries/selector'
 import { Button } from '../Button'
 import { Input } from '../Input'
@@ -20,48 +19,46 @@ import { Select } from '../Select'
 import { Text } from '../Text'
 
 function InsertAdModal() {
-  const categories = useSelector(selectAllCategories)
-  const countries = useSelector(selectAllCountries)
-  const optCountries = countries.map((country) => country.name)
-  const optCategories = categories.map((cat) => cat.title)
-  const [selCountry, setSelCountry] = useState(optCountries[0])
-  const [selCategory, setSelCategory] = useState(optCategories[0])
+  const categoriesTitles = useSelector(selectCategoriesTitles)
+  const countriesNames = useSelector(selectCountriesNames)
+  const [selCountry, setSelCountry] = useState(countriesNames[0])
+  const [selCategory, setSelCategory] = useState(categoriesTitles[0])
   const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
   const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
   const [body, setBody] = useState<Partial<AdDto>>({})
-  const [submit, setSubmit] = useState<boolean>(false)
   const showModal = useSelector(selectAdModal)
   const dispatch = useDispatch()
 
   const handleSubmit = () => {
     dispatch(adModalActions.showModal(false))
-    setBody({
+    const adData: Partial<AdDto> = {
       ...body,
-      // correctly post a user instead of hardcoding a random ID
+      // TODO correctly post a user instead of hardcoding a random ID
       authorId: 'c7fe52f8-1802-471f-a3ce-bf2aa214eb76',
       countryId: currentCountryId,
       categoryIds: [currentCategoryId]
-    })
-    console.log('body at submit ', body)
-    if (Object.values(body).length === 4) {
-      setSubmit(true)
-    } else {
-      console.log(
-        'Complete all fields before submitting ',
-        Object.values(body).length,
-        body
-      )
     }
+    postAd(adData)
+      .then(() => {
+        console.log('POST DONE!')
+        setBody({})
+      })
+      .catch((error) => {
+        console.log('POST ERROR!', error)
+      })
+    dispatch(adModalActions.showModal(false))
   }
 
-  useEffect(() => {
-    if (submit) {
-      postAd(body)
+  const checkBeforePost = () => {
+    if (body.title && body.description && body.images && body.price) {
+      handleSubmit()
+    } else {
+      setBody({})
+      dispatch(adModalActions.showModal(false))
+      // TODO add a notification that says to complete all fields before submitting
+      console.log('Complete all fields before submitting ', body)
     }
-    setSubmit(false)
-    setBody({})
-    console.log('POST DONE!')
-  }, [submit])
+  }
 
   return (
     <>
@@ -99,7 +96,7 @@ function InsertAdModal() {
                 padding="sm"
                 borderRadius={1}
                 value={selCountry}
-                options={optCountries}
+                options={countriesNames}
                 onChange={(value) => {
                   setSelCountry(value)
                 }}
@@ -123,7 +120,7 @@ function InsertAdModal() {
                 padding="sm"
                 borderRadius={1}
                 value={selCategory}
-                options={optCategories}
+                options={categoriesTitles}
                 onChange={(value) => setSelCategory(value)}
               />
             </form>
@@ -132,7 +129,7 @@ function InsertAdModal() {
               size="md"
               fontSize="lg"
               variant="primary"
-              onClick={handleSubmit}
+              onClick={checkBeforePost}
             >
               Conferma
             </Button>
