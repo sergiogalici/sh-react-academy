@@ -47,7 +47,7 @@ function InsertAdModal() {
       categoryIds: [currentCategoryId]
     }
     console.log('AD DATA = ', adData)
-    /* postAd(adData)
+    postAd(adData)
       .then(() => {
         console.log('POST DONE!')
         setBody({})
@@ -55,7 +55,7 @@ function InsertAdModal() {
       .catch((error) => {
         console.log('POST ERROR!', error)
       })
-    dispatch(adModalActions.showModal(false)) */
+    dispatch(adModalActions.showModal(false))
   }
 
   const checkBeforePost = () => {
