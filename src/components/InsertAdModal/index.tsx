@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postAd } from '../../api'
 import { AdDto } from '../../api/type'
@@ -21,13 +21,21 @@ import { Text } from '../Text'
 function InsertAdModal() {
   const categoriesTitles = useSelector(selectCategoriesTitles)
   const countriesNames = useSelector(selectCountriesNames)
-  const [selCountry, setSelCountry] = useState(countriesNames[0])
-  const [selCategory, setSelCategory] = useState(categoriesTitles[0])
-  const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
-  const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
   const [body, setBody] = useState<Partial<AdDto>>({})
   const showModal = useSelector(selectAdModal)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (categoriesTitles.length > 0 && countriesNames.length > 0) {
+      setSelCountry(countriesNames[0])
+      setSelCategory(categoriesTitles[0])
+    }
+  }, [categoriesTitles, countriesNames])
+
+  const [selCountry, setSelCountry] = useState('')
+  const [selCategory, setSelCategory] = useState('')
+  const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
+  const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
 
   const handleSubmit = () => {
     dispatch(adModalActions.showModal(false))
@@ -38,7 +46,8 @@ function InsertAdModal() {
       countryId: currentCountryId,
       categoryIds: [currentCategoryId]
     }
-    postAd(adData)
+    console.log('AD DATA = ', adData)
+    /* postAd(adData)
       .then(() => {
         console.log('POST DONE!')
         setBody({})
@@ -46,11 +55,17 @@ function InsertAdModal() {
       .catch((error) => {
         console.log('POST ERROR!', error)
       })
-    dispatch(adModalActions.showModal(false))
+    dispatch(adModalActions.showModal(false)) */
   }
 
   const checkBeforePost = () => {
-    if (body.title && body.description && body.images && body.price) {
+    if (
+      body.title &&
+      body.description &&
+      body.images &&
+      body.price &&
+      !Number.isNaN(body.price.value)
+    ) {
       handleSubmit()
     } else {
       setBody({})
@@ -102,10 +117,12 @@ function InsertAdModal() {
                 }}
               />
               <Input
-                onChange={(e) => setBody({ ...body, images: [e] })}
+                onChange={(e) =>
+                  setBody({ ...body, images: [...e.replaceAll(' ', '').split(',')] })
+                }
                 fullWidth
                 borderRadius={1}
-                placeText="Inserisci un URL"
+                placeText="Inserisci uno o più URL separati da una virgola"
               />
               <Input
                 onChange={(e) =>

@@ -25,3 +25,10 @@ export const selectCountryById = createSelector([selectCountries], ({ allCountri
     return { ...acc, [country.id]: country }
   }, {})
 )
+
+export const makeSelectCountryNameById = (id: string) =>
+  createSelector(selectAllCountries, (allCountries) => {
+    return allCountries
+      .filter((country) => country.id === id)
+      .map((country) => country.name)[0]
+  })

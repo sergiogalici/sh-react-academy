@@ -1,27 +1,34 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { getAdDetail, getCountries } from '../../api'
 import { DetailCard } from '../../components/DetailCard'
-import { MappedAd } from '../../feature/adDetail/model'
-import { adActions } from '../../feature/adDetail/reducers'
-import { selectMappedAd } from '../../feature/adDetail/selector'
-import { countriesActions } from '../../feature/countries/reducer'
+import { MappedAdsType } from '../../feature/ads/model'
+import { makeSelectMappedAd } from '../../feature/ads/selector'
 
 export const AdDetail = () => {
-  const dispatch = useDispatch()
   const { id } = useParams()
-  const mappedAd: MappedAd = useSelector(selectMappedAd)
+  const mappedAd = useSelector(makeSelectMappedAd(id as keyof MappedAdsType))
+  const adNotFound: MappedAdsType = {
+    id: '',
+    title: 'There was an error loading the requested ad',
+    description: '',
+    author: {
+      created_at: 0,
+      updated_at: 0,
+      email: '',
+      rating: 0,
+      username: '',
+      id: ''
+    },
+    category: { title: '', id: '', created_at: 0, updated_at: 0 },
+    price: { value: 0, currency: 'EUR' },
+    images: [],
+    premium: false,
+    hidden: false,
+    countryId: '',
+    created_at: 0,
+    updated_at: 0
+  }
 
-  useEffect(() => {
-    if (id) {
-      getAdDetail(id)
-        .then((data) => dispatch(adActions.fetchAdSuccess(data)))
-        .catch((e) => console.log(e.message))
-    }
-
-    getCountries().then((data) => dispatch(countriesActions.fetchCountriesSuccess(data)))
-  }, [dispatch, id])
-
-  return <DetailCard ad={mappedAd} />
+  return <DetailCard ad={mappedAd ?? adNotFound} />
 }
