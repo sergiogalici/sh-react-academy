@@ -41,7 +41,7 @@ function InsertAdModal() {
     dispatch(adModalActions.showModal(false))
     const adData: Partial<AdDto> = {
       ...body,
-      // TODO correctly post a user instead of hardcoding a random ID
+      // TODO correctly post a user instead of hardcoding an already existing ID
       authorId: 'c7fe52f8-1802-471f-a3ce-bf2aa214eb76',
       countryId: currentCountryId,
       categoryIds: [currentCategoryId]
@@ -71,6 +71,7 @@ function InsertAdModal() {
       setBody({})
       dispatch(adModalActions.showModal(false))
       // TODO add a notification that says to complete all fields before submitting
+      Number.isNaN(body.price?.value) && console.log('Insert a valid price please')
       console.log('Complete all fields before submitting ', body)
     }
   }
