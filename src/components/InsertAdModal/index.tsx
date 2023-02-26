@@ -20,10 +20,17 @@ import { Text } from '../Text'
 
 function InsertAdModal() {
   // Completely refactor the entire Component to make it just show its view
+  const [body, setBody] = useState<Partial<AdDto>>({})
+  const [selCountry, setSelCountry] = useState<string>('')
+  const [selCategory, setSelCategory] = useState<string>('')
+
+  // Refactor the states, some of them could be avoided (with selectors?)
+
+  const showModal = useSelector(selectAdModal)
   const categoriesTitles = useSelector(selectCategoriesTitles)
   const countriesNames = useSelector(selectCountriesNames)
-  const [body, setBody] = useState<Partial<AdDto>>({})
-  const showModal = useSelector(selectAdModal)
+  const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
+  const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -33,13 +40,10 @@ function InsertAdModal() {
     }
   }, [categoriesTitles, countriesNames])
 
-  // Refactor the states, some of them could be avoided (with selectors?)
-  const [selCountry, setSelCountry] = useState('')
-  const [selCategory, setSelCategory] = useState('')
-  const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
-  const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
-
   // Move the post request outside the component (in a Saga?)
+  // Make a business logic that automatically update the Redux...
+  // ... state of the ads to make them render immediately..
+  // ... after the post request
   const handleSubmit = () => {
     dispatch(adModalActions.showModal(false))
     const adData: Partial<AdDto> = {
