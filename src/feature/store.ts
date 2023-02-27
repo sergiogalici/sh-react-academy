@@ -1,7 +1,6 @@
 import createSagaMiddleware from '@redux-saga/core'
 import { configureStore } from '@reduxjs/toolkit'
 import { all } from 'redux-saga/effects'
-import { adReducer } from './adDetail/reducers'
 import { adModalReducer } from './adModal/reducers'
 import { adsReducer } from './ads/reducer'
 import { adsSaga } from './ads/saga'
@@ -17,8 +16,6 @@ const rootReducer = {
   users: usersReducer,
   countries: countriesReducer,
   ads: adsReducer,
-  // TODO handle directly in ads
-  ad: adReducer,
   // TODO move to local state
   showModal: adModalReducer
 }

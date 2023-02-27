@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postAd } from '../../api'
 import { AdDto } from '../../api/type'
@@ -19,48 +19,74 @@ import { Select } from '../Select'
 import { Text } from '../Text'
 
 function InsertAdModal() {
+  // Completely refactor the entire Component to make it just show its view
+  const [body, setBody] = useState<Partial<AdDto>>({})
+  const [selCountry, setSelCountry] = useState<string>('')
+  const [selCategory, setSelCategory] = useState<string>('')
+
+  // Refactor the states, some of them could be avoided (with selectors?)
+
+  const showModal = useSelector(selectAdModal)
   const categoriesTitles = useSelector(selectCategoriesTitles)
   const countriesNames = useSelector(selectCountriesNames)
-  const [selCountry, setSelCountry] = useState(countriesNames[0])
-  const [selCategory, setSelCategory] = useState(categoriesTitles[0])
   const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
   const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
-  const [body, setBody] = useState<Partial<AdDto>>({})
-  const showModal = useSelector(selectAdModal)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    if (categoriesTitles.length > 0 && countriesNames.length > 0) {
+      setSelCountry(countriesNames[0])
+      setSelCategory(categoriesTitles[0])
+    }
+  }, [categoriesTitles, countriesNames])
+
+  // Move the post request outside the component (in a Saga?)
+  // Make a business logic that automatically update the Redux...
+  // ... state of the ads to make them render immediately..
+  // ... after the post request
   const handleSubmit = () => {
     dispatch(adModalActions.showModal(false))
     const adData: Partial<AdDto> = {
       ...body,
-      // TODO correctly post a user instead of hardcoding a random ID
+      // TODO correctly post a user instead of hardcoding an already existing ID
       authorId: 'c7fe52f8-1802-471f-a3ce-bf2aa214eb76',
       countryId: currentCountryId,
       categoryIds: [currentCategoryId]
     }
     postAd(adData)
       .then(() => {
+        // add a notification for the user
         console.log('POST DONE!')
         setBody({})
       })
       .catch((error) => {
+        // add a notification for the user
         console.log('POST ERROR!', error)
       })
     dispatch(adModalActions.showModal(false))
   }
 
+  // Move the business logic outside the component
   const checkBeforePost = () => {
-    if (body.title && body.description && body.images && body.price) {
+    if (
+      body.title &&
+      body.description &&
+      body.images &&
+      body.price &&
+      !Number.isNaN(body.price.value)
+    ) {
       handleSubmit()
     } else {
       setBody({})
       dispatch(adModalActions.showModal(false))
       // TODO add a notification that says to complete all fields before submitting
+      Number.isNaN(body.price?.value) && console.log('Insert a valid price please')
       console.log('Complete all fields before submitting ', body)
     }
   }
 
   return (
+    // Component not easy to read, make it more readable
     <>
       {showModal && (
         <Modal>
@@ -102,10 +128,12 @@ function InsertAdModal() {
                 }}
               />
               <Input
-                onChange={(e) => setBody({ ...body, images: [e] })}
+                onChange={(e) =>
+                  setBody({ ...body, images: [...e.replaceAll(' ', '').split(',')] })
+                }
                 fullWidth
                 borderRadius={1}
-                placeText="Inserisci un URL"
+                placeText="Inserisci uno o più URL separati da una virgola"
               />
               <Input
                 onChange={(e) =>
