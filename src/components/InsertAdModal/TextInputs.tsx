@@ -6,8 +6,8 @@ import { OptionsType, Select } from '../Select'
 type TextInputsProps = {
   body: AdDto
   setBody: SetStateAction<any>
-  categoriesTitles: OptionsType[]
-  countriesNames: OptionsType[]
+  categoriesOptions: OptionsType[]
+  countriesOptions: OptionsType[]
 }
 
 const TextInputs = ({
@@ -66,9 +66,9 @@ const TextInputs = ({
         fullWidth
         padding="sm"
         borderRadius={1}
-        value={selCategory}
-        options={categoriesTitles}
-        onChange={(value) => setSelCategory(value)}
+        value={body.categoryIds[0]}
+        options={categoriesOptions}
+        onChange={(value) => setBody({ ...body, category: value })}
       />
     </>
   )

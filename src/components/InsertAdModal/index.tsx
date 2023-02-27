@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postAd } from '../../api'
-import { AdDto, CategoryDto, CountryDto } from '../../api/type'
+import { AdDto } from '../../api/type'
 import { adModalActions } from '../../feature/adModal/reducers'
 import { selectAdModal } from '../../feature/adModal/selector'
-import {
-  makeSelectCategoryIdByTitle,
-  selectAllCategories,
-  selectCategoriesTitles
-} from '../../feature/categories/selectors'
-import {
-  makeSelectCountryIdByName,
-  selectAllCountries,
-  selectCountriesNames
-} from '../../feature/countries/selector'
+import { selectAllCategories } from '../../feature/categories/selectors'
+import { selectAllCountries } from '../../feature/countries/selector'
 import { Button } from '../Button'
-import { Input } from '../Input'
 import { Modal } from '../Modal'
-import { OptionsType, Select } from '../Select'
+import { OptionsType } from '../Select'
 import { Text } from '../Text'
-import TextInputs from './textInputs'
+import TextInputs from '.'
 
 function InsertAdModal() {
   // Completely refactor the entire Component to make it just show its view
@@ -40,7 +31,7 @@ function InsertAdModal() {
     title: '',
     updated_at: 0
   }
-  const [body, setBody] = useState<AdDto>(initialState)
+  const [body, setBody] = useState(initialState)
 
   // Refactor the states, some of them could be avoided (with selectors?)
 
@@ -59,6 +50,7 @@ function InsertAdModal() {
       }
     ]
   }, [] as OptionsType[])
+
   const countriesOptions = countries.reduce((acc, country) => {
     return [
       ...acc,
@@ -79,15 +71,13 @@ function InsertAdModal() {
     const adData: Partial<AdDto> = {
       ...body,
       // TODO correctly post a user instead of hardcoding an already existing ID
-      authorId: 'c7fe52f8-1802-471f-a3ce-bf2aa214eb76',
-      countryId: currentCountryId,
-      categoryIds: [currentCategoryId]
+      authorId: 'c7fe52f8-1802-471f-a3ce-bf2aa214eb76'
     }
     postAd(adData)
       .then(() => {
         // add a notification for the user
         console.log('POST DONE!')
-        setBody({})
+        setBody(initialState)
       })
       .catch((error) => {
         // add a notification for the user
@@ -132,8 +122,8 @@ function InsertAdModal() {
               <TextInputs
                 body={body}
                 setBody={setBody}
-                categories={categoriesOptions}
-                countries={countriesOptions}
+                categoriesOptions={categoriesOptions}
+                countriesOptions={countriesOptions}
               />
             </form>
             <Button
