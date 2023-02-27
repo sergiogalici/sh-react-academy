@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { selectNotificationCard } from '../../feature/adModal/selector'
+import { selectNotificationCard } from '../../feature/app/selector'
 import { Text } from '../Text'
 import { StyledNotificationCard, StyledNotificationCardProps } from './styled'
 

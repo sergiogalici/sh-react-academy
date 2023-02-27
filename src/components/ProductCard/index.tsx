@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
-import { adModalActions } from '../../feature/adModal/reducers'
+import { appActions } from '../../feature/app/reducers'
 import { MappedAdsType } from '../../feature/ads/model'
 import { adsActions } from '../../feature/ads/reducer'
 import { makeSelectAd, makeSelectAdsInFavourites } from '../../feature/ads/selector'
@@ -46,10 +46,10 @@ export const ProductCard = ({
     if (!adInFav) {
       const currentTime = Date.now()
       if (currentTime - lastNotificationTime > 1000) {
-        dispatch(adModalActions.showNotification(true))
+        dispatch(appActions.showNotification(true))
         setLastNotificationTime(currentTime)
         setTimeout(() => {
-          dispatch(adModalActions.showNotification(false))
+          dispatch(appActions.showNotification(false))
         }, 1000)
       }
     }

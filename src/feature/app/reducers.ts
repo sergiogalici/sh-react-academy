@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { AdModalState } from './model'
+import { AppState } from './model'
 
-const initialState: AdModalState = {
+const initialState: AppState = {
   showModal: false,
   showNotification: false
 }
 
-const adModalSlice = createSlice({
-  name: 'showModal',
+const appSlice = createSlice({
+  name: 'app',
   initialState,
   reducers: {
     showModal: (state, { payload }: PayloadAction<boolean>) => {
@@ -19,5 +19,5 @@ const adModalSlice = createSlice({
   }
 })
 
-export const adModalActions = adModalSlice.actions
-export const adModalReducer = adModalSlice.reducer
+export const appActions = appSlice.actions
+export const appReducer = appSlice.reducer
