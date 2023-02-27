@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { MappedAd } from '../../feature/adDetail/model'
+import { useSelector } from 'react-redux'
+import { MappedAdsType } from '../../feature/ads/model'
+import { makeSelectCountryNameById } from '../../feature/countries/selector'
 import { useCurrency } from '../../hooks/useCurrency'
 import { Button } from '../Button'
 import { Icon } from '../Icon'
@@ -9,12 +11,13 @@ import { Text } from '../Text'
 import { StyledDetailCard, StyledDetailCardProps } from './styled'
 
 type Props = {
-  ad: MappedAd
+  ad: MappedAdsType
 } & Partial<StyledDetailCardProps>
 
 export const DetailCard = ({ ad }: Props) => {
   const [selectedImage, setSelectedImage] = useState(0)
   const { format } = useCurrency()
+  const country = useSelector(makeSelectCountryNameById(ad.countryId))
 
   return (
     <StyledDetailCard>
@@ -55,7 +58,7 @@ export const DetailCard = ({ ad }: Props) => {
             </Text>
             <div className="country-indicator">
               <Icon icon={['fas', 'location-dot']} size="1x" color="lightGray" />
-              <Text bold>{ad.country.name}</Text>
+              <Text bold>{country}</Text>
             </div>
             <Text size="xl" color="primary">
               {format(ad.price)}

@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import { createSelector } from '@reduxjs/toolkit'
-import { selectFilteredAds } from '../adsByCategory/selector'
 import { selectAllCategories, selectCategoryById } from '../categories/selectors'
 import { RootState } from '../store'
 import { selectUsersById } from '../users/selector'
@@ -86,4 +85,8 @@ export const makeSelectAds = (category?: string) =>
 
 export const makeSelectAd = (id: keyof MappedAdsType) => createSelector(selectAllAds, (ads) => {
   return ads.find((ad) => ad.id === id)
+})
+
+export const makeSelectMappedAd = (id: keyof MappedAdsType) => createSelector(selectMappedAds, (mappedAds) => {
+  return mappedAds.find((ad) => ad.id === id)
 })

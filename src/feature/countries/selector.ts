@@ -9,8 +9,26 @@ export const selectAllCountries = createSelector(
   ({ allCountries }) => allCountries
 )
 
+export const selectCountriesNames = createSelector(selectAllCountries, (allCountries) => {
+  return allCountries.map((country) => country.name)
+})
+
+export const makeSelectCountryIdByName = (name: string) =>
+  createSelector(selectAllCountries, (allCountries) => {
+    return allCountries
+      .filter((country) => country.name === name)
+      .map((country) => country.id)[0]
+  })
+
 export const selectCountryById = createSelector([selectCountries], ({ allCountries }) =>
   allCountries.reduce<Record<string, CountryDto>>((acc, country) => {
     return { ...acc, [country.id]: country }
   }, {})
 )
+
+export const makeSelectCountryNameById = (id: string) =>
+  createSelector(selectAllCountries, (allCountries) => {
+    return allCountries
+      .filter((country) => country.id === id)
+      .map((country) => country.name)[0]
+  })
