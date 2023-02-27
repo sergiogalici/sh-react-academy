@@ -1,44 +1,74 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postAd } from '../../api'
-import { AdDto } from '../../api/type'
+import { AdDto, CategoryDto, CountryDto } from '../../api/type'
 import { adModalActions } from '../../feature/adModal/reducers'
 import { selectAdModal } from '../../feature/adModal/selector'
 import {
   makeSelectCategoryIdByTitle,
+  selectAllCategories,
   selectCategoriesTitles
 } from '../../feature/categories/selectors'
 import {
   makeSelectCountryIdByName,
+  selectAllCountries,
   selectCountriesNames
 } from '../../feature/countries/selector'
 import { Button } from '../Button'
 import { Input } from '../Input'
 import { Modal } from '../Modal'
-import { Select } from '../Select'
+import { OptionsType, Select } from '../Select'
 import { Text } from '../Text'
+import TextInputs from './textInputs'
 
 function InsertAdModal() {
   // Completely refactor the entire Component to make it just show its view
-  const [body, setBody] = useState<Partial<AdDto>>({})
-  const [selCountry, setSelCountry] = useState<string>('')
-  const [selCategory, setSelCategory] = useState<string>('')
+  const initialState: AdDto = {
+    authorId: '',
+    categoryIds: [],
+    description: '',
+    countryId: '',
+    created_at: 0,
+    hidden: false,
+    premium: false,
+    id: '',
+    images: [],
+    price: {
+      value: 0,
+      currency: 'EUR'
+    },
+    title: '',
+    updated_at: 0
+  }
+  const [body, setBody] = useState<AdDto>(initialState)
 
   // Refactor the states, some of them could be avoided (with selectors?)
 
   const showModal = useSelector(selectAdModal)
-  const categoriesTitles = useSelector(selectCategoriesTitles)
-  const countriesNames = useSelector(selectCountriesNames)
-  const currentCountryId = useSelector(makeSelectCountryIdByName(selCountry))
-  const currentCategoryId = useSelector(makeSelectCategoryIdByTitle(selCategory))
+  const categories = useSelector(selectAllCategories)
+  const countries = useSelector(selectAllCountries)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    if (categoriesTitles.length > 0 && countriesNames.length > 0) {
-      setSelCountry(countriesNames[0])
-      setSelCategory(categoriesTitles[0])
-    }
-  }, [categoriesTitles, countriesNames])
+  const categoriesOptions = categories.reduce((acc, cate) => {
+    return [
+      ...acc,
+      {
+        value: cate.id,
+        label: cate.title,
+        id: cate.id
+      }
+    ]
+  }, [] as OptionsType[])
+  const countriesOptions = countries.reduce((acc, country) => {
+    return [
+      ...acc,
+      {
+        value: country.id,
+        label: country.name,
+        id: country.id
+      }
+    ]
+  }, [] as OptionsType[])
 
   // Move the post request outside the component (in a Saga?)
   // Make a business logic that automatically update the Redux...
@@ -99,57 +129,11 @@ function InsertAdModal() {
             />
             <Text size="lg">Inserisci un nuovo annuncio</Text>
             <form className="input-list">
-              <Input
-                onChange={(e) => setBody({ ...body, title: e })}
-                fullWidth
-                borderRadius={1}
-                placeText="Inserisci un titolo"
-              />
-              <Input
-                onChange={(e) => setBody({ ...body, description: e })}
-                fullWidth
-                borderRadius={1}
-                placeText="Inserisci una descrizione"
-              />
-              <Input
-                onChange={() => null}
-                fullWidth
-                borderRadius={1}
-                placeText="Inserisci il tuo nome"
-              />
-              <Select
-                fullWidth
-                padding="sm"
-                borderRadius={1}
-                value={selCountry}
-                options={countriesNames}
-                onChange={(value) => {
-                  setSelCountry(value)
-                }}
-              />
-              <Input
-                onChange={(e) =>
-                  setBody({ ...body, images: [...e.replaceAll(' ', '').split(',')] })
-                }
-                fullWidth
-                borderRadius={1}
-                placeText="Inserisci uno o più URL separati da una virgola"
-              />
-              <Input
-                onChange={(e) =>
-                  setBody({ ...body, price: { value: Number(e), currency: 'EUR' } })
-                }
-                fullWidth
-                borderRadius={1}
-                placeText="Inserisci il prezzo"
-              />
-              <Select
-                fullWidth
-                padding="sm"
-                borderRadius={1}
-                value={selCategory}
-                options={categoriesTitles}
-                onChange={(value) => setSelCategory(value)}
+              <TextInputs
+                body={body}
+                setBody={setBody}
+                categories={categoriesOptions}
+                countries={countriesOptions}
               />
             </form>
             <Button

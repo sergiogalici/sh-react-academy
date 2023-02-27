@@ -42,6 +42,7 @@ function App() {
               <Route path="ads/:category/:id" element={<AdDetail />} />
               <Route path="favourites" element={<Favourites />} />
             </Route>
+            <Route path="*" element={<div>Not found</div>} />
           </Routes>
         </BrowserRouter>
       </CurrencyProvider>
