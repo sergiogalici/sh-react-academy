@@ -10,27 +10,29 @@ import { Button } from '../Button'
 import { Modal } from '../Modal'
 import { OptionsType } from '../Select'
 import { Text } from '../Text'
-import TextInputs from '.'
+import TextInputs from './TextInputs'
+
+const initialState: AdDto = {
+  authorId: '',
+  categoryIds: [],
+  description: '',
+  countryId: '',
+  created_at: 0,
+  hidden: false,
+  premium: false,
+  id: '',
+  images: [],
+  price: {
+    value: 0,
+    currency: 'EUR'
+  },
+  title: '',
+  updated_at: 0
+}
 
 function InsertAdModal() {
   // Completely refactor the entire Component to make it just show its view
-  const initialState: AdDto = {
-    authorId: '',
-    categoryIds: [],
-    description: '',
-    countryId: '',
-    created_at: 0,
-    hidden: false,
-    premium: false,
-    id: '',
-    images: [],
-    price: {
-      value: 0,
-      currency: 'EUR'
-    },
-    title: '',
-    updated_at: 0
-  }
+
   const [body, setBody] = useState(initialState)
 
   // Refactor the states, some of them could be avoided (with selectors?)
@@ -97,7 +99,7 @@ function InsertAdModal() {
     ) {
       handleSubmit()
     } else {
-      setBody({})
+      setBody(initialState)
       dispatch(adModalActions.showModal(false))
       // TODO add a notification that says to complete all fields before submitting
       Number.isNaN(body.price?.value) && console.log('Insert a valid price please')

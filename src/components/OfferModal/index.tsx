@@ -24,7 +24,7 @@ export const OfferModal = ({ title, items }: OfferModalProps) => {
       <Text variant="h2">{title}</Text>
       {items.map((item) => {
         return item.isSelect ? (
-          <Select fullWidth options={item.options} value="" />
+          <Select fullWidth value="" />
         ) : (
           <Input placeText={item.placeText} fullWidth />
         )
