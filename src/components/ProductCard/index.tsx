@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AdDto } from '../../api/type'
-import { appActions } from '../../feature/app/reducers'
 import { MappedAdsType } from '../../feature/ads/model'
 import { adsActions } from '../../feature/ads/reducer'
 import { makeSelectAd, makeSelectAdsInFavourites } from '../../feature/ads/selector'
+import { appActions } from '../../feature/app/reducers'
 import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
 import { Image } from '../Image'
@@ -58,7 +58,14 @@ export const ProductCard = ({
   return (
     <StyledProductCard>
       <div className="image-container">
-        <Image width={200} height={300} src={imageSrc} alt={description} cover={false} />
+        <Image
+          width={200}
+          height={300}
+          src={imageSrc}
+          alt={description}
+          cover={false}
+          className="product-image"
+        />
       </div>
       <div className="category-title-author">
         {premium && (

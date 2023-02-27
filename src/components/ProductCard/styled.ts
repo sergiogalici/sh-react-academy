@@ -21,7 +21,8 @@ export const StyledProductCard = styled.div`
     align-items: center;
     border: 1px solid ${({ theme }) => theme.colors.lightGray};
     border-radius: ${({ theme }) => theme.radii[1]}px;
-    width: 200px;
+    min-width: 200px;
+    overflow: hidden;
   }
 
   .category-title-author {
