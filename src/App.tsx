@@ -12,6 +12,7 @@ import { countriesActions } from './feature/countries/reducer'
 import { usersActions } from './feature/users/reducer'
 import { AdDetail } from './pages/AdDetail'
 import { Ads } from './pages/Ads'
+import ContentNotFound from './pages/ContentNotFound'
 import { Favourites } from './pages/Favourites'
 import { Home } from './pages/Home'
 import { GlobalStyle } from './style/GlobalStyle'
@@ -36,6 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="404" element={<ContentNotFound />} />
               <Route path="ads" element={<Ads />} />
               <Route path="ads/:category" element={<Ads />} />
               <Route path="ads/:category/:id" element={<AdDetail />} />
