@@ -13,20 +13,6 @@ export const StyledModal = styled.div<StyledModalProps>`
   background-color: ${({ theme }) => theme.colors.grayShadowed};
   backdrop-filter: brightness(75%);
 
-  .card-panel {
-    display: flex;
-    width: max-content;
-    justify-content: stretch;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.md}px;
-    padding: ${({ theme }) => theme.spacing.md}px;
-    border-radius: ${({ theme }) => theme.radii[2]}px;
-    position: relative;
-    background-color: ${({ theme }) => theme.colors.textLight};
-    z-index: 20;
-  }
-
   .input-list {
     display: flex;
     justify-content: stretch;
@@ -35,4 +21,18 @@ export const StyledModal = styled.div<StyledModalProps>`
     width: 100%;
     gap: ${({ theme }) => theme.spacing.sm}px;
   }
+`
+
+export const StyledModalHeader = styled.div`
+  display: flex;
+  width: max-content;
+  justify-content: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md}px;
+  padding: ${({ theme }) => theme.spacing.md}px;
+  border-radius: ${({ theme }) => theme.radii[2]}px;
+  position: relative;
+  background-color: ${({ theme }) => theme.colors.textLight};
+  z-index: 20;
 `
