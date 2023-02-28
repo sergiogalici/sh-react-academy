@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { CurrencyProvider } from './components/CurrencyProvider'
-import InsertAdModal from './components/InsertAdModal'
 import { Layout } from './components/Layout'
+import { ModalManager } from './components/ModalManager'
 import { NotificationCard } from './components/NotificationCard'
 import { categoriesActions } from './feature/categories/reducer'
 import { countriesActions } from './feature/countries/reducer'
@@ -30,7 +30,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <CurrencyProvider>
-        <InsertAdModal />
+        <ModalManager />
         <NotificationCard text="L'annuncio è stato inserito tra i Preferiti!" />
         <BrowserRouter>
           <Routes>
