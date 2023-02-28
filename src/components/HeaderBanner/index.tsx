@@ -7,11 +7,15 @@ import { StyledHeaderBanner, StyledHeaderBannerProps } from './styled'
 type Props = Partial<StyledHeaderBannerProps> & {
   title: ReactNode
 }
+const currencyOptions = [
+  { value: 'EUR', label: 'EUR' },
+  { value: 'GBP', label: 'GBP' },
+  { value: 'USD', label: 'USD' },
+  { value: 'JPY', label: 'JPY' }
+]
 
 export const HeaderBanner = ({ title }: Props) => {
   const { activeCurrency, setActiveCurrency } = useContext(CurrencyContext)
-
-  const currencyOptions: RatesKeys[] = ['EUR', 'GBP', 'USD', 'JPY']
 
   const updateActiveCurrency = (newCurrency: string) => {
     setActiveCurrency(newCurrency as RatesKeys)

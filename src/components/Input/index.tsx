@@ -6,7 +6,7 @@ type Props = Partial<StyledInputProps> & {
   padding?: ThemeSpacings
   color?: ThemeColors
   borderRadius?: number
-  placeText?: string
+  placeholder?: string
   borderColor?: ThemeColors
   value?: string
   onChange?: (value: string) => void
@@ -14,17 +14,17 @@ type Props = Partial<StyledInputProps> & {
 
 export const Input = ({
   fullWidth,
+  placeholder,
   padding = 'sm',
   color = 'textDark',
   borderRadius = 0,
-  placeText = '',
   borderColor = 'lightGray',
   onChange
 }: Props) => {
   return (
     <StyledInput
       onChange={onChange ? (e) => onChange(e.target.value) : undefined}
-      placeholder={placeText}
+      placeholder={placeholder}
       borderRadius={borderRadius}
       color={color}
       padding={padding}

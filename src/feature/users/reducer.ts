@@ -19,6 +19,6 @@ const usersSlice = createSlice({
 
 export const usersActions = {
   ...usersSlice.actions,
-  fetchUsersRequested: createAction('USERS_FETCH_REQUESTED')
+  fetchUsersRequested: createAction('users/fetchUsersRequested')
 }
 export const usersReducer = usersSlice.reducer

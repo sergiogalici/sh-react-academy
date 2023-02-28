@@ -9,9 +9,9 @@ import { Text } from '../../components/Text'
 import { StyledHome } from './styled'
 
 const searchItems = [
-  { title: 'Cosa cerchi?', placeText: 'My Placeholder', id: 1 },
-  { title: 'In quale categoria?', placeText: 'My Placeholder', id: 2 },
-  { title: 'Dove?', placeText: 'My Placeholder', id: 3 }
+  { title: 'Cosa cerchi?', placeholder: 'My Placeholder', id: 1 },
+  { title: 'In quale categoria?', placeholder: 'My Placeholder', id: 2 },
+  { title: 'Dove?', placeholder: 'My Placeholder', id: 3 }
 ]
 
 const bsBannerCards = [

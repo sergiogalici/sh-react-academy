@@ -8,7 +8,7 @@ export const StyledNav = styled.nav<StyledNavProps>`
   align-items: stretch;
   padding: ${({ theme }) => theme.spacing.sm}px 0;
 
-  & a {
+  .link-list {
     width: max-content;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@ export const StyledNav = styled.nav<StyledNavProps>`
     color: ${({ theme }) => theme.colors.lightGray};
   }
 
-  & :not(:last-child) {
+  .link-list :not(:last-child) {
     border-inline-end-width: 2px;
     border-inline-end-style: solid;
     border-inline-end-color: ${({ theme }) => theme.colors.lightGray};

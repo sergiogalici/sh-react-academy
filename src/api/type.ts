@@ -13,6 +13,16 @@ export type AdDto = {
   updated_at: number
 }
 
+export type CreateAdDto = {
+  title: string
+  description: string
+  authorId: string
+  categoryIds: string[]
+  price: Price
+  images: string[]
+  countryId: string
+}
+
 export type CountryDto = {
   name: string
   id: string

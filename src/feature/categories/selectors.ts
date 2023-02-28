@@ -20,6 +20,13 @@ export const makeSelectCategoryIdByTitle = (title: string) =>
       .map((category) => category.id)[0]
   })
 
+export const selectCategoriesOptions = createSelector(
+  selectAllCategories,
+  (categories) => {
+    return categories.map((cat) => ({ label: cat.title, value: cat.id }))
+  }
+)
+
 export const selectCategoryById = createSelector(
   [selectCategories],
   ({ allCategories }) =>

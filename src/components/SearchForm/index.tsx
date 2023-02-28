@@ -6,7 +6,7 @@ import { StyledSearchForm } from './styled'
 
 type InputCardType = {
   title: string
-  placeText: string
+  placeholder: string
   id: string | number
 }
 
@@ -21,7 +21,7 @@ export const SearchForm = ({ cards }: SearchFormProps) => {
         return (
           <div className="input-container" key={card.title + index}>
             <Text bold={true}>{card.title}</Text>
-            <Input borderRadius={1} fullWidth placeText={card.placeText} />
+            <Input borderRadius={1} fullWidth placeholder={card.placeholder} />
           </div>
         )
       })}

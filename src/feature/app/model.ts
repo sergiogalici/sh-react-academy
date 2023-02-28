@@ -1,6 +1,13 @@
 export type AppState = {
   modal: ModalState
-  showNotification: boolean
+  notification: Notification | null
+}
+
+export type Notification = {
+  id: string
+  title: string
+  message: string
+  type: 'info' | 'error' | 'success' | 'warning'
 }
 
 export enum ModalType {

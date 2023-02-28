@@ -13,6 +13,10 @@ export const selectCountriesNames = createSelector(selectAllCountries, (allCount
   return allCountries.map((country) => country.name)
 })
 
+export const selectCountriesOptions = createSelector(selectAllCountries, (countries) => {
+  return countries.map((country) => ({ label: country.name, value: country.id }))
+})
+
 export const makeSelectCountryIdByName = (name: string) =>
   createSelector(selectAllCountries, (allCountries) => {
     return allCountries

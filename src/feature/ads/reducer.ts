@@ -1,6 +1,6 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AdDto } from '../../api/type'
-import { AdsState, FilterDataType } from './model'
+import { AdsState, FilterDataType, NewAd } from './model'
 
 const initialState: AdsState = {
   allAds: [],
@@ -23,7 +23,7 @@ const adsSlice = createSlice({
     },
     favouritesAction: (state, { payload }: PayloadAction<AdDto>) => {
       state.favourites = state.favourites.some((fav) => fav.id === payload.id)
-        ? [...state.favourites.filter((fav) => fav.id !== payload.id)]
+        ? state.favourites.filter((fav) => fav.id !== payload.id)
         : [...state.favourites, payload]
     }
   }
@@ -31,6 +31,7 @@ const adsSlice = createSlice({
 
 export const adsActions = {
   ...adsSlice.actions,
-  fetchAdsRequested: createAction('ADS_FETCH_REQUESTED')
+  fetchAdsRequested: createAction('ads/fetchAdsRequested'),
+  postAdRequested: createAction<NewAd>('ads/postAdRequested')
 }
 export const adsReducer = adsSlice.reducer

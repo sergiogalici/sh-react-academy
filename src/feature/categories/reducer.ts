@@ -20,6 +20,6 @@ const categoriesSlice = createSlice({
 
 export const categoriesActions = {
   ...categoriesSlice.actions,
-  fetchCategoriesRequested: createAction('CATEGORIES_FETCH_REQUESTED')
+  fetchCategoriesRequested: createAction('categories/fetchCategoriesRequested')
 }
 export const categoriesReducer = categoriesSlice.reducer

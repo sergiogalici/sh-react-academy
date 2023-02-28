@@ -3,7 +3,7 @@ import { theme } from '../../style/theme'
 import { StyledSelect, StyledSelectProps } from './styled'
 
 type Props = Partial<StyledSelectProps> & {
-  options?: string[]
+  options?: { label: string; value: string }[]
   name?: string
   label?: string
   onChange?: (value: string) => void
@@ -15,7 +15,7 @@ export const Select = ({
   padding = 'sm',
   borderRadius,
   fullWidth = false,
-  options = [''],
+  options,
   label,
   name,
   onChange,
@@ -34,9 +34,9 @@ export const Select = ({
         value={value}
       >
         <optgroup>
-          {options.map((opt, index) => (
-            <option value={opt} key={opt + index}>
-              {opt}
+          {options?.map(({ label, value }) => (
+            <option value={value} key={value}>
+              {label}
             </option>
           ))}
         </optgroup>

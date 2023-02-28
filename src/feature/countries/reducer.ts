@@ -1,5 +1,5 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CategoryDto, CountryDto } from '../../api/type'
+import { CountryDto } from '../../api/type'
 import { CountriesState } from './model'
 
 const initialState: CountriesState = { allCountries: [] }
@@ -19,6 +19,6 @@ const countriesSlice = createSlice({
 
 export const countriesActions = {
   ...countriesSlice.actions,
-  fetchCountriesRequested: createAction('COUNTRIES_FETCH_REQUESTED')
+  fetchCountriesRequested: createAction('countries/fetchCountriesRequested')
 }
 export const countriesReducer = countriesSlice.reducer

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { AppState, ModalDataByType, ModalType } from './model'
+import type { AppState, ModalDataByType, ModalType, Notification } from './model'
 
 const initialState: AppState = {
   modal: {
     opened: false
   },
-  showNotification: false
+  notification: null
 }
 
 const appSlice = createSlice({
@@ -25,8 +25,11 @@ const appSlice = createSlice({
     hideModal: (state) => {
       state.modal.opened = false
     },
-    showNotification: (state, { payload }: PayloadAction<boolean>) => {
-      state.showNotification = payload
+    addNotification: (state, { payload }: PayloadAction<Notification>) => {
+      state.notification = payload
+    },
+    removeNotification: (state) => {
+      state.notification = null
     }
   }
 })

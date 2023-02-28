@@ -1,5 +1,12 @@
-import { adDetailApiClient, apiClient, currencyApiClient } from './client'
-import { AdDto, CategoryDto, CountryDto, CurrencyRatesDto, UserDto } from './type'
+import { apiClient, currencyApiClient } from './client'
+import {
+  AdDto,
+  CategoryDto,
+  CountryDto,
+  CreateAdDto,
+  CurrencyRatesDto,
+  UserDto
+} from './type'
 
 export const getAds = () => apiClient.get<AdDto[]>('ads')
 
@@ -11,6 +18,6 @@ export const getCountries = () => apiClient.get<CountryDto[]>('countries')
 
 export const getUSDRates = () => currencyApiClient.get<CurrencyRatesDto>('latest')
 
-export const getAdDetail = (id: string) => adDetailApiClient.get<AdDto>(id)
+export const getAdDetail = (id: string) => apiClient.get<AdDto>(`ads/${id}`)
 
-export const postAd = (body: {}) => apiClient.post('ads', body)
+export const postAd = (body: CreateAdDto) => apiClient.post('ads', body)

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postAd } from '../../api'
 import { AdDto } from '../../api/type'
 import { appActions } from '../../feature/app/reducers'
-import { selectAdModal } from '../../feature/app/selector'
 import {
   makeSelectCategoryIdByTitle,
   selectCategoriesTitles
@@ -20,7 +19,7 @@ import { Text } from '../Text'
 
 function InsertAdModal() {
   // Completely refactor the entire Component to make it just show its view
-  const [body, setBody] = useState<Partial<AdDto>>({})
+  /*  const [body, setBody] = useState<Partial<AdDto>>({})
   const [selCountry, setSelCountry] = useState<string>('')
   const [selCategory, setSelCategory] = useState<string>('')
 
@@ -103,19 +102,19 @@ function InsertAdModal() {
                 onChange={(e) => setBody({ ...body, title: e })}
                 fullWidth
                 borderRadius={1}
-                placeText="Inserisci un titolo"
+                placeholder="Inserisci un titolo"
               />
               <Input
                 onChange={(e) => setBody({ ...body, description: e })}
                 fullWidth
                 borderRadius={1}
-                placeText="Inserisci una descrizione"
+                placeholder="Inserisci una descrizione"
               />
               <Input
                 onChange={() => null}
                 fullWidth
                 borderRadius={1}
-                placeText="Inserisci il tuo nome"
+                placeholder="Inserisci il tuo nome"
               />
               <Select
                 fullWidth
@@ -133,7 +132,7 @@ function InsertAdModal() {
                 }
                 fullWidth
                 borderRadius={1}
-                placeText="Inserisci uno o più URL separati da una virgola"
+                placeholder="Inserisci uno o più URL separati da una virgola"
               />
               <Input
                 onChange={(e) =>
@@ -141,7 +140,7 @@ function InsertAdModal() {
                 }
                 fullWidth
                 borderRadius={1}
-                placeText="Inserisci il prezzo"
+                placeholder="Inserisci il prezzo"
               />
               <Select
                 fullWidth
@@ -165,7 +164,7 @@ function InsertAdModal() {
         </Modal>
       )}
     </>
-  )
+  ) */
 }
 
 export default InsertAdModal
