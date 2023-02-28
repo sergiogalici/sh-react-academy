@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postAd } from '../../api'
 import { AdDto } from '../../api/type'
-import { adModalActions } from '../../feature/adModal/reducers'
-import { selectAdModal } from '../../feature/adModal/selector'
+import { appActions } from '../../feature/app/reducers'
+import { selectAdModal } from '../../feature/app/selector'
 import {
   makeSelectCategoryIdByTitle,
   selectCategoriesTitles
@@ -45,7 +45,7 @@ function InsertAdModal() {
   // ... state of the ads to make them render immediately..
   // ... after the post request
   const handleSubmit = () => {
-    dispatch(adModalActions.showModal(false))
+    dispatch(appActions.showModal(false))
     const adData: Partial<AdDto> = {
       ...body,
       // TODO correctly post a user instead of hardcoding an already existing ID
@@ -63,7 +63,7 @@ function InsertAdModal() {
         // add a notification for the user
         console.log('POST ERROR!', error)
       })
-    dispatch(adModalActions.showModal(false))
+    dispatch(appActions.showModal(false))
   }
 
   // Move the business logic outside the component
@@ -78,7 +78,7 @@ function InsertAdModal() {
       handleSubmit()
     } else {
       setBody({})
-      dispatch(adModalActions.showModal(false))
+      dispatch(appActions.showModal(false))
       // TODO add a notification that says to complete all fields before submitting
       Number.isNaN(body.price?.value) && console.log('Insert a valid price please')
       console.log('Complete all fields before submitting ', body)
@@ -95,7 +95,7 @@ function InsertAdModal() {
               size="md"
               variant="secondary"
               icon={['fas', 'xmark']}
-              onClick={() => dispatch(adModalActions.showModal(false))}
+              onClick={() => dispatch(appActions.showModal(false))}
             />
             <Text size="lg">Inserisci un nuovo annuncio</Text>
             <form className="input-list">
