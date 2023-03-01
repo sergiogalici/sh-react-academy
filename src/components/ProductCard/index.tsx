@@ -1,67 +1,53 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { AdDto } from '../../api/type'
 import { MappedAdsType } from '../../feature/ads/model'
 import { adsActions } from '../../feature/ads/reducer'
 import { makeSelectAd, makeSelectAdsInFavourites } from '../../feature/ads/selector'
-import { appActions } from '../../feature/app/reducers'
 import { Button } from '../Button'
 import { FormattedPrice } from '../FormattedPrice'
 import { Image } from '../Image'
 import { Rating } from '../Rating'
 import { Text } from '../Text'
+import { CardTitle } from './CardTitle'
 import { StyledProductCard } from './styled'
 
-type ProductCardProps = Omit<
-  AdDto,
-  'authorId' | 'categoryIds' | 'updated_at' | 'images' | 'countryId'
-> & {
-  imageSrc: string
-  rating: number
-  authorName: string
-  category: string
+const IMG_PLACEHOLDER =
+  'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+
+type Props = {
+  product: MappedAdsType
+  linkUrl?: string
 }
 
-export const ProductCard = ({
-  title,
-  description = 'item is not present',
-  price = { value: 0, currency: 'EUR' },
-  imageSrc,
-  premium,
-  hidden,
-  rating,
-  authorName,
-  category,
-  created_at,
-  id
-}: ProductCardProps) => {
+export const ProductCard = ({ product, linkUrl }: Props) => {
+  const {
+    id,
+    title,
+    description = 'item is not present',
+    price = { value: 0, currency: 'EUR' },
+    images,
+    premium,
+    author,
+    category,
+    created_at
+  } = product
   const dispatch = useDispatch()
-  const selectedAd = useSelector(makeSelectAd(id as keyof MappedAdsType))
-  const adInFav = useSelector(makeSelectAdsInFavourites(id as keyof MappedAdsType))
-  const [lastNotificationTime, setLastNotificationTime] = useState<number>(0)
+
+  const adInFav = useSelector(makeSelectAdsInFavourites(id))
 
   const handleFavButton = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    dispatch(adsActions.favouritesAction(selectedAd!))
-    if (!adInFav) {
-      const currentTime = Date.now()
-      if (currentTime - lastNotificationTime > 1000) {
-        dispatch(appActions.showNotification(true))
-        setLastNotificationTime(currentTime)
-        setTimeout(() => {
-          dispatch(appActions.showNotification(false))
-        }, 1000)
-      }
-    }
+    dispatch(adsActions.favouritesAction(product))
   }
 
-  return (
+  const content = (
     <StyledProductCard>
       <div className="image-container">
         <Image
           width={200}
           height={300}
-          src={imageSrc}
+          src={images.at(0) || IMG_PLACEHOLDER}
           alt={description}
           cover={false}
           className="product-image"
@@ -73,24 +59,12 @@ export const ProductCard = ({
             Featured
           </Text>
         )}
-        <div className="category-title">
-          <Text bold upperCase color="lightGray" variant="p">
-            {category}
-          </Text>
-          <div>
-            <Text color="primary" variant="h4" className="title-container">
-              {title}
-            </Text>
-            <Text>{`Annuncio pubblicato il ${new Date(created_at).toLocaleString(
-              'it-IT'
-            )}`}</Text>
-          </div>
-        </div>
+        <CardTitle category={category.title} title={title} createdAt={created_at} />
         <div className="author-rating">
           <Text variant="p" bold>
-            {authorName}
+            {author.username}
           </Text>
-          <Rating rating={rating} />
+          <Rating rating={author.rating} />
         </div>
       </div>
       <div className="price-container">
@@ -107,4 +81,6 @@ export const ProductCard = ({
       </div>
     </StyledProductCard>
   )
+
+  return linkUrl ? <Link to={linkUrl}>{content}</Link> : content
 }

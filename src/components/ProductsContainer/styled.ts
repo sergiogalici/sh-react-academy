@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledProdContainer = styled.div`
+export const StyledGradientContainer = styled.div`
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -11,22 +11,16 @@ export const StyledProdContainer = styled.div`
     rgba(233, 233, 233, 0.7) 0%,
     rgba(255, 255, 255, 1) 100%
   );
+`
 
-  .products-section {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: ${({ theme }) => theme.spacing.md}px;
+export const StyledContent = styled.div`
+  display: flex;
+
+  .left {
+    flex: 1;
   }
 
-  .products-filter {
-  }
-
-  .products-list {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.md}px;
+  .right {
+    flex: 4;
   }
 `

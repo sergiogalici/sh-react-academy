@@ -1,18 +1,26 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { ProductsContainer } from '../../components/ProductsContainer'
-import { adsActions } from '../../feature/ads/reducer'
-import { selectMappedFavourites } from '../../feature/ads/selector'
+import { useSelector } from 'react-redux'
+import { ProductCard } from '../../components/ProductCard'
+import { GradientContainer } from '../../components/ProductsContainer'
+import { Stack } from '../../components/Stack'
+import { selectFavourites } from '../../feature/ads/selector'
 
 export const Favourites = () => {
-  const { category } = useParams()
-  const dispatch = useDispatch()
-  const favourites = useSelector(selectMappedFavourites)
+  const favourites = useSelector(selectFavourites)
 
-  useEffect(() => {
-    dispatch(adsActions.fetchAdsRequested())
-  }, [dispatch])
-
-  return <ProductsContainer products={favourites} category={category} />
+  return (
+    <GradientContainer
+      title="I tuoi preferiti"
+      rightSlot={
+        <Stack direction="vertical">
+          {favourites.map((ad) => (
+            <ProductCard
+              key={ad.id}
+              linkUrl={`/ads/${ad.category.title}/${ad.id}`}
+              product={ad}
+            />
+          ))}
+        </Stack>
+      }
+    />
+  )
 }

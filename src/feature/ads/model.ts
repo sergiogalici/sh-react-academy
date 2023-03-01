@@ -4,7 +4,7 @@ export type AdsState = {
   allAds: AdDto[]
   filterData: FilterDataType
   error?: string
-  favourites: AdDto[]
+  favourites: MappedAdsType[]
 }
 
 export type FilterDataType = {
