@@ -1,14 +1,23 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { redirect, useParams } from 'react-router'
 import { DetailCard } from '../../components/DetailCard'
 import { Text } from '../../components/Text'
 import { MappedAdsType } from '../../feature/ads/model'
-import { makeSelectMappedAd } from '../../feature/ads/selector'
+import { adsActions } from '../../feature/ads/reducer'
+import { selectMappedAdDetail } from '../../feature/ads/selector'
 
 export const AdDetail = () => {
   const { id } = useParams()
-  const mappedAd = useSelector(makeSelectMappedAd(id as keyof MappedAdsType))
+  const ad = useSelector(selectMappedAdDetail)
+  const dispatch = useDispatch()
+  console.log('id', id)
+  console.log('ad in adDetail = ', ad)
 
-  return mappedAd ? <DetailCard ad={mappedAd} /> : <Text>Oggetto non trovato</Text>
+  useEffect(() => {
+    if (!id) return
+    dispatch(adsActions.fetchAdDetailRequested(id))
+  }, [dispatch, id])
+
+  return ad ? <DetailCard ad={ad} /> : <Text>Oggetto non trovato</Text>
 }
