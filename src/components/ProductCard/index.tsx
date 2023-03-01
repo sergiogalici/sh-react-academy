@@ -1,3 +1,5 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { AdDto } from '../../api/type'
@@ -36,10 +38,18 @@ export const ProductCard = ({ product, linkUrl }: Props) => {
 
   const adInFav = useSelector(makeSelectAdsInFavourites(id))
 
-  const handleFavButton = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    dispatch(adsActions.favouritesAction(product))
-  }
+  const handleFavButton = useCallback(
+    (e: React.SyntheticEvent) => {
+      e.preventDefault()
+      dispatch(adsActions.favouritesAction(product))
+    },
+    [dispatch, product]
+  )
+
+  const icon: IconProp = useMemo(
+    () => (adInFav ? ['fas', 'heart'] : ['far', 'heart']),
+    [adInFav]
+  )
 
   const content = (
     <StyledProductCard>
@@ -75,7 +85,7 @@ export const ProductCard = ({ product, linkUrl }: Props) => {
           fontSize="lg"
           color="primary"
           backgroundColor="textLight"
-          icon={adInFav ? ['fas', 'heart'] : ['far', 'heart']}
+          icon={icon}
           onClick={handleFavButton}
         />
       </div>

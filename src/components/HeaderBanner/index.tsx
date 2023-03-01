@@ -1,7 +1,8 @@
-import { ReactNode, useContext } from 'react'
+import { ReactNode, useContext, memo } from 'react'
 import { RatesKeys } from '../../api/type'
 import { CurrencyContext } from '../../contexts/currency'
 import { Select } from '../Select'
+import { Text } from '../Text'
 import { StyledHeaderBanner, StyledHeaderBannerProps } from './styled'
 
 type Props = Partial<StyledHeaderBannerProps> & {
@@ -14,7 +15,8 @@ const currencyOptions = [
   { value: 'JPY', label: 'JPY' }
 ]
 
-export const HeaderBanner = ({ title }: Props) => {
+const HeaderBannerCmp = ({ title }: Props) => {
+  console.log('HeaderBanner')
   const { activeCurrency, setActiveCurrency } = useContext(CurrencyContext)
 
   const updateActiveCurrency = (newCurrency: string) => {
@@ -23,7 +25,9 @@ export const HeaderBanner = ({ title }: Props) => {
 
   return (
     <StyledHeaderBanner>
-      {title}
+      <Text variant="p" color="textLight">
+        {title}
+      </Text>
       <Select
         borderRadius={1}
         options={currencyOptions}
@@ -33,3 +37,5 @@ export const HeaderBanner = ({ title }: Props) => {
     </StyledHeaderBanner>
   )
 }
+
+export const HeaderBanner = memo(HeaderBannerCmp)

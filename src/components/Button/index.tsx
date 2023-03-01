@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { ReactNode, SyntheticEvent } from 'react'
+import { memo, ReactNode, SyntheticEvent } from 'react'
 import { theme } from '../../style/theme'
 import { Icon } from '../Icon'
 import { Text } from '../Text'
@@ -29,7 +29,7 @@ const variants = {
   }
 } as const
 
-export const Button = ({
+const ButtonCmp = ({
   variant,
   children,
   icon,
@@ -43,6 +43,7 @@ export const Button = ({
   className,
   onClick
 }: Props) => {
+  console.log('render Button')
   const v = variant ? variants[variant] : { backgroundColor, color, outlined }
 
   return (
@@ -66,3 +67,5 @@ export const Button = ({
     </StyledButton>
   )
 }
+
+export const Button = memo(ButtonCmp)

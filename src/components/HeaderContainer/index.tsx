@@ -1,10 +1,7 @@
-import { useSelector } from 'react-redux'
-import { selectFavourites } from '../../feature/ads/selector'
 import { AuthBanner } from '../AuthBanner'
-import { Button } from '../Button'
+import { FavouritesBadge } from '../FavouritesBadge'
 import { HeaderBanner } from '../HeaderBanner'
 import { Nav, NavLink } from '../Nav'
-import { Text } from '../Text'
 
 const links: NavLink[] = [
   { title: 'Magazine', to: '#', id: 1 },
@@ -13,26 +10,20 @@ const links: NavLink[] = [
   { title: 'Subito per le Aziende', to: '#', id: 4 },
   { title: 'Aiuto', to: '#', id: 5 },
   { title: 'Ricerche salvate', to: '#', id: 6 },
-  { title: 'Preferiti', to: '/favourites', id: 7 }
+  { title: 'Preferiti', to: '/favourites', id: 7, rightSlot: <FavouritesBadge /> }
 ]
 
-export const HeaderContainer = () => {
-  const favourites = useSelector(selectFavourites)
+const title = (
+  <span>
+    ✨ <b>TuttoSubito</b>: spedizione e pagamento online ✨
+  </span>
+)
 
+export const HeaderContainer = () => {
   return (
     <>
-      <HeaderBanner
-        title={
-          <Text variant="p" color="textLight">
-            ✨ <b>TuttoSubito</b>: spedizione e pagamento online ✨
-          </Text>
-        }
-      />
-      <Nav links={links}>
-        <Button variant="primary" borderRadius={3}>
-          {favourites.length.toString()}
-        </Button>
-      </Nav>
+      <HeaderBanner title={title} />
+      <Nav links={links} />
       <AuthBanner />
     </>
   )

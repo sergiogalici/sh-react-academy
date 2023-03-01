@@ -1,31 +1,36 @@
-import { ReactNode } from 'react'
+import { memo, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '../Button'
+import { Stack } from '../Stack'
 import { StyledNav, StyledNavProps } from './styled'
 
 export type NavLink = {
   title: string
   to: string
   id: string | number
-  value?: string
+  rightSlot?: ReactNode
 }
 
 export type NavProps = Partial<StyledNavProps> & {
   links: NavLink[]
-  children: ReactNode
 }
 
-export const Nav = ({ links, children }: NavProps) => {
+export const Nav = memo(({ links }: NavProps) => {
   return (
     <StyledNav>
       <div className="link-list">
-        {links.map((link) => (
-          <Link to={link.to} key={link.id}>
-            {link.title}
-          </Link>
-        ))}
+        {links.map(({ id, title, to, rightSlot }) => {
+          return rightSlot ? (
+            <Stack gap="sm" key={id}>
+              <Link to={to}>{title}</Link>
+              {rightSlot}
+            </Stack>
+          ) : (
+            <Link key={id} to={to}>
+              {title}
+            </Link>
+          )
+        })}
       </div>
-      {children}
     </StyledNav>
   )
-}
+})

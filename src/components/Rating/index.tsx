@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { memo } from 'react'
 import { ThemeFontSizes } from '../../style/theme'
 import { Icon } from '../Icon'
 
@@ -10,7 +11,7 @@ type RatingProps = {
 
 const starArray = Array.from({ length: 5 })
 
-export const Rating = ({ rating = 4, fontSize = 'md' }: RatingProps) => {
+const RatingCmp = ({ rating = 4, fontSize = 'md' }: RatingProps) => {
   return (
     <div>
       {starArray.map((_, index: number) => {
@@ -19,8 +20,8 @@ export const Rating = ({ rating = 4, fontSize = 'md' }: RatingProps) => {
           currStar - rating < 0.5
             ? ['fas', 'star']
             : currStar - rating >= 0.5 && currStar - rating < 1
-            ? ['fas', 'star-half-alt']
-            : ['far', 'star']
+              ? ['fas', 'star-half-alt']
+              : ['far', 'star']
         return (
           <Icon
             key={Date.now() * Math.random()}
@@ -34,3 +35,5 @@ export const Rating = ({ rating = 4, fontSize = 'md' }: RatingProps) => {
     </div>
   )
 }
+
+export const Rating = memo(RatingCmp)

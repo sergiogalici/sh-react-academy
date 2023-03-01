@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { memo, ReactNode } from 'react'
 import { TextVariants } from '../../style/theme'
 
 import { StyledText } from './styled'
@@ -10,7 +10,7 @@ export type Props = Partial<Omit<StyledTextProps, 'as'>> & {
   className?: string
 }
 
-export const Text = ({
+const TextCmp = ({
   children,
   variant = 'p',
   color,
@@ -34,3 +34,5 @@ export const Text = ({
     </StyledText>
   )
 }
+
+export const Text = memo(TextCmp)

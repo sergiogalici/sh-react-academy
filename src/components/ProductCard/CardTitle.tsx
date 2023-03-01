@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Text } from '../Text'
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
   createdAt: number
 }
 
-export const CardTitle = ({ category, title, createdAt }: Props) => {
+const CardTitleCmp = ({ category, title, createdAt }: Props) => {
   return (
     <div className="category-title">
       <Text bold upperCase color="lightGray" variant="p">
@@ -23,3 +24,5 @@ export const CardTitle = ({ category, title, createdAt }: Props) => {
     </div>
   )
 }
+
+export const CardTitle = memo(CardTitleCmp)
