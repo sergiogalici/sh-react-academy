@@ -4,6 +4,7 @@ import { all } from 'redux-saga/effects'
 import { adsReducer } from './ads/reducer'
 import { adsSaga } from './ads/saga'
 import { appReducer } from './app/reducers'
+import { appSaga } from './app/saga'
 import { categoriesReducer } from './categories/reducer'
 import { categoriesSaga } from './categories/saga'
 import { countriesReducer } from './countries/reducer'
@@ -16,12 +17,11 @@ const rootReducer = {
   users: usersReducer,
   countries: countriesReducer,
   ads: adsReducer,
-  // TODO move to local state
   app: appReducer
 }
 
 function* rootSaga() {
-  yield all([categoriesSaga(), usersSaga(), adsSaga(), countriesSaga()])
+  yield all([categoriesSaga(), usersSaga(), adsSaga(), countriesSaga(), appSaga()])
 }
 
 const sagaMiddleware = createSagaMiddleware()

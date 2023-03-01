@@ -1,9 +1,12 @@
 export type AppState = {
   modal: ModalState
-  notification: Notification | null
+  notification: NotificationType | null
+  configuration: {
+    notificationDuration: number
+  }
 }
 
-export type Notification = {
+export type NotificationType = {
   id: string
   title: string
   message: string

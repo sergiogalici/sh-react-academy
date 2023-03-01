@@ -5,7 +5,8 @@ import { ThemeProvider } from 'styled-components'
 import { CurrencyProvider } from './components/CurrencyProvider'
 import { Layout } from './components/Layout'
 import { ModalManager } from './components/ModalManager'
-import { NotificationCard } from './components/NotificationCard'
+import { Notification } from './components/Notification'
+import { NotificationManager } from './components/NotificationManager'
 import { categoriesActions } from './feature/categories/reducer'
 import { countriesActions } from './feature/countries/reducer'
 import { usersActions } from './feature/users/reducer'
@@ -31,7 +32,7 @@ function App() {
       <GlobalStyle />
       <CurrencyProvider>
         <ModalManager />
-        <NotificationCard text="L'annuncio è stato inserito tra i Preferiti!" />
+        <NotificationManager />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>

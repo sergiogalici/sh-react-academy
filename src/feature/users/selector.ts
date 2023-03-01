@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit'
 import { UserDto } from '../../api/type'
-import { RootState } from '../store'
+import type { RootState } from '../store'
 
 const selectUsers = (state: RootState) => state.users
 

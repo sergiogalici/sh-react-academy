@@ -1,9 +1,11 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects'
 import { getAds, postAd } from '../../api'
 import { AdDto } from '../../api/type'
+import { createFavouriteNotification } from '../../utils/notificationFactory'
 import { appActions } from '../app/reducers'
 import { mapAdForPost } from './mappers'
 import { adsActions } from './reducer'
+import { makeSelectAdsInFavourites } from './selector'
 
 export function* fetchAds() {
   try {
@@ -27,7 +29,18 @@ export function* postAdSaga(action: ReturnType<typeof adsActions.postAdRequested
   }
 }
 
+function* handleFavouriteNotification({
+  payload
+}: ReturnType<typeof adsActions.favouritesAction>) {
+  const wasAddedInFav: boolean = yield select(makeSelectAdsInFavourites(payload.id))
+  if (wasAddedInFav) {
+    const notification = createFavouriteNotification(payload.title)
+    yield put(appActions.addNotification(notification))
+  }
+}
+
 export function* adsSaga() {
   yield takeLatest(adsActions.fetchAdsRequested.toString(), fetchAds)
   yield takeLatest(adsActions.postAdRequested.toString(), postAdSaga)
+  yield takeEvery(adsActions.favouritesAction.toString(), handleFavouriteNotification)
 }

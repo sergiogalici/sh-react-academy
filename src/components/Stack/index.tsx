@@ -6,6 +6,8 @@ type Props = {
   direction?: 'vertical' | 'horizontal'
   gap?: ThemeSpacings | number
   children: ReactNode
+  centerX?: boolean
+  centerY?: boolean
 }
 
 export const Stack = ({ direction = 'horizontal', gap = 'md', children }: Props) => {

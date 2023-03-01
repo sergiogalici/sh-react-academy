@@ -10,4 +10,5 @@ export const StyledStack = styled.div<StyledStackProps>`
   display: flex;
   flex-direction: ${({ direction }) => (direction === 'horizontal' ? 'row' : 'column')};
   gap: ${({ theme, gap }) => (typeof gap === 'number' ? gap : theme.spacing[gap])}px;
+  align-items: center;
 `

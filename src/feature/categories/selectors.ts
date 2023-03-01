@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit'
 import { CategoryDto } from '../../api/type'
-import { RootState } from '../store'
+import type { RootState } from '../store'
 
 const selectCategories = (state: RootState) => state.categories
 
