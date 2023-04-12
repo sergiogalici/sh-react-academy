@@ -20,10 +20,11 @@ export const selectMappedAdDetail = createSelector(
   selectUsersById,
   (adDetail, categoriesMap, usersMap) => {
     if (!adDetail) return null
+    const { authorId, categoryIds, ...rest } = adDetail
     return {
-      ...adDetail,
-      category: categoriesMap[adDetail.categoryIds[0]],
-      author: usersMap[adDetail.authorId]
+      ...rest,
+      category: categoriesMap[categoryIds[0]],
+      author: usersMap[authorId]
     }
   }
 )

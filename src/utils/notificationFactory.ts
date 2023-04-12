@@ -7,5 +7,3 @@ export const createFavouriteNotification = (adName: string): NotificationType =>
   message: `Hai aggiunto ${adName} ai preferiti`,
   type: 'info'
 })
-
-// dispatch(addNotification(createFavouriteNotification('appartemanto X')))

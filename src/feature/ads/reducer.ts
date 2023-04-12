@@ -2,7 +2,7 @@ import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AdDto } from '../../api/type'
 import { AdsState, FilterDataType, MappedAdsType, NewAd } from './model'
 
-const initialState: AdsState = {
+export const initialState: AdsState = {
   allAds: [],
   filterData: { filter: 'created_at', order: 'ASC' },
   adDetail: null,
