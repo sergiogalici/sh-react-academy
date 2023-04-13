@@ -1,5 +1,5 @@
 import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects'
-import { getAdDetail, getAds, postAd } from '../../api'
+import { getAds, postAd } from '../../api'
 import { AdDto } from '../../api/type'
 import { createFavouriteNotification } from '../../utils/notificationFactory'
 import { appActions } from '../app/reducers'
@@ -14,22 +14,6 @@ export function* fetchAds() {
   } catch (e) {
     if (e instanceof Error) {
       yield put(adsActions.fetchAdsFailed(e.message))
-    }
-  }
-}
-
-export function* fetchAdDetail({
-  payload
-}: ReturnType<typeof adsActions.fetchAdDetailRequested>) {
-  try {
-    const adDetail: AdDto = yield call(getAdDetail, payload)
-    console.log('ad detail = ', adDetail)
-    if (Object.values(adDetail).length !== 0) {
-      yield put(adsActions.fetchAdDetailSuccess(adDetail))
-    }
-  } catch (e) {
-    if (e instanceof Error) {
-      yield put(adsActions.fetchAdDetailFailed(e.message))
     }
   }
 }
@@ -59,5 +43,4 @@ export function* adsSaga() {
   yield takeLatest(adsActions.fetchAdsRequested.toString(), fetchAds)
   yield takeLatest(adsActions.postAdRequested.toString(), postAdSaga)
   yield takeEvery(adsActions.favouritesAction.toString(), handleFavouriteNotification)
-  yield takeLatest(adsActions.fetchAdDetailRequested.toString(), fetchAdDetail)
 }

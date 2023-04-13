@@ -9,15 +9,7 @@ import { redirect, useParams } from 'react-router'
 
 export const AdDetail = () => {
   const { id } = useParams()
-  const ad = useSelector(selectMappedAdDetail)
-  const dispatch = useDispatch()
-  console.log('id', id)
-  console.log('ad in adDetail = ', ad)
+  const mappedAd = useSelector(makeSelectMappedAd(id as keyof MappedAdsType))
 
-  useEffect(() => {
-    if (!id) return
-    dispatch(adsActions.fetchAdDetailRequested(id))
-  }, [dispatch, id])
-
-  return ad ? <DetailCard ad={ad} /> : <Text>Oggetto non trovato</Text>
+  return mappedAd ? <DetailCard ad={mappedAd} /> : <Text>Oggetto non trovato</Text>
 }

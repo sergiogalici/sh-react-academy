@@ -43,6 +43,7 @@ const ButtonCmp = ({
   className,
   onClick
 }: Props) => {
+  console.log('render Button')
   const v = variant ? variants[variant] : { backgroundColor, color, outlined }
 
   return (

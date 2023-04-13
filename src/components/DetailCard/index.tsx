@@ -19,8 +19,6 @@ export const DetailCard = ({ ad }: Props) => {
   const { format } = useCurrency()
   const country = useSelector(makeSelectCountryNameById(ad.countryId))
 
-  console.log('ad in DetailCard', ad)
-
   return (
     <StyledDetailCard>
       <div className="top-section">
@@ -52,7 +50,7 @@ export const DetailCard = ({ ad }: Props) => {
         <div className="details-container">
           <div className="top-details">
             <Text className="category-indicator" variant="p">
-              {ad.category?.title}
+              {ad.category.title}
             </Text>
             <div className="divisor" />
             <Text size="lg" bold className="ad-title">
@@ -71,8 +69,8 @@ export const DetailCard = ({ ad }: Props) => {
               <Text>{ad.author?.username?.charAt(0).toUpperCase()}</Text>
             </div>
             <div>
-              <Text>{ad.author?.username}</Text>
-              <Rating rating={ad.author?.rating} />
+              <Text>{ad.author.username}</Text>
+              <Rating rating={ad.author.rating} />
             </div>
           </div>
         </div>

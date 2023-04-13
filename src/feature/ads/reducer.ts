@@ -5,7 +5,6 @@ import { AdsState, FilterDataType, MappedAdsType, NewAd } from './model'
 export const initialState: AdsState = {
   allAds: [],
   filterData: { filter: 'created_at', order: 'ASC' },
-  adDetail: null,
   favourites: []
 }
 
@@ -22,12 +21,6 @@ const adsSlice = createSlice({
     filterDataAction: (state, { payload }: PayloadAction<FilterDataType>) => {
       state.filterData = payload
     },
-    fetchAdDetailSuccess: (state, { payload }: PayloadAction<AdDto>) => {
-      state.adDetail = payload
-    },
-    fetchAdDetailFailed: (state, { payload }: PayloadAction<string>) => {
-      state.error = payload
-    },
     favouritesAction: (state, { payload }: PayloadAction<MappedAdsType>) => {
       state.favourites = state.favourites.some((fav) => fav.id === payload.id)
         ? state.favourites.filter((fav) => fav.id !== payload.id)
@@ -39,7 +32,6 @@ const adsSlice = createSlice({
 export const adsActions = {
   ...adsSlice.actions,
   fetchAdsRequested: createAction('ads/fetchAdsRequested'),
-  postAdRequested: createAction<NewAd>('ads/postAdRequested'),
-  fetchAdDetailRequested: createAction<string>('ads/fetchAdDetailRequested')
+  postAdRequested: createAction<NewAd>('ads/postAdRequested')
 }
 export const adsReducer = adsSlice.reducer

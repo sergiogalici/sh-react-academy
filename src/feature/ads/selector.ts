@@ -69,8 +69,8 @@ export const makeSelectFilteredAds = (category?: string) =>
   createSelector(selectMappedAds, (ads) => {
     return category
       ? ads.filter(
-        (ad) => ad.category.title?.toLocaleLowerCase() === category.toLowerCase() // eslint-disable-line
-      ) // eslint-disable-line
+          (ad) => ad.category.title?.toLocaleLowerCase() === category.toLowerCase() // eslint-disable-line
+        ) // eslint-disable-line
       : ads
   })
 

@@ -16,6 +16,7 @@ const currencyOptions = [
 ]
 
 const HeaderBannerCmp = ({ title }: Props) => {
+  console.log('HeaderBanner')
   const { activeCurrency, setActiveCurrency } = useContext(CurrencyContext)
 
   const updateActiveCurrency = (newCurrency: string) => {
