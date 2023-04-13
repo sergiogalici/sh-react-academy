@@ -12,23 +12,6 @@ export const selectFavourites = createSelector(selectAds, ({ favourites }) => fa
 
 export const selectFilterData = createSelector(selectAds, ({ filterData }) => filterData)
 
-export const selectAdDetail = createSelector(selectAds, ({ adDetail }) => adDetail)
-
-export const selectMappedAdDetail = createSelector(
-  selectAdDetail,
-  selectCategoryById,
-  selectUsersById,
-  (adDetail, categoriesMap, usersMap) => {
-    if (!adDetail) return null
-    const { authorId, categoryIds, ...rest } = adDetail
-    return {
-      ...rest,
-      category: categoriesMap[categoryIds[0]],
-      author: usersMap[authorId]
-    }
-  }
-)
-
 export const selectMappedAds = createSelector(
   [selectAllAds, selectCategoryById, selectUsersById],
   (allAds, categoriesMap, usersMap) => {
